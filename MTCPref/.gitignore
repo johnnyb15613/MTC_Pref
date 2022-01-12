@@ -1,0 +1,6 @@
+/build
+/libs
+/src/androidTest
+/src/test
+/consumer-rules.pro
+/proguard-rules.pro
