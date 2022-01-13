@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/tcd_relativeLayout"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<RelativeLayout
+		android:id="@+id/tcd_swatchParent"
+		android:layout_above="@+id/tcd_textView"
+		android:layout_alignParentTop="true"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<ScrollView
+			android:id="@+id/tcd_portraitSwatchParent"
+			android:gravity="center"
+			android:paddingLeft="10dp"
+			android:paddingTop="10dp"
+			android:paddingRight="10dp"
+			android:paddingBottom="4dp"
+			android:layout_gravity="center"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_centerInParent="true">
+
+			<TableLayout
+				android:stretchColumns="*"
+				android:id="@+id/tcd_portraitSwatchContainer"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"/>
+
+		</ScrollView>
+
+		<HorizontalScrollView
+			android:id="@+id/tcd_landSwatchParent"
+			android:gravity="center"
+			android:paddingLeft="10dp"
+			android:paddingTop="0dp"
+			android:paddingRight="10dp"
+			android:paddingBottom="0dp"
+			android:layout_gravity="center"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true">
+
+			<LinearLayout
+				android:id="@+id/tcd_landSwatchContainer"
+				android:layout_height="match_parent"
+				android:layout_width="wrap_content"
+				android:orientation="horizontal"/>
+
+		</HorizontalScrollView>
+
+	</RelativeLayout>
+
+	<TextView
+		android:id="@+id/tcd_textView"
+		android:gravity="center"
+		android:text="@string/ph_accent_color"
+		android:layout_above="@+id/tcd_accentParent"
+		android:layout_gravity="center"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:textColor="?attr/textColorPrimary"/>
+	
+	<HorizontalScrollView
+		android:id="@+id/tcd_accentParent"
+		android:gravity="center"
+		android:paddingLeft="10dp"
+		android:paddingTop="4dp"
+		android:paddingRight="10dp"
+		android:paddingBottom="10dp"
+		android:layout_above="@+id/tcd_switch"
+		android:layout_gravity="center"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<LinearLayout
+			android:id="@+id/tcd_accentContainer"
+			android:orientation="horizontal"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+
+	</HorizontalScrollView>
+
+	<androidx.appcompat.widget.SwitchCompat
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="@string/ph_day_mode"
+		android:textColor="?attr/textColorPrimary"
+		android:id="@+id/tcd_switch"
+		android:paddingLeft="15dp"
+		android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true"
+		android:paddingStart="15dp" />
+
+</RelativeLayout>
+

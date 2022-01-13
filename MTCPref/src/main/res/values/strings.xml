@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ph_theme_color">Theme Color</string>
+    <string name="ph_summary">Summary</string>
+    <string name="ph_day_mode">Day</string>
+    <string name="ph_night_mode">Night</string>
+    <string name="ph_accent_color">Accent Color</string>
+</resources>
