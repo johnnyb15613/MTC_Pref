@@ -6,6 +6,16 @@ import com.jb15613.themechooser.utility.*
 
 
 object ThemeChooser {
+
+    /**
+     * getTheme(context: [Context]): [Int]
+     *
+     * This method will return a Theme from SharedPreferences using LIGHTBLUE as the default
+     *
+     * @param context a [Context] used to retrieve [SharedPreferences]
+     *
+     * @return [Int] the Resource Id of the Theme
+     */
     fun getTheme(context: Context): Int {
         val prefs: SharedPreferences =
             context.getSharedPreferences(PREF_NAME_KEY, Context.MODE_PRIVATE)
@@ -32,6 +42,15 @@ object ThemeChooser {
         } // if theme is dark or light
     } // getTheme
 
+    /**
+     * getTheme(themeName: [String]): [Int]
+     *
+     * This method will return a Theme from the given ThemeName
+     *
+     * @param themeName a [String] that is the Theme Name
+     *
+     * @return [Int] the Resource Id of the Theme
+     */
     fun getTheme(themeName: String): Int {
         var tN = themeName
         var isLightTheme = true

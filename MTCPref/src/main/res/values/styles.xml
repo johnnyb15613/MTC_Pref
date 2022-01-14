@@ -2,7 +2,7 @@
 <resources>
 	
 	<!-- Dark Theme -->
-    <style name="AppThemeDark" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppThemeDark" parent="Theme.AppCompat">
 		<item name="android:windowTranslucentStatus">true</item>
 
 		<item name="colorPrimary">@color/material_primary</item>
@@ -25,7 +25,7 @@
 	</style>
 
 	<!-- Light Theme -->
-	<style name="AppThemeLight" parent="Theme.AppCompat.Light.NoActionBar">
+	<style name="AppThemeLight" parent="Theme.AppCompat.Light">
 		<item name="android:windowTranslucentStatus">true</item>
 
 		<item name="colorPrimary">@color/material_primary</item>

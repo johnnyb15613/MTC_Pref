@@ -5,11 +5,14 @@ import android.content.SharedPreferences
 
 
 object PrefUtils {
+
     /**
+     * setThemeColor(context: [Context], themeName: [String])
+     *
      * Saves name of theme color to prefs
      *
-     * @param  context a `Context` that is used to retrieve a preference object
-     * @param  themeName a `String` that will be saved as the theme name
+     * @param  context a [Context] that is used to retrieve a preference object
+     * @param  themeName a [String] that will be saved as the theme name
      */
     fun setThemeColor(context: Context, themeName: String) {
         val prefs: SharedPreferences =
@@ -20,23 +23,27 @@ object PrefUtils {
     } // setThemeColor
 
     /**
+     * getThemeColor(context: [Context]): String
+     *
      * Retrieves name of theme color from prefs
      *
-     * @param  context a `Context` that is used to retrieve a preference object
+     * @param context a [Context] that is used to retrieve a preference object
      *
-     * @return  themeName a `String` that was saved as the theme name
+     * @return [String] that was saved as the theme name
      */
-    fun getThemeColor(context: Context): String? {
+    fun getThemeColor(context: Context): String {
         val prefs: SharedPreferences =
             context.getSharedPreferences(PREF_NAME_KEY, Context.MODE_PRIVATE)
-        return prefs.getString(PREF_THEME_KEY, LIGHTBLUE)
+        return prefs.getString(PREF_THEME_KEY, LIGHTBLUE).toString()
     } // getThemeColor
 
     /**
+     * setAccentColor(context: [Context], accentName: [String])
+     *
      * Saves name of accent color to prefs
      *
-     * @param  context a `Context` that is used to retrieve a preference object
-     * @param  accentName a `String` that will be saved as the accent name
+     * @param  context a [Context] that is used to retrieve a preference object
+     * @param  accentName a [String] that will be saved as the accent name
      */
     fun setAccentColor(context: Context, accentName: String?) {
         val prefs: SharedPreferences =
@@ -47,11 +54,13 @@ object PrefUtils {
     } // setAccentColor
 
     /**
+     * getAccentColor(context: [Context]): String
+     *
      * Retrieves name of accent color from prefs
      *
-     * @param  context a `Context` that is used to retrieve a preference object
+     * @param  context a [Context] that is used to retrieve a preference object
      *
-     * @return  acventName a `String` that was saved as the accent name
+     * @return [String] that was saved as the accent name
      */
     fun getAccentColor(context: Context): String? {
         val prefs: SharedPreferences =
@@ -60,10 +69,12 @@ object PrefUtils {
     } // getAccentColor
 
     /**
+     * setThemeHue(context: [Context], themeHue: [Boolean])
+     *
      * Saves hue of theme color to prefs
      *
-     * @param  context a `Context` that is used to retrieve a preference object
-     * @param  themeHue a `Boolean` that will be saved as the theme hue
+     * @param  context a [Context] that is used to retrieve a preference object
+     * @param  themeHue a [Boolean] that will be saved as the theme hue
      */
     fun setThemeHue(context: Context, themeHue: Boolean) {
         val prefs: SharedPreferences =
@@ -74,11 +85,13 @@ object PrefUtils {
     } // setThemeHue
 
     /**
+     * getThemeHue(context: [Context]): [Boolean]
+     *
      * Retrieves name of theme hue from prefs
      *
-     * @param  context a `Context` that is used to retrieve a preference object
+     * @param context a [Context] that is used to retrieve a preference object
      *
-     * @return  themeHue a `Boolean` that was saved as the theme hue
+     * @return [Boolean] that represents Theme Hue (Light = true : Dark = false)
      */
     fun getThemeHue(context: Context): Boolean {
         val prefs: SharedPreferences =
@@ -87,10 +100,12 @@ object PrefUtils {
     } // getThemeHue
 
     /**
-     * Saves the device dendity scale to prefs
+     * setDensityScale(context: [Context], scale: [Float])
      *
-     * @param  context a `Context` that is used to retrieve a preference object
-     * @param  scale a `float` that will be saved as the density scale
+     * Saves the device density scale to prefs
+     *
+     * @param  context a [Context] that is used to retrieve a preference object
+     * @param  scale a [Float] that will be saved as the density scale
      */
     fun setDensityScale(context: Context, scale: Float) {
         val prefs: SharedPreferences =
@@ -101,11 +116,13 @@ object PrefUtils {
     } // setDensityScale
 
     /**
-     * Retrieves value of density scsle from prefs
+     * getDensityScale(context: [Context]): [Float]
      *
-     * @param  context a `Context` that is used to retrieve a preference object
+     * Retrieves value of density scale from prefs
      *
-     * @return  scale a `float` that was saved as the density scale
+     * @param context a [Context] that is used to retrieve a preference object
+     *
+     * @return [Float] that was saved as the density scale
      */
     fun getDensityScale(context: Context): Float {
         val prefs: SharedPreferences =
@@ -114,10 +131,12 @@ object PrefUtils {
     } // getDensityScale
 
     /**
+     * setCellSize(context: [Context], cellSize: [Int])
+     *
      * Saves size of cells to prefs
      *
-     * @param  context a `Context` that is used to retrieve a preference object
-     * @param  cellSize an `int` that will be saved as the cell size
+     * @param  context a [Context] that is used to retrieve a preference object
+     * @param  cellSize an [Int] that will be saved as the cell size
      */
     fun setCellSize(context: Context, cellSize: Int) {
         val prefs: SharedPreferences =
@@ -128,11 +147,13 @@ object PrefUtils {
     } // setCellSize
 
     /**
+     * getCellSize(context: [Context]): [Int]
+     *
      * Retrieves size of cells from prefs
      *
-     * @param  context a `Context` that is used to retrieve a preference object
+     * @param context a [Context] that is used to retrieve a preference object
      *
-     * @return  cellSize an `int` that was saved as the cell size
+     * @return [Int] that was saved as the cell size
      */
     fun getCellSize(context: Context): Int {
         val prefs: SharedPreferences =

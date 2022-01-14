@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Theme Settings">
+
+        <com.jb15613.preference.themechooser.ThemeChooserPreference
+            android:key="themeColorPref"
+            android:title="Theme Color"
+            default="Light Blue"
+            android:dialogTitle="Theme Chooser"/>
+
+    </PreferenceCategory>
+
+    <SwitchPreference
+        android:key="multiColoredCards"
+        android:title="Card View Colors"
+        android:summary="Multi Colored Cards?" />
+
+</androidx.preference.PreferenceScreen>

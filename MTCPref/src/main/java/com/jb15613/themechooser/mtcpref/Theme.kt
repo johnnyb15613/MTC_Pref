@@ -8,8 +8,20 @@ import com.jb15613.themechooser.utility.PrefUtils.setThemeColor
 import com.jb15613.themechooser.utility.PrefUtils.setThemeHue
 import com.jb15613.themechooser.utility.THEME_SPLITTER
 
-
+/**
+ * class Theme(builder: ThemeBuilder)
+ *
+ * This Class will let you use a Builder to construct a theme
+ *
+ * setTheme(new Theme.ThemeBuilder()
+ *                  .themeColor(Themes.ThemeColor.getRandomThemeColor())
+ *                  .accentColor(Themes.AccentColor.getRandomAccentColor())
+ *                  .isLightTheme(Themes.getRandomThemeHue())
+ *                  .build(this)
+ *                  .getTheme())
+ */
 class Theme(builder: ThemeBuilder) {
+
     private val themeColor: String
     private val accentColor: String
     private val isLightTheme: Boolean

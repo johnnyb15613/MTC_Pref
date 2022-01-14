@@ -8,11 +8,15 @@ import com.jb15613.themechooser.mtcpref.R
 class ColorUtils {
 
     /**
+     * getColorSet(themeName: [String], mContext: [Context], isTrue: [Boolean]): [IntArray]
+     *
      * Creates a set of colors that represent Primary, Dark, and Accent colors for a theme
      *
-     * @param  themeName a `String` that contains the theme name
-     * @param  mContext a `Context` that contains the theme name
-     * @return  an `int[]` that contains Primary, Dark, and Accent theme colors
+     * @param themeName a [String] that contains the Theme Name (eg: Purple)
+     * @param mContext a [Context] to retrieve [Resources]
+     * @param isTrue a [Boolean] telling if its a custom accent color
+     *
+     * @return [IntArray] that contains Primary, Dark, and Accent theme colors
      */
     fun getColorSet(themeName: String, mContext: Context, isTrue: Boolean): IntArray {
         val colors = IntArray(3)
@@ -221,6 +225,16 @@ class ColorUtils {
         return colors
     } // getColorSet()
 
+    /**
+     * getTrueAccentColorSet(themeName: [String], mContext: [Context]) : [IntArray]
+     *
+     * This function will return a list of all the true accent colors for each primary theme color
+     *
+     * @param themeName a [String] containing Theme Name (eg: DeepOrange)
+     * @param mContext a [Context] to retrieve Resources
+     *
+     * @return [IntArray] with all available hues of a theme color
+     */
     fun getTrueAccentColorSet(themeName: String, mContext: Context): IntArray {
         val colors = IntArray(5)
         val r: Resources = mContext.resources
@@ -343,13 +357,16 @@ class ColorUtils {
     } // getTrueAccentColorSet()
 
     /**
-     * Creates a set of colors that represent Primary, Dark, and Accent colors for a theme
+     * getCustomAccentColor()
      *
-     * @param  themeName a {@code String} that contains the theme name
-     * @param  mContext a {@code Context} that contains the theme name
-     * @return  an {@code int} that contains the Accent theme color
+     * Retrieves an Accent Color that does not match the Primary Theme Color
+     *
+     * @param  themeName a String that contains the theme name
+     * @param  mContext a Context to retrieve Resources
+     *
+     * @return [Int] that contains the Accent theme color
      */
-    fun getCustomAccentColor(themeName: String, mContext: Context): Int {
+    private fun getCustomAccentColor(themeName: String, mContext: Context): Int {
         var color = 0
         val r: Resources = mContext.resources
 
@@ -378,9 +395,18 @@ class ColorUtils {
         return color
     } // getCustomAccentColor
 
+    /**
+     * getColorAsHtmlString([Int] color)
+     *
+     * Retrieves a color in the form of an HTML String
+     *
+     * @param color An Int that represents the color
+     *
+     * @return [String] that contains the formatted color for use in HTML
+     */
     fun getColorAsHtmlString(color: Int): String {
         val s = Integer.toHexString(color)
         return "#$s"
     } // getColorAsHtmlString
 
-}
+} // Class

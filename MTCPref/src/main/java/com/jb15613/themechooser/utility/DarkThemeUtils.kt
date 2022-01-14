@@ -5,11 +5,13 @@ import com.jb15613.themechooser.utility.color.*
 class DarkThemeUtils {
 
     /**
-     * Retrieves Resource id of a theme
+     * getCustomColoredDarkTheme(themeName: [String]): [Int]
      *
-     * @param  themeName a {@code String} that is the name of the theme
+     * Retrieves Resource ID of a theme
      *
-     * @return  theme an {@code Integer} that is the Resource ID of the theme
+     * @param  themeName a [String] that is the name of the Theme
+     *
+     * @return  theme an [Int] that is the Resource ID of the theme
      */
     fun getCustomColoredDarkTheme(themeName: String): Int {
         var theme = 0

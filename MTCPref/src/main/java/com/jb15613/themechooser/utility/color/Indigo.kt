@@ -90,6 +90,15 @@ import com.jb15613.themechooser.utility.BLUEGREY_3
 
 class Indigo {
 
+    /**
+     * getThemeDark(themeName: [String]) : [Int]
+     *
+     * This method gets dark version of theme
+     *
+     * @param themeName a [String] containing the Theme Name
+     *
+     * @return [Int] the Resource Id of the Theme
+     */
     fun getThemeDark(themeName: String) : Int {
 
         var theme = 0
@@ -205,6 +214,15 @@ class Indigo {
 
     } // getThemeDark()
 
+    /**
+     * getThemeLight(themeName: [String]) : [Int]
+     *
+     * This method gets light version of theme
+     *
+     * @param themeName a [String] containing the Theme Name
+     *
+     * @return [Int] the Resource Id of the Theme
+     */
     fun getThemeLight(themeName: String) : Int {
 
         var theme = 0

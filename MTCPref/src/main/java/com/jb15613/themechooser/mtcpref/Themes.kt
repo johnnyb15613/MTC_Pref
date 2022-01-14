@@ -4,6 +4,14 @@ import com.jb15613.themechooser.utility.*
 import java.util.*
 
 object Themes {
+
+    /**
+     * randomThemeHue: [Boolean]
+     *
+     * Gets a random ThemeHue
+     *
+     * @return [Boolean] (false = Dark : true = Light)
+     */
     val randomThemeHue: Boolean
         get() = Math.random() < 0.5
 
@@ -65,7 +73,13 @@ object Themes {
         // BlueGrey
         val BlueGrey: String = BLUEGREY
 
-        // getRandomThemeColor
+        /**
+         * randomThemeColor: [String]
+         *
+         * Gets a random ThemeColor
+         *
+         * @return [String] defining random Theme Color
+         */
         val randomThemeColor: String
             get() {
                 val array = arrayOf(
@@ -74,8 +88,9 @@ object Themes {
                     Brown, Grey, BlueGrey
                 )
                 return array[Random().nextInt(array.size)]
-            }
-    } // Class
+            } // get()
+
+    } // ThemeColor
 
     object AccentColor {
         // Red
@@ -183,7 +198,13 @@ object Themes {
         // BlueGrey
         val BlueGrey_A3: String = BLUEGREY_3
 
-        // getRandomThemeColor
+        /**
+         * randomAccentColor: [String]
+         *
+         * Gets a random Accent Color
+         *
+         * @return [String] defining random Accent Color
+         */
         val randomAccentColor: String
             get() {
                 val array = arrayOf(
@@ -206,6 +227,7 @@ object Themes {
                     Brown_A3, Grey_A3, BlueGrey_A3
                 )
                 return array[Random().nextInt(array.size)]
-            }
-    } // Class
+            } // get()
+    } // AccentColor
+
 } // Class

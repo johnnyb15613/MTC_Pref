@@ -9,12 +9,15 @@ import com.jb15613.themechooser.utility.PrefUtils.getThemeHue
 
 
 object ThemeChooserUtils {
+
     /**
+     * getThemeColor(context: [Context]): [Int]
+     *
      * Retrieves color value of Primary Theme Color
      *
-     * @param  context a `Context` that is used to retrieve a theme object
+     * @param context a [Context] that is used to retrieve a theme object
      *
-     * @return  themeColor an `Integer` that is the color value for Primary Theme Color
+     * @return [Int] that is the color value for Primary Theme Color
      */
     fun getThemeColor(context: Context): Int {
         val typedValue = TypedValue()
@@ -26,12 +29,14 @@ object ThemeChooserUtils {
     } // getThemeColor
 
     /**
+     * getThemeColor(context: [Context], opacity: [Float]): [Int]
+     *
      * Retrieves color value of Primary Theme Color with Opacity
      *
-     * @param  context a `Context` that is used to retrieve a theme object
-     * @param  opacity a `float` that is used to derive an opaque version of a solid color
+     * @param context a [Context] that is used to retrieve a theme object
+     * @param opacity a [Float] that is used to derive an opaque version of a solid color
      *
-     * @return  themeColor an `Integer` that is the color value for Primary Theme Color with desired opacity
+     * @return [Int] that is the color value for Primary Theme Color with desired opacity
      */
     fun getThemeColor(context: Context, opacity: Float): Int {
         val typedValue = TypedValue()
@@ -56,11 +61,13 @@ object ThemeChooserUtils {
     } // getThemeColor
 
     /**
+     * getThemeDarkColor(context: [Context]): [Int]
+     *
      * Retrieves color value of Primary Theme Color Dark
      *
-     * @param  context a `Context` that is used to retrieve a theme object
+     * @param context a [Context] that is used to retrieve a theme object
      *
-     * @return  themeColor an `Integer` that is the color value for Primary Theme Color Dark
+     * @return [Int] that is the color value for Primary Theme Color Dark
      */
     fun getThemeDarkColor(context: Context): Int {
         val typedValue = TypedValue()
@@ -72,12 +79,14 @@ object ThemeChooserUtils {
     } // getThemeDarkColor
 
     /**
+     * getThemeDarkColor(context: [Context], opacity: [Float]): [Int]
+     *
      * Retrieves color value of Primary Theme Color Dark with Opacity
      *
-     * @param  context a `Context` that is used to retrieve a theme object
-     * @param  opacity a `float` that is used to derive an opaque version of a solid color
+     * @param context a [Context] that is used to retrieve a theme object
+     * @param opacity a [Float] that is used to derive an opaque version of a solid color\
      *
-     * @return  themeColor an `Integer` that is the color value for Primary Theme Color Dark with desired opacity
+     * @return [Int] that is the color value for Primary Theme Color Dark with desired opacity
      */
     fun getThemeDarkColor(context: Context, opacity: Float): Int {
         val typedValue = TypedValue()
@@ -102,11 +111,13 @@ object ThemeChooserUtils {
     } // getThemeDarkColor
 
     /**
+     * getThemeAccentColor(context: [Context]): [Int]
+     *
      * Retrieves color value of Accent Theme Color
      *
-     * @param  context a `Context` that is used to retrieve a theme object
+     * @param context a `Context` that is used to retrieve a theme object
      *
-     * @return  themeColor an `Integer` that is the color value for Accent Theme Color
+     * @return [Int] that is the color value for Accent Theme Color
      */
     fun getThemeAccentColor(context: Context): Int {
         val typedValue = TypedValue()
@@ -118,12 +129,14 @@ object ThemeChooserUtils {
     } // getThemeAccentColor
 
     /**
+     * getThemeAccentColor(context: [Context], opacity: [Float]): [Int]
+     *
      * Retrieves color value of Accent Theme Color with Opacity
      *
-     * @param  context a `Context` that is used to retrieve a theme object
-     * @param  opacity a `float` that is used to derive an opaque version of a solid color
+     * @param context a [Context] that is used to retrieve a theme object
+     * @param opacity a [Float] that is used to derive an opaque version of a solid color
      *
-     * @return  themeColor an `Integer` that is the color value for Accent Theme Color with desired opacity
+     * @return [Int] that is the color value for Accent Theme Color with desired opacity
      */
     fun getThemeAccentColor(context: Context, opacity: Float): Int {
         val typedValue = TypedValue()
@@ -148,11 +161,13 @@ object ThemeChooserUtils {
     } // getThemeAccentColor
 
     /**
+     * getPrimaryBgColor(context: [Context]): [Int]
+     *
      * Retrieves color value of Primary BG Color
      *
-     * @param  context a `Context` that is used to retrieve a theme object
+     * @param context a [Context] that is used to retrieve a theme object
      *
-     * @return  color an `Integer` that is the color value for Primary BG Color
+     * @return [Int] that is the color value for Primary BG Color
      */
     fun getPrimaryBgColor(context: Context): Int {
         val typedValue = TypedValue()
@@ -164,11 +179,13 @@ object ThemeChooserUtils {
     } // getPrimaryBgColor
 
     /**
+     * getSecondaryBgColor(context: [Context]): [Int]
+     *
      * Retrieves color value of Secondary BG Color
      *
-     * @param  context a `Context` that is used to retrieve a theme object
+     * @param context a [Context] that is used to retrieve a theme object
      *
-     * @return  color an `Integer` that is the color value for Secondary BG Color
+     * @return [Int] that is the color value for Secondary BG Color
      */
     fun getSecondaryBgColor(context: Context): Int {
         val typedValue = TypedValue()
@@ -180,11 +197,13 @@ object ThemeChooserUtils {
     } // getSecondaryBgColor
 
     /**
+     * getPrimaryTextColor(context: [Context]): [Int]
+     *
      * Retrieves color value of Primary Text Color
      *
-     * @param  context a `Context` that is used to retrieve a theme object
+     * @param context a [Context] that is used to retrieve a theme object
      *
-     * @return  color an `Integer` that is the color value for Primary Text Color
+     * @return [Int] that is the color value for Primary Text Color
      */
     fun getPrimaryTextColor(context: Context): Int {
         val typedValue = TypedValue()
@@ -196,11 +215,13 @@ object ThemeChooserUtils {
     } // getPrimaryTextColor
 
     /**
+     * getSecondaryTextColor(context: [Context]): [Int]
+     *
      * Retrieves color value of Secondary Text Color
      *
-     * @param  context a `Context` that is used to retrieve a theme object
+     * @param context a [Context] that is used to retrieve a theme object
      *
-     * @return  color an `Integer` that is the color value for Secondary Text Color
+     * @return [Int] that is the color value for Secondary Text Color
      */
     fun getSecondaryTextColor(context: Context): Int {
         val typedValue = TypedValue()
@@ -214,11 +235,13 @@ object ThemeChooserUtils {
     } // getSecondaryTextColor
 
     /**
+     * isLightTheme(context: [Context]): [Boolean]
+     *
      * Retrieves color value of Secondary Text Color
      *
-     * @param  context a `Context` that is used to retrieve a theme object
+     * @param context a [Context] that is used to retrieve a theme object
      *
-     * @return  isLightTheme an `Boolean` that is true for light, and false or dark
+     * @return [Boolean] that is true for light, and false or dark
      */
     fun isLightTheme(context: Context): Boolean {
         return getThemeHue(context)

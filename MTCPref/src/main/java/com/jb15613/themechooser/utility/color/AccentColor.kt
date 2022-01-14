@@ -7,6 +7,16 @@ import com.jb15613.themechooser.utility.*
 
 class AccentColor {
 
+    /**
+     * getAccentColor(themeName: [String], mContext: [Context]) : [Int]
+     *
+     * This method gets light version of theme
+     *
+     * @param themeName a [String] containing the Theme Name
+     * @param mContext a [Context] used to get Resources
+     *
+     * @return [Int] the appropriate Accent Color
+     */
     fun getColor(themeName: String, mContext: Context): Int {
 
         var color = 0

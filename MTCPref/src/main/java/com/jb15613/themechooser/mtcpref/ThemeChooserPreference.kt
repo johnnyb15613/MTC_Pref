@@ -1,12 +1,10 @@
 package com.jb15613.themechooser.mtcpref
 
-import com.jb15613.themechooser.utility.PrefUtils
 import android.widget.RelativeLayout
 import android.graphics.PorterDuff
 import androidx.core.content.res.ResourcesCompat
 import android.view.Gravity
 import android.widget.LinearLayout
-import android.app.Activity
 import android.content.Context
 import android.os.Parcelable
 import android.widget.TextView
@@ -75,7 +73,7 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
         mSwatchContainer = holder.findViewById(R.id.swatchView) as LinearLayout?
         val mSummaryText = holder.findViewById(R.id.summary) as TextView
         if (getDensityScale(mCtx) == 0f) {
-            setDensityScale(mCtx, getContext().getResources().getDisplayMetrics().density)
+            setDensityScale(mCtx, context.resources.displayMetrics.density)
         }
         swapThemeSwatch(getThemeColor(mCtx))
         val summary = getThemeColor(mCtx) + themeHue
@@ -126,7 +124,7 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
         return false
     }
 
-    var pcListener: OnPreferenceChangeListener = OnPreferenceChangeListener { preference, newValue ->
+    private var pcListener: OnPreferenceChangeListener = OnPreferenceChangeListener { preference, newValue ->
             Log.e("onPreferenceChange", "newValue : $newValue")
             swapThemeSwatch(getThemeColor(mCtx))
             preference.summary = newValue.toString() + themeHue
@@ -142,7 +140,7 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
         }
     }
 
-    fun getFragMan(): FragmentManager? {
+    private fun getFragMan(): FragmentManager? {
         return try {
             val a: FragmentActivity = mContext as FragmentActivity
             a.supportFragmentManager

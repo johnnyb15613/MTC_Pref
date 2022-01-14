@@ -1,41 +1,35 @@
 package com.jb15613.themechooser.mtcpref
 
-
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.widget.*
+import android.widget.CompoundButton
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.appcompat.widget.SwitchCompat
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.DialogFragment
-import com.jb15613.themechooser.utility.PrefUtils.getThemeHue
-
-import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import com.jb15613.themechooser.utility.*
 import com.jb15613.themechooser.utility.PrefUtils.getThemeColor
-import com.jb15613.themechooser.utility.PrefUtils
-
-import android.widget.CompoundButton
-import com.jb15613.themechooser.utility.PrefUtils.setThemeHue
-
-import com.jb15613.themechooser.utility.DialogUtils
+import com.jb15613.themechooser.utility.PrefUtils.getThemeHue
 import com.jb15613.themechooser.utility.PrefUtils.setAccentColor
 import com.jb15613.themechooser.utility.PrefUtils.setThemeColor
+import com.jb15613.themechooser.utility.PrefUtils.setThemeHue
 
-class ThemeChooserDialog() : DialogFragment() {
+class ThemeChooserDialog : DialogFragment() {
 
     // Context
     var mContext: Context? = null
 
     // Dialog
-    var mAlertDialog: AlertDialog? = null
+    private var mAlertDialog: AlertDialog? = null
 
     // Accent Scroll View
     var mAccentParent: HorizontalScrollView? = null
@@ -56,25 +50,25 @@ class ThemeChooserDialog() : DialogFragment() {
     var mLandscapeContainer: LinearLayout? = null
 
     // Switch for Light/Dark
-    var mSwitch: SwitchCompat? = null
+    private var mSwitch: SwitchCompat? = null
 
     // isLandscape
-    var isPortrait = false
+    private var isPortrait = false
 
     // Theme Change Listener
-    var mListener: OnThemeChangedListener? = null
+    private var mListener: OnThemeChangedListener? = null
 
     // Preferences
-    var mPrefs: SharedPreferences? = null
+    private var mPrefs: SharedPreferences? = null
 
-    var mResources: Resources? = null
+    private var mResources: Resources? = null
 
     // Interface linked to ThemeChooserPreference
     interface OnThemeChangedListener {
         fun onThemeChanged(theme: String?, hue: Boolean)
     } // OnThemeChangedListener
 
-    open fun setOnThemeChangedListener(listener: OnThemeChangedListener) {
+    fun setOnThemeChangedListener(listener: OnThemeChangedListener) {
         mListener = listener
     } // setOnThemeChangedListener
 
@@ -100,15 +94,16 @@ class ThemeChooserDialog() : DialogFragment() {
         // init
     } // onCreateDialog
 
+    @SuppressLint("InflateParams")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val v: View = LayoutInflater.from(activity).inflate(R.layout.themechooser_dialog, null)
+        LayoutInflater.from(activity).inflate(R.layout.themechooser_dialog, null)
 
         if (PrefUtils.getCellSize(mContext!!) == 0 ) {
             val width = this.resources.displayMetrics.widthPixels
-            val cellDimen = width / 6;
-            PrefUtils.setCellSize(mContext!!, cellDimen);
+            val cellDimen = width / 6
+            PrefUtils.setCellSize(mContext!!, cellDimen)
         }
 
         // get views
@@ -139,21 +134,12 @@ class ThemeChooserDialog() : DialogFragment() {
         mSwitch!!.setOnCheckedChangeListener(mSwitchListener)
 
         // ThemeWrapper for the Dialog
-        val context: ContextThemeWrapper
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            if (getThemeHue(mContext!!)) {
-                context = ContextThemeWrapper(activity, android.R.style.Theme_Material_Light_Dialog)
-            } else {
-                context = ContextThemeWrapper(activity, android.R.style.Theme_Material_Dialog)
-            } // if theme is light or dark
+        val context: ContextThemeWrapper = if (getThemeHue(mContext!!)) {
+            ContextThemeWrapper(activity, android.R.style.Theme_Material_Light_Dialog)
         } else {
-            if (getThemeHue(mContext!!)) {
-                context = ContextThemeWrapper(activity, android.R.style.Theme_Holo_Light_Dialog)
-            } else {
-                context = ContextThemeWrapper(activity, android.R.style.Theme_Holo_Dialog)
-            } // if theme is light or dark
-        } // if we are running on Jellybean or lower
+            ContextThemeWrapper(activity, android.R.style.Theme_Material_Dialog)
+        } // if theme is light or dark
 
         // set switch text color
         if (getThemeHue(mContext!!)) {
@@ -169,7 +155,7 @@ class ThemeChooserDialog() : DialogFragment() {
         // UI
     } // onViewCreated
 
-    fun initTable() {
+    private fun initTable() {
 
         val swatchArray: ArrayList<CardView> = getSwatchArray()
 
@@ -226,7 +212,7 @@ class ThemeChooserDialog() : DialogFragment() {
 
         val accentArray = getAccentsArray()
 
-        for (ii in accentArray!!.indices) {
+        for (ii in accentArray.indices) {
 
             val lay = accentArray[ii]
             lay.setOnClickListener(accentClickListener)
@@ -238,13 +224,9 @@ class ThemeChooserDialog() : DialogFragment() {
         mAccentParent!!.viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
             override fun onGlobalLayout() {
 
-                // Ensure you call it only once :
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    mAccentParent!!.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                } else {
-                    mAccentParent!!.viewTreeObserver.removeGlobalOnLayoutListener(this)
-                }
-                val tn = getThemeColor(mContext!!).toString()
+                mAccentParent!!.viewTreeObserver.removeOnGlobalLayoutListener(this)
+
+                val tn = getThemeColor(mContext!!)
                 val tName: String?
                 val aName: String
                 if (tn.contains(THEME_SPLITTER)) {
@@ -276,8 +258,8 @@ class ThemeChooserDialog() : DialogFragment() {
     } // initTable
 
     // Switch Listener
-    var mSwitchListener =
-        CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+    private var mSwitchListener =
+        CompoundButton.OnCheckedChangeListener { _, isChecked ->
             // if theme is light or dark
             setThemeHue(mContext!!, isChecked)
             mListener?.onThemeChanged(getThemeColor(mContext!!), getThemeHue(mContext!!))
@@ -285,7 +267,7 @@ class ThemeChooserDialog() : DialogFragment() {
     // mSwitchListener
 
     // SwatchListener
-    var swatchClickListener = View.OnClickListener { v ->
+    private var swatchClickListener = View.OnClickListener { v ->
             val themeName = v.tag.toString()
             setThemeColor(mContext!!, themeName)
         val accentLabel: String =
@@ -303,15 +285,15 @@ class ThemeChooserDialog() : DialogFragment() {
     // swatchClickListener
 
     // AccentListener
-    var accentClickListener = View.OnClickListener { v ->
+    private var accentClickListener = View.OnClickListener { v ->
             val accentName = v.tag.toString()
             setAccentColor(mContext!!, accentName)
-            var themeName = getThemeColor(mContext!!).toString()
+            var themeName = getThemeColor(mContext!!)
             if (themeName.contains(THEME_SPLITTER)) {
                 val items: Array<String> = themeName.split(THEME_SPLITTER).toTypedArray()
                 themeName = items[0]
             } // if theme has custom accent color
-            themeName = themeName + THEME_SPLITTER.toString() + accentName
+            themeName = themeName + THEME_SPLITTER + accentName
             setThemeColor(mContext!!, themeName)
             setAccentColor(mContext!!, accentName)
             DialogUtils().recheckAccentColor(mContext!!, mAccentContainer!!)
@@ -320,7 +302,7 @@ class ThemeChooserDialog() : DialogFragment() {
     // accentClickListener
 
     // Processes Swatch Items
-    fun getSwatchArray(): ArrayList<CardView> {
+    private fun getSwatchArray(): ArrayList<CardView> {
         val cells: ArrayList<CardView> = ArrayList()
         val themesArray = resources.getStringArray(R.array.theme_color_names)
         for (th in themesArray) {
@@ -330,7 +312,7 @@ class ThemeChooserDialog() : DialogFragment() {
     } // getSwatchArray
 
     // Processes Accent Items
-    fun getAccentsArray(): ArrayList<CardView>? {
+    private fun getAccentsArray(): ArrayList<CardView> {
         val cells: ArrayList<CardView> = ArrayList()
         val themesArray = resources.getStringArray(R.array.accent_color_names)
         for (th in themesArray) {
@@ -339,14 +321,9 @@ class ThemeChooserDialog() : DialogFragment() {
         return cells
     } // getAccentsArray
 
-    /**
-     * Gets device orientation
-     *
-     * @return  a `Boolean` that is true if Portrait, false if Landscape
-     */
-    fun getIsPortrait(): Boolean {
+    // Get Orientation as Boolean
+    private fun getIsPortrait(): Boolean {
         return resources.configuration.orientation == 1
     } // getIsPortrait
-
 
 } // Class
