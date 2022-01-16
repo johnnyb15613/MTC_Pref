@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 
 
-object PrefUtils {
+internal object PrefUtils {
 
     /**
      * setThemeColor(context: [Context], themeName: [String])

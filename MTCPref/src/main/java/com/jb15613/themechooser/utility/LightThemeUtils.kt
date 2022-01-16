@@ -2,7 +2,7 @@ package com.jb15613.themechooser.utility
 
 import com.jb15613.themechooser.utility.color.*
 
-class LightThemeUtils {
+internal class LightThemeUtils {
 
     /**
      * getCustomColoredLightTheme(themeName: [String]): [Int]

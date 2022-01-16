@@ -18,7 +18,7 @@ import com.jb15613.themechooser.utility.ThemeChooserUtils.getPrimaryBgColor
 import com.jb15613.themechooser.utility.color.AccentColor
 
 
-class DialogUtils {
+internal class DialogUtils {
 
     /**
      * scrollVerticalThemePanelTo(themeName: [String], portraitParent: [ScrollView], portraitContainer: [TableLayout])
@@ -229,7 +229,7 @@ class DialogUtils {
 
         if (isPortrait) {
             // Portrait Mode
-            val cvParams: TableRow.LayoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT)
+            val cvParams: TableRow.LayoutParams = TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT)
             cvParams.setMargins(4, 2, 4, 2)
             cvParams.weight = 1.0f
             cv.layoutParams = cvParams
@@ -355,78 +355,70 @@ class DialogUtils {
         val themename: String = PrefUtils.getThemeColor(context)
         val colors: IntArray = ColorUtils().getColorSet(themename, context, true)
         val color: Int = AccentColor().getColor(themeName, context)
+
         val cv: CardView
+
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         cv = inflater.inflate(R.layout.card_view, null) as CardView
+
         val ll = LinearLayout(context)
         val rl = RelativeLayout(context)
-        val cvParams = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.WRAP_CONTENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT
-        )
+
+        val cvParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
         cvParams.setMargins(4, 2, 4, 2)
         cvParams.weight = 1.0f
         cv.layoutParams = cvParams
         cv.setCardBackgroundColor(getPrimaryBgColor(context))
         cv.cardElevation = 5f
-        val llParams: FrameLayout.LayoutParams = FrameLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT
-        )
+
+        val llParams: FrameLayout.LayoutParams = FrameLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
         ll.layoutParams = llParams
         ll.orientation = LinearLayout.VERTICAL
         ll.gravity = Gravity.CENTER
         ll.setPadding(3, 3, 3, 3)
+
         val cellSize: Int = PrefUtils.getCellSize(context)
+
         val rlParams = RelativeLayout.LayoutParams(cellSize, cellSize)
         rl.layoutParams = rlParams
         rl.setPadding(3, 3, 3, 3)
+
         val tv = TextView(context)
         val circle = ImageView(context)
         val checked = ImageView(context)
-        val tvParams = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.WRAP_CONTENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT
-        )
+
+        val tvParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
         val circleParams = RelativeLayout.LayoutParams(cellSize / 2 + 30, cellSize / 2 + 30)
         val checkedParams = RelativeLayout.LayoutParams(cellSize / 2, cellSize / 2)
+
         tv.layoutParams = tvParams
         tv.gravity = Gravity.CENTER
         circle.layoutParams = circleParams
         checked.layoutParams = checkedParams
-        loadDrawable(
-            context,
-            "circle$themeName",
-            circle,
-            R.drawable.themechooser_shape_circle,
-            color
-        )
+
+        loadDrawable(context, "circle$themeName", circle, R.drawable.themechooser_shape_circle, color)
         if (PrefUtils.getThemeHue(context)) {
-            loadDrawable(
-                context,
-                VIEW_CHECKED + themeName,
-                checked,
-                R.drawable.checkmark,
-                -0x1000000
-            )
+            loadDrawable(context, VIEW_CHECKED + themeName, checked, R.drawable.checkmark, -0x1000000)
         } else {
-            loadDrawable(
-                context,
-                VIEW_CHECKED + themeName,
-                checked,
-                R.drawable.checkmark,
-                -0x1
-            )
+            loadDrawable(context, VIEW_CHECKED + themeName, checked, R.drawable.checkmark, -0x1)
         }
+
         circleParams.addRule(RelativeLayout.CENTER_IN_PARENT)
         checkedParams.addRule(RelativeLayout.CENTER_IN_PARENT)
+
         tv.text = themeName
         tv.setTextColor(color)
+
         rl.addView(circle)
         rl.addView(checked)
+
         ll.addView(rl)
         ll.addView(tv)
+
         val tn: String = PrefUtils.getThemeColor(context)
         val tName: String
         val aName: String
+
         if (tn.contains(THEME_SPLITTER)) {
             val items: Array<String> = tn.split(THEME_SPLITTER).toTypedArray()
             aName = items[1]
@@ -439,6 +431,7 @@ class DialogUtils {
             }
             aName = tName + anl
         }
+
         if (themeName == aName) {
             checked.visibility = View.VISIBLE
             cv.setCardBackgroundColor(colors[0])
@@ -446,9 +439,11 @@ class DialogUtils {
             checked.visibility = View.INVISIBLE
             cv.setCardBackgroundColor(getPrimaryBgColor(context))
         }
+
         checked.tag = VIEW_CHECKED
         cv.tag = themeName
         cv.addView(ll)
+
         return cv
     } // getAccentItem
 

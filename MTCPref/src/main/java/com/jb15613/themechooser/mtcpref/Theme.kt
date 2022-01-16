@@ -1,8 +1,11 @@
 package com.jb15613.themechooser.mtcpref
 
 import android.content.Context
+import android.content.SharedPreferences
+import android.content.res.Resources
 
 import com.jb15613.themechooser.utility.MtcPrefException
+import com.jb15613.themechooser.utility.PREF_NAME_KEY
 import com.jb15613.themechooser.utility.PrefUtils.setAccentColor
 import com.jb15613.themechooser.utility.PrefUtils.setThemeColor
 import com.jb15613.themechooser.utility.PrefUtils.setThemeHue

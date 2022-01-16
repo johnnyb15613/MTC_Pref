@@ -5,7 +5,7 @@ import androidx.core.content.res.ResourcesCompat
 import com.jb15613.themechooser.mtcpref.R
 import com.jb15613.themechooser.utility.*
 
-class AccentColor {
+internal class AccentColor {
 
     /**
      * getAccentColor(themeName: [String], mContext: [Context]) : [Int]

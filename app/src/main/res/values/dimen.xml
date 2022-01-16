@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Navigation Dimensions -->
+    <dimen name="nav_item_headerHeight">170dp</dimen>
+    <dimen name="nav_item_paddingLeftRight">16dp</dimen>
+    <dimen name="nav_item_paddingTopBottom">8dp</dimen>
+    <dimen name="nav_item_paddingTopBottomSmall">2dp</dimen>
+    <dimen name="nav_item_marginTopBottom">1dp</dimen>
+    <dimen name="nav_item_iconHeightWidth">24dp</dimen>
+</resources>

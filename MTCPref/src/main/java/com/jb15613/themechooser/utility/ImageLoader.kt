@@ -10,7 +10,7 @@ import android.graphics.PorterDuff
 import com.jb15613.themechooser.mtcpref.R
 import android.graphics.drawable.BitmapDrawable
 
-class ImageLoader(imageView: ImageView, r: Resources, id: Int, color: Int) : AsyncTask<String, Void, Drawable>() {
+internal class ImageLoader(imageView: ImageView, r: Resources, id: Int, color: Int) : AsyncTask<String, Void, Drawable>() {
 
 
         private val mImageViewReference: WeakReference<ImageView> = WeakReference(imageView)

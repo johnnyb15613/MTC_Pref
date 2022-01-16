@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/primaryBgColor">
+
+    <TextView
+        android:id="@+id/nav_row_about_title"
+        android:paddingLeft="@dimen/nav_item_paddingLeftRight"
+        android:paddingTop="@dimen/nav_item_paddingTopBottomSmall"
+        android:paddingBottom="@dimen/nav_item_paddingTopBottomSmall"
+        android:textColor="?attr/textColorSecondary"
+        android:textSize="6pt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="start|center"/>
+
+</FrameLayout>

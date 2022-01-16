@@ -2,7 +2,7 @@ package com.jb15613.themechooser.utility
 
 import com.jb15613.themechooser.mtcpref.R
 
-object ThemeUtils {
+internal object ThemeUtils {
 
     /**
      * getColoredThemeDark(themeName: [String?]): [Int]

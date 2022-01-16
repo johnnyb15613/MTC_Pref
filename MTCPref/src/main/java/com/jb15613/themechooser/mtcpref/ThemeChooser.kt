@@ -2,28 +2,37 @@ package com.jb15613.themechooser.mtcpref
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Resources
+import android.util.Log
+import com.jb15613.themechooser.startup.ThemeChooserInitializer
 import com.jb15613.themechooser.utility.*
 
 
 object ThemeChooser {
 
+    var mPrefs: SharedPreferences
+
+    var isInitialized = false
+
+    init {
+        isInitialized = true
+        mPrefs = ThemeChooserInitializer.mPrefs
+    }
+
     /**
-     * getTheme(context: [Context]): [Int]
+     * getTheme(): [Int]
      *
      * This method will return a Theme from SharedPreferences using LIGHTBLUE as the default
      *
-     * @param context a [Context] used to retrieve [SharedPreferences]
-     *
      * @return [Int] the Resource Id of the Theme
      */
-    fun getTheme(context: Context): Int {
-        val prefs: SharedPreferences =
-            context.getSharedPreferences(PREF_NAME_KEY, Context.MODE_PRIVATE)
-        val themeName = prefs.getString(PREF_THEME_KEY, LIGHTBLUE)
-        val isLightTheme = prefs.getBoolean(PREF_THEME_HUE_KEY, false)
+    fun getTheme(): Int {
+        val themeName = mPrefs.getString(PREF_THEME_KEY, LIGHTBLUE).toString()
+        val isLightTheme = mPrefs.getBoolean(PREF_THEME_HUE_KEY, false)
+
         return if (!isLightTheme) {
             // Dark Theme
-            if (themeName!!.contains(THEME_SPLITTER)) {
+            if (themeName.contains(THEME_SPLITTER)) {
                 // Custom Color Theme
                 DarkThemeUtils().getCustomColoredDarkTheme(themeName)
             } else {
@@ -32,7 +41,7 @@ object ThemeChooser {
             } // if theme contains "-"
         } else {
             // Light Theme
-            if (themeName!!.contains(THEME_SPLITTER)) {
+            if (themeName.contains(THEME_SPLITTER)) {
                 // Custom Color Theme
                 LightThemeUtils().getCustomColoredLightTheme(themeName)
             } else {

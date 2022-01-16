@@ -17,61 +17,61 @@ object Themes {
 
     object ThemeColor {
         // Red
-        val Red: String = RED
+        const val Red: String = RED
 
         // Pink
-        val Pink: String = PINK
+        const val Pink: String = PINK
 
         // Purple
-        val Purple: String = PURPLE
+        const val Purple: String = PURPLE
 
         // DeepPurple
-        val DeepPurple: String = DEEPPURPLE
+        const val DeepPurple: String = DEEPPURPLE
 
         // Indigo
-        val Indigo: String = INDIGO
+        const val Indigo: String = INDIGO
 
         // Blue
-        val Blue: String = BLUE
+        const val Blue: String = BLUE
 
         // LightBlue
-        val LightBlue: String = LIGHTBLUE
+        const val LightBlue: String = LIGHTBLUE
 
         // Cyan
-        val Cyan: String = CYAN
+        const val Cyan: String = CYAN
 
         // Teal
-        val Teal: String = TEAL
+        const val Teal: String = TEAL
 
         // Green
-        val Green: String = GREEN
+        const val Green: String = GREEN
 
         // LightGreen
-        val LightGreen: String = LIGHTGREEN
+        const val LightGreen: String = LIGHTGREEN
 
         // Lime
-        val Lime: String = LIME
+        const val Lime: String = LIME
 
         // Yellow
-        val Yellow: String = YELLOW
+        const val Yellow: String = YELLOW
 
         // Amber
-        val Amber: String = AMBER
+        const val Amber: String = AMBER
 
         // Orange
-        val Orange: String = ORANGE
+        const val Orange: String = ORANGE
 
         // DeepOrange
-        val DeepOrange: String = DEEPORANGE
+        const val DeepOrange: String = DEEPORANGE
 
         // Brown
-        val Brown: String = BROWN
+        const val Brown: String = BROWN
 
         // Grey
-        val Grey: String = GREY
+        const val Grey: String = GREY
 
         // BlueGrey
-        val BlueGrey: String = BLUEGREY
+        const val BlueGrey: String = BLUEGREY
 
         /**
          * randomThemeColor: [String]
@@ -94,109 +94,109 @@ object Themes {
 
     object AccentColor {
         // Red
-        val Red_A1: String = RED_A1
-        val Red_A2: String = RED_A2
-        val Red_A4: String = RED_A4
-        val Red_A7: String = RED_A7
+        const val Red_A1: String = RED_A1
+        const val Red_A2: String = RED_A2
+        const val Red_A4: String = RED_A4
+        const val Red_A7: String = RED_A7
 
         // Pink
-        val Pink_A1: String = PINK_A1
-        val Pink_A2: String = PINK_A2
-        val Pink_A4: String = PINK_A4
-        val Pink_A7: String = PINK_A7
+        const val Pink_A1: String = PINK_A1
+        const val Pink_A2: String = PINK_A2
+        const val Pink_A4: String = PINK_A4
+        const val Pink_A7: String = PINK_A7
 
         // Purple
-        val Purple_A1: String = PURPLE_A1
-        val Purple_A2: String = PURPLE_A2
-        val Purple_A4: String = PURPLE_A4
-        val Purple_A7: String = PURPLE_A7
+        const val Purple_A1: String = PURPLE_A1
+        const val Purple_A2: String = PURPLE_A2
+        const val Purple_A4: String = PURPLE_A4
+        const val Purple_A7: String = PURPLE_A7
 
         // DeepPurple
-        val DeepPurple_A1: String = DEEPPURPLE_A1
-        val DeepPurple_A2: String = DEEPPURPLE_A2
-        val DeepPurple_A4: String = DEEPPURPLE_A4
-        val DeepPurple_A7: String = DEEPPURPLE_A7
+        const val DeepPurple_A1: String = DEEPPURPLE_A1
+        const val DeepPurple_A2: String = DEEPPURPLE_A2
+        const val DeepPurple_A4: String = DEEPPURPLE_A4
+        const val DeepPurple_A7: String = DEEPPURPLE_A7
 
         // Indigo
-        val Indigo_A1: String = INDIGO_A1
-        val Indigo_A2: String = INDIGO_A2
-        val Indigo_A4: String = INDIGO_A4
-        val Indigo_A7: String = INDIGO_A7
+        const val Indigo_A1: String = INDIGO_A1
+        const val Indigo_A2: String = INDIGO_A2
+        const val Indigo_A4: String = INDIGO_A4
+        const val Indigo_A7: String = INDIGO_A7
 
         // Blue
-        val Blue_A1: String = BLUE_A1
-        val Blue_A2: String = BLUE_A2
-        val Blue_A4: String = BLUE_A4
-        val Blue_A7: String = BLUE_A7
+        const val Blue_A1: String = BLUE_A1
+        const val Blue_A2: String = BLUE_A2
+        const val Blue_A4: String = BLUE_A4
+        const val Blue_A7: String = BLUE_A7
 
         // LightBlue
-        val LightBlue_A1: String = LIGHTBLUE_A1
-        val LightBlue_A2: String = LIGHTBLUE_A2
-        val LightBlue_A4: String = LIGHTBLUE_A4
-        val LightBlue_A7: String = LIGHTBLUE_A7
+        const val LightBlue_A1: String = LIGHTBLUE_A1
+        const val LightBlue_A2: String = LIGHTBLUE_A2
+        const val LightBlue_A4: String = LIGHTBLUE_A4
+        const val LightBlue_A7: String = LIGHTBLUE_A7
 
         // Cyan
-        val Cyan_A1: String = CYAN_A1
-        val Cyan_A2: String = CYAN_A2
-        val Cyan_A4: String = CYAN_A4
-        val Cyan_A7: String = CYAN_A7
+        const val Cyan_A1: String = CYAN_A1
+        const val Cyan_A2: String = CYAN_A2
+        const val Cyan_A4: String = CYAN_A4
+        const val Cyan_A7: String = CYAN_A7
 
         // Teal
-        val Teal_A1: String = TEAL_A1
-        val Teal_A2: String = TEAL_A2
-        val Teal_A4: String = TEAL_A4
-        val Teal_A7: String = TEAL_A7
+        const val Teal_A1: String = TEAL_A1
+        const val Teal_A2: String = TEAL_A2
+        const val Teal_A4: String = TEAL_A4
+        const val Teal_A7: String = TEAL_A7
 
         // Green
-        val Green_A1: String = GREEN_A1
-        val Green_A2: String = GREEN_A2
-        val Green_A4: String = GREEN_A4
-        val Green_A7: String = GREEN_A7
+        const val Green_A1: String = GREEN_A1
+        const val Green_A2: String = GREEN_A2
+        const val Green_A4: String = GREEN_A4
+        const val Green_A7: String = GREEN_A7
 
         // LightGreen
-        val LightGreen_A1: String = LIGHTGREEN_A1
-        val LightGreen_A2: String = LIGHTGREEN_A2
-        val LightGreen_A4: String = LIGHTGREEN_A4
-        val LightGreen_A7: String = LIGHTGREEN_A7
+        const val LightGreen_A1: String = LIGHTGREEN_A1
+        const val LightGreen_A2: String = LIGHTGREEN_A2
+        const val LightGreen_A4: String = LIGHTGREEN_A4
+        const val LightGreen_A7: String = LIGHTGREEN_A7
 
         // Lime
-        val Lime_A1: String = LIME_A1
-        val Lime_A2: String = LIME_A2
-        val Lime_A4: String = LIME_A4
-        val Lime_A7: String = LIME_A7
+        const val Lime_A1: String = LIME_A1
+        const val Lime_A2: String = LIME_A2
+        const val Lime_A4: String = LIME_A4
+        const val Lime_A7: String = LIME_A7
 
         // Yellow
-        val Yellow_A1: String = YELLOW_A1
-        val Yellow_A2: String = YELLOW_A2
-        val Yellow_A4: String = YELLOW_A4
-        val Yellow_A7: String = YELLOW_A7
+        const val Yellow_A1: String = YELLOW_A1
+        const val Yellow_A2: String = YELLOW_A2
+        const val Yellow_A4: String = YELLOW_A4
+        const val Yellow_A7: String = YELLOW_A7
 
         // Amber
-        val Amber_A1: String = AMBER_A1
-        val Amber_A2: String = AMBER_A2
-        val Amber_A4: String = AMBER_A4
-        val Amber_A7: String = AMBER_A7
+        const val Amber_A1: String = AMBER_A1
+        const val Amber_A2: String = AMBER_A2
+        const val Amber_A4: String = AMBER_A4
+        const val Amber_A7: String = AMBER_A7
 
         // Orange
-        val Orange_A1: String = ORANGE_A1
-        val Orange_A2: String = ORANGE_A2
-        val Orange_A4: String = ORANGE_A4
-        val Orange_A7: String = ORANGE_A7
+        const val Orange_A1: String = ORANGE_A1
+        const val Orange_A2: String = ORANGE_A2
+        const val Orange_A4: String = ORANGE_A4
+        const val Orange_A7: String = ORANGE_A7
 
         // DeepOrange
-        val DeepOrange_A1: String = DEEPORANGE_A1
-        val DeepOrange_A2: String = DEEPORANGE_A2
-        val DeepOrange_A4: String = DEEPORANGE_A4
-        val DeepOrange_A7: String = DEEPORANGE_A7
+        const val DeepOrange_A1: String = DEEPORANGE_A1
+        const val DeepOrange_A2: String = DEEPORANGE_A2
+        const val DeepOrange_A4: String = DEEPORANGE_A4
+        const val DeepOrange_A7: String = DEEPORANGE_A7
 
         // Brown
-        val Brown_A3: String = BROWN_3
+        private const val Brown_A3: String = BROWN_3
 
         // Grey
-        val Grey_A3: String = GREY_3
+        private const val Grey_A3: String = GREY_3
 
         // BlueGrey
-        val BlueGrey_A3: String = BLUEGREY_3
+        private const val BlueGrey_A3: String = BLUEGREY_3
 
         /**
          * randomAccentColor: [String]

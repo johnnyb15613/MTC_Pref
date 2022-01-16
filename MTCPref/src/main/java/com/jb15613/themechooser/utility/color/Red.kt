@@ -88,7 +88,7 @@ import com.jb15613.themechooser.utility.GREY_3
 import com.jb15613.themechooser.utility.BLUEGREY
 import com.jb15613.themechooser.utility.BLUEGREY_3
 
-class Red {
+internal class Red {
 
     /**
      * getThemeDark(themeName: [String]) : [Int]

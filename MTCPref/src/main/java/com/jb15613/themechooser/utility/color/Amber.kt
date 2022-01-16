@@ -88,7 +88,7 @@ import com.jb15613.themechooser.utility.GREY_3
 import com.jb15613.themechooser.utility.BLUEGREY
 import com.jb15613.themechooser.utility.BLUEGREY_3
 
-class Amber {
+internal class Amber {
 
     /**
      * getThemeDark(themeName: [String]) : [Int]

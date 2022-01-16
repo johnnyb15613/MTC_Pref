@@ -5,7 +5,7 @@
     <PreferenceCategory
         android:title="Theme Settings">
 
-        <com.jb15613.preference.themechooser.ThemeChooserPreference
+        <com.jb15613.themechooser.mtcpref.ThemeChooserPreference
             android:key="themeColorPref"
             android:title="Theme Color"
             default="Light Blue"

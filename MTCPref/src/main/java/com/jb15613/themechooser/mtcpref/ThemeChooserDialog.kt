@@ -1,13 +1,14 @@
 package com.jb15613.themechooser.mtcpref
 
-import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.widget.*
 import android.widget.CompoundButton
@@ -27,40 +28,29 @@ class ThemeChooserDialog : DialogFragment() {
 
     // Context
     var mContext: Context? = null
-
     // Dialog
     private var mAlertDialog: AlertDialog? = null
-
     // Accent Scroll View
     var mAccentParent: HorizontalScrollView? = null
-
     // Layout to add Accent Items to
     var mAccentContainer: LinearLayout? = null
-
     // ScrollView to add Portrait
     var mPortraitParent: ScrollView? = null
-
     // Layout to add Portrait Swatch Items to
     var mPortraitContainer: TableLayout? = null
-
     // ScrollView to add Landscape
     var mLandscapeParent: HorizontalScrollView? = null
-
     // Layout to add Landscape Swatch Items to
     var mLandscapeContainer: LinearLayout? = null
-
     // Switch for Light/Dark
     private var mSwitch: SwitchCompat? = null
-
     // isLandscape
     private var isPortrait = false
-
     // Theme Change Listener
     private var mListener: OnThemeChangedListener? = null
-
     // Preferences
     private var mPrefs: SharedPreferences? = null
-
+    // Resources
     private var mResources: Resources? = null
 
     // Interface linked to ThemeChooserPreference
@@ -94,11 +84,13 @@ class ThemeChooserDialog : DialogFragment() {
         // init
     } // onCreateDialog
 
-    @SuppressLint("InflateParams")
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
+        return inflater.inflate(R.layout.themechooser_dialog, container)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        LayoutInflater.from(activity).inflate(R.layout.themechooser_dialog, null)
 
         if (PrefUtils.getCellSize(mContext!!) == 0 ) {
             val width = this.resources.displayMetrics.widthPixels
@@ -106,7 +98,6 @@ class ThemeChooserDialog : DialogFragment() {
             PrefUtils.setCellSize(mContext!!, cellDimen)
         }
 
-        // get views
         // get views
         mAccentParent = view.findViewById(R.id.tcd_accentParent) as HorizontalScrollView
         mAccentContainer = view.findViewById(R.id.tcd_accentContainer) as LinearLayout
@@ -149,8 +140,8 @@ class ThemeChooserDialog : DialogFragment() {
         }
 
         // create dialog
-        // create dialog
         mAlertDialog = AlertDialog.Builder(context).setTitle(DIALOG_TITLE).setView(view).create()
+        // mAlertDialog!!.show()
 
         // UI
     } // onViewCreated
@@ -158,38 +149,33 @@ class ThemeChooserDialog : DialogFragment() {
     private fun initTable() {
 
         val swatchArray: ArrayList<CardView> = getSwatchArray()
-
         val rows: ArrayList<TableRow> = ArrayList()
 
-        // need to count how many items we add to tablerow
-        var counter = 0
-
+        // need to count how many items we add to table row
+        var rowCounter = 0
+        var totalItemCount = 0
         var tr: TableRow? = null
 
-        for (i in swatchArray.indices) {
-
-            counter.plus(1)
-            var cv: CardView
-
+        for (cv: CardView in swatchArray) {
+            rowCounter += 1
+            totalItemCount += 1
+            Log.e("ThemeChooserDialog", "counter = $rowCounter")
+            Log.e("ThemeChooserDialog", "totalItemCount = $totalItemCount")
             if (getIsPortrait()) {
                 // Portrait Mode
 
-                cv = swatchArray[i]
                 cv.setOnClickListener(swatchClickListener)
 
-                if (counter == 1) {
+                if (rowCounter == 1) {
                     tr = TableRow(mContext)
-                    tr.layoutParams = TableRow.LayoutParams(
-                        TableRow.LayoutParams.MATCH_PARENT,
-                        TableRow.LayoutParams.WRAP_CONTENT
-                    )
+                    tr.layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT)
                     tr.setPadding(10, 5, 10, 5)
                 }
 
                 tr?.addView(cv)
 
-                if (counter == 3 || i == swatchArray.size) {
-                    counter = 0
+                if (rowCounter == 3 || totalItemCount == swatchArray.size) {
+                    rowCounter = 0
                     rows.add(tr!!)
                 } // if its the 3rd item in group or if its the last item
 
@@ -197,16 +183,15 @@ class ThemeChooserDialog : DialogFragment() {
             } else {
                 // Landscape Mode
 
-                cv = swatchArray[i]
                 cv.setOnClickListener(swatchClickListener)
 
                 mLandscapeContainer!!.addView(cv)
 
             }
-
         } // forEach
 
         for (row in rows) {
+            Log.e("ThemeChooserDialog", "portrait row added")
             mPortraitContainer!!.addView(row)
         } // for each loop
 
