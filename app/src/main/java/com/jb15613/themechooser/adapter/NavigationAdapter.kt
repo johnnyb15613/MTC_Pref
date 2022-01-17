@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.text.Html
 import android.text.SpannableString
-import android.util.Log
+import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +15,8 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.text.HtmlCompat
+import androidx.core.text.HtmlCompat.fromHtml
 import androidx.recyclerview.widget.RecyclerView
 import com.jb15613.themechooser.demo.MainActivity
 import com.jb15613.themechooser.demo.R
@@ -122,12 +124,12 @@ class NavigationAdapter(private val mNavTitles: Array<String?>, private val mIco
         when (viewHolder.itemViewType) {
             typeMenuHeader -> {
                 val bg: Drawable? = ResourcesCompat.getDrawable(mContext.resources, R.mipmap.nav_item_menuheader, null)
-                bg?.colorFilter = PorterDuffColorFilter(ThemeChooserUtils.getThemeColor(mContext), PorterDuff.Mode.OVERLAY)
+                bg?.colorFilter = PorterDuffColorFilter(ThemeChooserUtils.getThemeColor(), PorterDuff.Mode.OVERLAY)
 
                 viewHolder.nrHeaderBg?.background = bg
                 viewHolder.nrMenuHeader?.text = APP_TITLE
                 viewHolder.nrMenuHeader?.setShadowLayer(1.0F, 2.0F, 1.0F, 0xff000000.toInt())
-                viewHolder.nrMenuHeaderBg?.setBackgroundColor(ThemeChooserUtils.getThemeColor(mContext, 0.5f))
+                viewHolder.nrMenuHeaderBg?.setBackgroundColor(ThemeChooserUtils.getThemeColor(0.5f))
             }
             typeSubHeader -> {
                 viewHolder.nrSubMenuHeader?.text = mNavTitles[position]
@@ -135,30 +137,23 @@ class NavigationAdapter(private val mNavTitles: Array<String?>, private val mIco
             typeAppItem -> {
                 viewHolder.nrAppItemTitle?.text = mNavTitles[position]
                 viewHolder.nrAppItemIcon?.setImageDrawable(mIcons[position])
-                viewHolder.nrAppItemIcon?.setColorFilter(ThemeChooserUtils.getPrimaryTextColor(mContext), PorterDuff.Mode.SRC_IN)
+                viewHolder.nrAppItemIcon?.setColorFilter(ThemeChooserUtils.getPrimaryTextColor(), PorterDuff.Mode.SRC_IN)
             }
             typeNavItem -> {
                 viewHolder.nrNavItemTitle?.text = mNavTitles[position]
                 viewHolder.nrNavItemIcon?.setImageDrawable(mIcons[position])
-                viewHolder.nrNavItemIcon?.setColorFilter(ThemeChooserUtils.getPrimaryTextColor(mContext), PorterDuff.Mode.SRC_IN)
+                viewHolder.nrNavItemIcon?.setColorFilter(ThemeChooserUtils.getPrimaryTextColor(), PorterDuff.Mode.SRC_IN)
 
                 if(selectedPosition == position){
-                    viewHolder.itemView.setBackgroundColor(ThemeChooserUtils.getThemeDarkColor(mContext))
+                    viewHolder.itemView.setBackgroundColor(ThemeChooserUtils.getThemeDarkColor())
                 }else{
-                    viewHolder.itemView.setBackgroundColor(ThemeChooserUtils.getSecondaryBgColor(mContext))
+                    viewHolder.itemView.setBackgroundColor(ThemeChooserUtils.getSecondaryBgColor())
                 }
 
             }
             typeAboutItem -> {
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    val span = SpannableString(Html.fromHtml(mNavTitles[position], Html.FROM_HTML_MODE_LEGACY))
-                    viewHolder.nrAboutItemTitle?.setText(span, TextView.BufferType.SPANNABLE)
-                } else {
-                    val span = SpannableString(Html.fromHtml(mNavTitles[position]))
-                    viewHolder.nrAboutItemTitle?.setText(span, TextView.BufferType.SPANNABLE)
-                }
-
+                val span: Spanned = fromHtml(mNavTitles[position].toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
+                viewHolder.nrAboutItemTitle?.setText(span, TextView.BufferType.SPANNABLE)
             }
         } // viewTypeSwitch
 

@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.preference.Preference
 import com.jb15613.themechooser.mtcpref.ThemeChooserDialog.OnThemeChangedListener
+import com.jb15613.themechooser.utility.ColorPrefUtils
 import com.jb15613.themechooser.utility.ColorUtils
 import com.jb15613.themechooser.utility.LIGHTBLUE
 import com.jb15613.themechooser.utility.PrefUtils.getDensityScale
@@ -40,7 +41,7 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
         mContext = context
-        mValue = getThemeColor(context)
+        mValue = getThemeColor()
         init()
     }
 
@@ -50,7 +51,7 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
         defStyle
     ) {
         mContext = context
-        mValue = getThemeColor(context)
+        mValue = getThemeColor()
         init()
     }
 
@@ -72,11 +73,11 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
         super.onBindViewHolder(holder)
         mSwatchContainer = holder.findViewById(R.id.swatchView) as LinearLayout?
         val mSummaryText = holder.findViewById(R.id.summary) as TextView
-        if (getDensityScale(mCtx) == 0f) {
-            setDensityScale(mCtx, context.resources.displayMetrics.density)
+        if (getDensityScale() == 0f) {
+            setDensityScale(context.resources.displayMetrics.density)
         }
-        swapThemeSwatch(getThemeColor(mCtx))
-        val summary = getThemeColor(mCtx) + themeHue
+        swapThemeSwatch(getThemeColor())
+        val summary = getThemeColor() + themeHue
         mSummaryText.text = summary
     }
 
@@ -111,7 +112,7 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
 
     private val themeHue: String
         get() {
-            val h: String = if (getThemeHue(mCtx)) {
+            val h: String = if (getThemeHue()) {
                 " - Light"
             } else {
                 " - Dark"
@@ -126,7 +127,8 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
 
     private var pcListener: OnPreferenceChangeListener = OnPreferenceChangeListener { preference, newValue ->
             Log.e("onPreferenceChange", "newValue : $newValue")
-            swapThemeSwatch(getThemeColor(mCtx))
+            swapThemeSwatch(getThemeColor())
+            ColorPrefUtils.setThemeColorsToPrefs(newValue.toString() + themeHue, "ThemeChooserPreference.pcListener()")
             preference.summary = newValue.toString() + themeHue
             true
         }
@@ -160,7 +162,7 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
     private fun getCellItem(themeName: String?): LinearLayout {
 
         val tName = themeName.toString()
-        val colors: IntArray = ColorUtils().getColorSet(tName, mCtx, false)
+        val colors: IntArray = ColorUtils.getColorSet(tName, false)
 
         if (tName.contains(THEME_SPLITTER)) {
             val tn: Array<String> = tName.split(THEME_SPLITTER).toTypedArray()
@@ -215,6 +217,6 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
     } // getCellItem
 
     private fun pToDp(p: Int): Int {
-        return (p * getDensityScale(mCtx) + 0.5f).toInt()
+        return (p * getDensityScale() + 0.5f).toInt()
     }
 } // Class

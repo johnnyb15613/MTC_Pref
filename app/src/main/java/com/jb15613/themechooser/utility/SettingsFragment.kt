@@ -17,8 +17,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-        val c: Context = activity as Context
-        view?.setBackgroundColor(ThemeChooserUtils.getPrimaryBgColor(c))
+
+        view?.setBackgroundColor(ThemeChooserUtils.getPrimaryBgColor())
         var sBar = 0
         if (activity is MainActivity) {
             sBar = (activity as MainActivity).getStatusBarHeight()

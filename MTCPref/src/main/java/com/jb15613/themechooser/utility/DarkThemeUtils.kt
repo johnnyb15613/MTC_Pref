@@ -2,7 +2,7 @@ package com.jb15613.themechooser.utility
 
 import com.jb15613.themechooser.utility.color.*
 
-internal class DarkThemeUtils {
+internal object DarkThemeUtils {
 
     /**
      * getCustomColoredDarkTheme(themeName: [String]): [Int]

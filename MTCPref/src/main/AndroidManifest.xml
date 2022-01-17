@@ -15,6 +15,18 @@
                 android:name="com.jb15613.themechooser.startup.ThemeChooserInitializer"
                 android:value="androidx.startup" />
 
+            <meta-data
+                android:name="com.jb15613.themechooser.startup.PrefUtilsInitializer"
+                android:value="androidx.startup" />
+
+            <meta-data
+                android:name="com.jb15613.themechooser.startup.ColorUtilsInitializer"
+                android:value="androidx.startup" />
+
+            <meta-data
+                android:name="com.jb15613.themechooser.startup.ColorPrefUtilsInitializer"
+                android:value="androidx.startup" />
+
         </provider>
     </application>
 

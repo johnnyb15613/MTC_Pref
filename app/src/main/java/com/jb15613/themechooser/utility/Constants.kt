@@ -40,14 +40,14 @@ fun getAppTimeStamp(context: Context): String {
         for (i in items.indices) {
             when (i) {
                 0 ->                         // date
-                    ts += "Built on <font color='" + ColorUtils().getColorAsHtmlString(
-                        ThemeChooserUtils.getThemeColor(context)) + "'> " + items[i] + "</font>"
+                    ts += "Built on <font color='" + ColorUtils.getColorAsHtmlString(
+                        ThemeChooserUtils.getThemeColor()) + "'> " + items[i] + "</font>"
                 1 ->                         // time
-                    ts += " @ <font color='" + ColorUtils().getColorAsHtmlString(
-                        ThemeChooserUtils.getThemeColor(context)) + "'> " + items[i] + "</font>"
+                    ts += " @ <font color='" + ColorUtils.getColorAsHtmlString(
+                        ThemeChooserUtils.getThemeColor()) + "'> " + items[i] + "</font>"
                 2 ->                         // am/pm
-                    ts += " <font color='" + ColorUtils().getColorAsHtmlString(
-                        ThemeChooserUtils.getThemeColor(context)) + "'> " + items[i] + "</font>"
+                    ts += " <font color='" + ColorUtils.getColorAsHtmlString(
+                        ThemeChooserUtils.getThemeColor()) + "'> " + items[i] + "</font>"
             }
         }
 

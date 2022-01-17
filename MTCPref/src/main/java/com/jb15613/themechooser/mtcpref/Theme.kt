@@ -1,11 +1,7 @@
 package com.jb15613.themechooser.mtcpref
 
-import android.content.Context
-import android.content.SharedPreferences
-import android.content.res.Resources
-
+import com.jb15613.themechooser.utility.ColorPrefUtils
 import com.jb15613.themechooser.utility.MtcPrefException
-import com.jb15613.themechooser.utility.PREF_NAME_KEY
 import com.jb15613.themechooser.utility.PrefUtils.setAccentColor
 import com.jb15613.themechooser.utility.PrefUtils.setThemeColor
 import com.jb15613.themechooser.utility.PrefUtils.setThemeHue
@@ -73,14 +69,16 @@ class Theme(builder: ThemeBuilder) {
             return this
         }
 
-        fun build(c: Context): Theme {
+        fun build(): Theme {
             if (accentColor == "") {
-                setThemeColor(c, themeColor)
+                setThemeColor(themeColor)
+                ColorPrefUtils.setThemeColorsToPrefs(themeColor, "ThemeBuilder.build().noAccentColor")
             } else {
-                setThemeColor(c, themeColor + THEME_SPLITTER.toString() + accentColor)
+                setThemeColor(themeColor + THEME_SPLITTER.toString() + accentColor)
+                ColorPrefUtils.setThemeColorsToPrefs(themeColor + THEME_SPLITTER.toString() + accentColor, "ThemeBuilder.build().withAccentColor")
             }
-            setAccentColor(c, accentColor)
-            setThemeHue(c, isLightTheme)
+            setAccentColor(accentColor)
+            setThemeHue(isLightTheme)
             return Theme(this)
         }
     }

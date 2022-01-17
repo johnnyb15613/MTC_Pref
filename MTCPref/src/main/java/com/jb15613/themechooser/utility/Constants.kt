@@ -116,6 +116,13 @@ internal const val PREF_THEME_HUE_KEY = "isLightTheme"
 internal const val PREF_THEME_ACCENT_KEY = "accentColor"
 internal const val PREF_CELL_SIZE_KEY = "cellSize"
 internal const val PREF_DENSITY_SCALE_KEY = "densityScale"
+internal const val PREF_THEME_COLOR_INT_KEY = "themeColorInt"
+internal const val PREF_THEME_DARK_COLOR_INT_KEY = "themeDarkColorInt"
+internal const val PREF_THEME_ACCENT_COLOR_INT_KEY = "themeAccentColorInt"
+internal const val PREF_THEME_PRIMARY_TEXT_COLOR_INT_KEY = "textColorPrimaryInt"
+internal const val PREF_THEME_SECONDARY_TEXT_COLOR_INT_KEY = "textColorSecondaryInt"
+internal const val PREF_THEME_PRIMARY_BG_COLOR_INT_KEY = "bgColorPrimaryInt"
+internal const val PREF_THEME_SECONDARY_BG_COLOR_INT_KEY = "bgColorSecondaryInt"
 
 // Delimeters
 internal const val THEME_SPLITTER = " \u0026 "

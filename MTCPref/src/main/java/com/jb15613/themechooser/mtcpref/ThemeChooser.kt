@@ -1,9 +1,6 @@
 package com.jb15613.themechooser.mtcpref
 
-import android.content.Context
 import android.content.SharedPreferences
-import android.content.res.Resources
-import android.util.Log
 import com.jb15613.themechooser.startup.ThemeChooserInitializer
 import com.jb15613.themechooser.utility.*
 
@@ -30,11 +27,13 @@ object ThemeChooser {
         val themeName = mPrefs.getString(PREF_THEME_KEY, LIGHTBLUE).toString()
         val isLightTheme = mPrefs.getBoolean(PREF_THEME_HUE_KEY, false)
 
+        ColorPrefUtils.setThemeColorsToPrefs(themeName, "ThemeChooser.getTheme()Int")
+
         return if (!isLightTheme) {
             // Dark Theme
             if (themeName.contains(THEME_SPLITTER)) {
                 // Custom Color Theme
-                DarkThemeUtils().getCustomColoredDarkTheme(themeName)
+                DarkThemeUtils.getCustomColoredDarkTheme(themeName)
             } else {
                 // Default Color Theme
                 ThemeUtils.getColoredThemeDark(themeName)
@@ -43,7 +42,7 @@ object ThemeChooser {
             // Light Theme
             if (themeName.contains(THEME_SPLITTER)) {
                 // Custom Color Theme
-                LightThemeUtils().getCustomColoredLightTheme(themeName)
+                LightThemeUtils.getCustomColoredLightTheme(themeName)
             } else {
                 // Default Color Theme
                 ThemeUtils.getColoredThemeLight(themeName)
@@ -61,6 +60,7 @@ object ThemeChooser {
      * @return [Int] the Resource Id of the Theme
      */
     fun getTheme(themeName: String): Int {
+        ColorPrefUtils.setThemeColorsToPrefs(themeName, "ThemeChooser.getTheme(themeName: String)Int")
         var tN = themeName
         var isLightTheme = true
         if (themeName.contains(HUE_SPLITTER)) {
@@ -77,7 +77,7 @@ object ThemeChooser {
             // Dark Theme
             if (tN.contains(THEME_SPLITTER)) {
                 // Custom Color Theme
-                DarkThemeUtils().getCustomColoredDarkTheme(tN)
+                DarkThemeUtils.getCustomColoredDarkTheme(tN)
             } else {
                 // Default Color Theme
                 ThemeUtils.getColoredThemeDark(tN)
@@ -86,7 +86,7 @@ object ThemeChooser {
             // Light Theme
             if (tN.contains(THEME_SPLITTER)) {
                 // Custom Color Theme
-                LightThemeUtils().getCustomColoredLightTheme(tN)
+                LightThemeUtils.getCustomColoredLightTheme(tN)
             } else {
                 // Default Color Theme
                 ThemeUtils.getColoredThemeLight(tN)

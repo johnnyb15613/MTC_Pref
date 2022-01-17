@@ -2,10 +2,12 @@ package com.jb15613.themechooser.demo
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -15,13 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jb15613.themechooser.adapter.NavigationAdapter
 import com.jb15613.themechooser.model.NavObject
-import com.jb15613.themechooser.mtcpref.Theme
 import com.jb15613.themechooser.mtcpref.ThemeChooser
-import com.jb15613.themechooser.mtcpref.Themes
 import com.jb15613.themechooser.utility.*
-import android.view.Menu
-import android.view.MenuItem
-import com.jb15613.themechooser.startup.ThemeChooserInitializer
 
 
 class MainActivity : AppCompatActivity() {
@@ -32,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: NavigationAdapter
     private lateinit var mLayoutManager: LinearLayoutManager
-    lateinit var mArray: ArrayList<NavObject>
+    private lateinit var mArray: ArrayList<NavObject>
     private lateinit var mFragmentManager: FragmentManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         mFragmentManager = supportFragmentManager
 
         try {
-            val color: String = ColorUtils().getColorAsHtmlString(ThemeChooserUtils.getThemeColor(this))
+            val color: String = ColorUtils.getColorAsHtmlString(ThemeChooserUtils.getThemeColor())
             var v = ""
             mVersion = "v" + packageManager.getPackageInfo(PACKAGE, 0).versionName
             if (isDebugMode()) {
@@ -107,7 +104,10 @@ class MainActivity : AppCompatActivity() {
     } // onCreate
 
     private fun isAutomaticInitializationDone(): Boolean {
-        return ThemeChooser.isInitialized
+        return ThemeChooser.isInitialized &&
+                PrefUtils.isInitialized &&
+                ColorUtils.isInitialized &&
+                ColorPrefUtils.isInitialized
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
