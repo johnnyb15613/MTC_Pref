@@ -1,11 +1,6 @@
 package com.jb15613.themechooser.mtcpref
 
-import com.jb15613.themechooser.utility.ColorPrefUtils
 import com.jb15613.themechooser.utility.MtcPrefException
-import com.jb15613.themechooser.utility.PrefUtils.setAccentColor
-import com.jb15613.themechooser.utility.PrefUtils.setThemeColor
-import com.jb15613.themechooser.utility.PrefUtils.setThemeHue
-import com.jb15613.themechooser.utility.THEME_SPLITTER
 
 /**
  * class Theme(builder: ThemeBuilder)
@@ -16,7 +11,7 @@ import com.jb15613.themechooser.utility.THEME_SPLITTER
  *                  .themeColor(Themes.ThemeColor.getRandomThemeColor())
  *                  .accentColor(Themes.AccentColor.getRandomAccentColor())
  *                  .isLightTheme(Themes.getRandomThemeHue())
- *                  .build(this)
+ *                  .build()
  *                  .getTheme())
  */
 class Theme(builder: ThemeBuilder) {
@@ -45,6 +40,7 @@ class Theme(builder: ThemeBuilder) {
         } else {
             throw MtcPrefException("AccentColors cannot be used as ThemeColor")
         }
+
     val theme: Int
         get() = ThemeChooser.getTheme(themeName)
 
@@ -70,15 +66,13 @@ class Theme(builder: ThemeBuilder) {
         }
 
         fun build(): Theme {
-            if (accentColor == "") {
-                setThemeColor(themeColor)
-                ColorPrefUtils.setThemeColorsToPrefs(themeColor, "ThemeBuilder.build().noAccentColor")
+
+            val lightDark = if (isLightTheme) {
+                "Light"
             } else {
-                setThemeColor(themeColor + THEME_SPLITTER.toString() + accentColor)
-                ColorPrefUtils.setThemeColorsToPrefs(themeColor + THEME_SPLITTER.toString() + accentColor, "ThemeBuilder.build().withAccentColor")
+                "Dark"
             }
-            setAccentColor(accentColor)
-            setThemeHue(isLightTheme)
+
             return Theme(this)
         }
     }

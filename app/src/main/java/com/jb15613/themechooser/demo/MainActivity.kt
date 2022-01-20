@@ -17,8 +17,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jb15613.themechooser.adapter.NavigationAdapter
 import com.jb15613.themechooser.model.NavObject
+import com.jb15613.themechooser.mtcpref.Theme
 import com.jb15613.themechooser.mtcpref.ThemeChooser
+import com.jb15613.themechooser.mtcpref.Themes
 import com.jb15613.themechooser.utility.*
+import com.jb15613.themechooser.utility.color.AccentColor
 
 
 class MainActivity : AppCompatActivity() {
@@ -38,6 +41,19 @@ class MainActivity : AppCompatActivity() {
         if (isAutomaticInitializationDone()) {
             Log.e("isAutoInitDone", "true")
             setTheme(ThemeChooser.getTheme())
+            // setTheme(ThemeChooser.getTheme("Deep Orange & Blue Grey - Dark"))
+
+
+            /*
+            // Using the Builder
+            setTheme(
+                Theme.ThemeBuilder()
+                    .themeColor(Themes.ThemeColor.randomThemeColor)
+                    .accentColor(Themes.AccentColor.randomAccentColor)
+                    .isLightTheme(Themes.randomThemeHue)
+                    .build()
+                    .theme) */
+
         } else {
             Log.e("isAutoInitDone", "false")
         }
@@ -107,7 +123,7 @@ class MainActivity : AppCompatActivity() {
         return ThemeChooser.isInitialized &&
                 PrefUtils.isInitialized &&
                 ColorUtils.isInitialized &&
-                ColorPrefUtils.isInitialized
+                AccentColor.isInitialized
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

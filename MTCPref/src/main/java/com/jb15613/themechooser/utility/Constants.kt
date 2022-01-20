@@ -111,18 +111,28 @@ internal const val BLUEGREY_3 = "Blue Grey 3"
 
 // Pref names
 internal const val PREF_NAME_KEY = "mtc_pref_preferences"
-internal const val PREF_THEME_KEY = "themeColor"
+
+internal const val PREF_THEME_NAME_KEY = "themeName"
+internal const val PREF_ACCENT_NAME_KEY = "accentName"
+
 internal const val PREF_THEME_HUE_KEY = "isLightTheme"
-internal const val PREF_THEME_ACCENT_KEY = "accentColor"
+
 internal const val PREF_CELL_SIZE_KEY = "cellSize"
 internal const val PREF_DENSITY_SCALE_KEY = "densityScale"
+
 internal const val PREF_THEME_COLOR_INT_KEY = "themeColorInt"
 internal const val PREF_THEME_DARK_COLOR_INT_KEY = "themeDarkColorInt"
 internal const val PREF_THEME_ACCENT_COLOR_INT_KEY = "themeAccentColorInt"
+
 internal const val PREF_THEME_PRIMARY_TEXT_COLOR_INT_KEY = "textColorPrimaryInt"
 internal const val PREF_THEME_SECONDARY_TEXT_COLOR_INT_KEY = "textColorSecondaryInt"
 internal const val PREF_THEME_PRIMARY_BG_COLOR_INT_KEY = "bgColorPrimaryInt"
 internal const val PREF_THEME_SECONDARY_BG_COLOR_INT_KEY = "bgColorSecondaryInt"
+
+internal const val PREF_THEME_PRIMARY_TEXT_COLOR_INVERSE_INT_KEY = "textColorPrimaryInverseInt"
+internal const val PREF_THEME_SECONDARY_TEXT_COLOR_INVERSE_INT_KEY = "textColorSecondaryInverseInt"
+internal const val PREF_THEME_PRIMARY_BG_COLOR_INVERSE_INT_KEY = "bgColorPrimaryInverseInt"
+internal const val PREF_THEME_SECONDARY_BG_COLOR_INVERSE_INT_KEY = "bgColorSecondaryInverseInt"
 
 // Delimeters
 internal const val THEME_SPLITTER = " \u0026 "
@@ -130,24 +140,3 @@ internal const val HUE_SPLITTER = " - "
 
 // Tags
 internal const val VIEW_CHECKED = "checked"
-
-    internal val ACCENT_ITEMS_RED = arrayOf(RED, RED_A1, RED_A2, RED_A4, RED_A7)
-    internal val ACCENT_ITEMS_PINK = arrayOf(PINK, PINK_A1, PINK_A2, PINK_A4, PINK_A7)
-    internal val ACCENT_ITEMS_PURPLE = arrayOf(PURPLE, PURPLE_A1, PURPLE_A2, PURPLE_A4, PURPLE_A7)
-    internal val ACCENT_ITEMS_DEEPPURPLE =
-        arrayOf(DEEPPURPLE, DEEPPURPLE_A1, DEEPPURPLE_A2, DEEPPURPLE_A4, DEEPPURPLE_A7)
-    internal val ACCENT_ITEMS_INDIGO = arrayOf(INDIGO, INDIGO_A1, INDIGO_A2, INDIGO_A4, INDIGO_A7)
-    internal val ACCENT_ITEMS_BLUE = arrayOf(BLUE, BLUE_A1, BLUE_A2, BLUE_A4, BLUE_A7)
-    internal val ACCENT_ITEMS_LIGHTBLUE =
-        arrayOf(LIGHTBLUE, LIGHTBLUE_A1, LIGHTBLUE_A2, LIGHTBLUE_A4, LIGHTBLUE_A7)
-    internal val ACCENT_ITEMS_CYAN = arrayOf(CYAN, CYAN_A1, CYAN_A2, CYAN_A4, CYAN_A7)
-    internal val ACCENT_ITEMS_TEAL = arrayOf(TEAL, TEAL_A1, TEAL_A2, TEAL_A4, TEAL_A7)
-    internal val ACCENT_ITEMS_GREEN = arrayOf(GREEN, GREEN_A1, GREEN_A2, GREEN_A4, GREEN_A7)
-    internal val ACCENT_ITEMS_LIGHTGREEN =
-        arrayOf(LIGHTGREEN, LIGHTGREEN_A1, LIGHTGREEN_A2, LIGHTGREEN_A4, LIGHTGREEN_A7)
-    internal val ACCENT_ITEMS_LIME = arrayOf(LIME, LIME_A1, LIME_A2, LIME_A4, LIME_A7)
-    internal val ACCENT_ITEMS_YELLOW = arrayOf(YELLOW, YELLOW_A1, YELLOW_A2, YELLOW_A4, YELLOW_A7)
-    internal val ACCENT_ITEMS_AMBER = arrayOf(AMBER, AMBER_A1, AMBER_A2, AMBER_A4, AMBER_A7)
-    internal val ACCENT_ITEMS_ORANGE = arrayOf(ORANGE, ORANGE_A1, ORANGE_A2, ORANGE_A4, ORANGE_A7)
-    internal val ACCENT_ITEMS_DEEPORANGE =
-        arrayOf(DEEPORANGE, DEEPORANGE_A1, DEEPORANGE_A2, DEEPORANGE_A4, DEEPORANGE_A7)

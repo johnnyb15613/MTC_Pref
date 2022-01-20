@@ -24,7 +24,7 @@
                 android:value="androidx.startup" />
 
             <meta-data
-                android:name="com.jb15613.themechooser.startup.ColorPrefUtilsInitializer"
+                android:name="com.jb15613.themechooser.startup.AccentColorInitializer"
                 android:value="androidx.startup" />
 
         </provider>

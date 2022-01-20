@@ -3,13 +3,13 @@ package com.jb15613.themechooser.startup
 import android.content.Context
 import android.content.res.Resources
 import androidx.startup.Initializer
-import com.jb15613.themechooser.utility.ColorUtils
+import com.jb15613.themechooser.utility.color.AccentColor
 
-class ColorUtilsInitializer : Initializer<ColorUtils> {
+class AccentColorInitializer : Initializer<AccentColor> {
 
-    override fun create(context: Context): ColorUtils {
+    override fun create(context: Context): AccentColor {
         mResources = context.resources
-        return ColorUtils
+        return AccentColor
     }
 
     override fun dependencies(): List<Class<out Initializer<*>>> {

@@ -1,6 +1,5 @@
 package com.jb15613.themechooser.utility
 
-import android.content.Context
 import android.content.res.Resources
 import androidx.core.content.res.ResourcesCompat
 import com.jb15613.themechooser.mtcpref.R
@@ -28,19 +27,36 @@ object ColorUtils {
      * @return [IntArray] that contains Primary, Dark, and Accent theme colors
      */
     fun getColorSet(themeName: String, isTrue: Boolean): IntArray {
+        // Light Green - Dark
+
         val colors = IntArray(3)
         var isCustom = false
 
         val tn: String
         var ta = ""
 
-        if (themeName.contains(THEME_SPLITTER)) {
-            isCustom = true
-            val items: List<String> = themeName.split(THEME_SPLITTER)
-            tn = items[0]
-            ta = items[1]
+        if (themeName.contains(HUE_SPLITTER)) {
+            // SHOULD ALWAYS BE TRUE
+            val hueSplit: List<String> = themeName.split(HUE_SPLITTER)
+            val hs1 = hueSplit[0] // Light Green
+            if (hs1.contains(THEME_SPLITTER)) {
+                isCustom = true
+                val hsSplit: List<String> = hs1.split(THEME_SPLITTER)
+                tn = hsSplit[0]
+                ta = hsSplit[1]
+            } else {
+                tn = hs1 // Light Green
+            }
+
         } else {
-            tn = themeName
+            if (themeName.contains(THEME_SPLITTER)) {
+                isCustom = true
+                val tnSplit: List<String> = themeName.split(THEME_SPLITTER)
+                tn = tnSplit[0]
+                ta = tnSplit[1]
+            } else {
+                tn = themeName
+            }
         }
 
         if (isTrue) {
@@ -237,8 +253,7 @@ object ColorUtils {
      *
      * This function will return a list of all the true accent colors for each primary theme color
      *
-     * @param themeName a [String] containing Theme Name (eg: DeepOrange)
-     * @param mContext a [Context] to retrieve Resources
+     * @param themeName a [String] containing Theme Name (eg: Deep Orange)
      *
      * @return [IntArray] with all available hues of a theme color
      */

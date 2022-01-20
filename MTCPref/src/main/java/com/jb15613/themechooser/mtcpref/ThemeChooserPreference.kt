@@ -17,12 +17,12 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.preference.Preference
 import com.jb15613.themechooser.mtcpref.ThemeChooserDialog.OnThemeChangedListener
-import com.jb15613.themechooser.utility.ColorPrefUtils
-import com.jb15613.themechooser.utility.ColorUtils
+import com.jb15613.themechooser.utility.*
+import com.jb15613.themechooser.utility.HUE_SPLITTER
 import com.jb15613.themechooser.utility.LIGHTBLUE
 import com.jb15613.themechooser.utility.PrefUtils.getDensityScale
-import com.jb15613.themechooser.utility.PrefUtils.getThemeColor
 import com.jb15613.themechooser.utility.PrefUtils.getThemeHue
+import com.jb15613.themechooser.utility.PrefUtils.getThemeName
 import com.jb15613.themechooser.utility.PrefUtils.setDensityScale
 import com.jb15613.themechooser.utility.THEME_SPLITTER
 import com.jb15613.themechooser.utility.color.AccentColor
@@ -30,28 +30,18 @@ import java.lang.ClassCastException
 import java.lang.NullPointerException
 
 class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener, OnThemeChangedListener {
-    // final static String mPrefKey = Constants.PREF_NAME_KEY;
-    // the theme name
-    private var mValue: String?
 
-    // private SharedPreferences prefs;
     private var mContext: Context? = null
     private var mCtx: Context = context
     private var mSwatchContainer: LinearLayout? = null
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
         mContext = context
-        mValue = getThemeColor()
         init()
     }
 
-    constructor(context: Context, attrs: AttributeSet?, defStyle: Int) : super(
-        context,
-        attrs,
-        defStyle
-    ) {
+    constructor(context: Context, attrs: AttributeSet?, defStyle: Int) : super(context, attrs, defStyle) {
         mContext = context
-        mValue = getThemeColor()
         init()
     }
 
@@ -76,21 +66,43 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
         if (getDensityScale() == 0f) {
             setDensityScale(context.resources.displayMetrics.density)
         }
-        swapThemeSwatch(getThemeColor())
-        val summary = getThemeColor() + themeHue
+        swapThemeSwatch(getThemeName())
+        val summary = getThemeName()
         mSummaryText.text = summary
     }
 
-    override fun onThemeChanged(theme: String?, hue: Boolean) {
-        mValue = theme
-        // the hue
-        Log.e("onThemeChange", "theme : $mValue")
-        Log.e("onThemeChange", "isLight : $hue")
+    override fun onThemeChanged(theme: String?, hue: Boolean, isSwitch: Boolean) {
+        // 1st
+        // all switching of prefs is done
+        // this is asthetic only
+        // if isSwitch is true, only change the summary
+        // if it is false, themes or accents have changed
+
         try {
-            onPreferenceChangeListener.onPreferenceChange(this, theme)
+            onPreferenceChangeListener.onPreferenceChange(this, isSwitch)
         } catch (e: NullPointerException) {
             e.printStackTrace()
         }
+
+    }
+
+    private var pcListener: OnPreferenceChangeListener = OnPreferenceChangeListener { preference, newValue ->
+        // 2nd
+
+        Log.e("onPreferenceChange", "$preference : newValue : $newValue")
+
+        val themeName = PrefUtils.getThemeName()
+
+        if (newValue is Boolean) {
+            // SHOULD ALWAYS BE TRUE
+            if (!newValue) {
+                // called from theme or accent
+                swapThemeSwatch(themeName)
+            }
+        }
+
+        preference.summary = themeName
+        true
     }
 
     override fun onSaveInstanceState(): Parcelable {
@@ -110,28 +122,10 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
         onPreferenceChangeListener = pcListener
     }
 
-    private val themeHue: String
-        get() {
-            val h: String = if (getThemeHue()) {
-                " - Light"
-            } else {
-                " - Dark"
-            }
-            return h
-        }
-
     override fun onPreferenceClick(preference: Preference?): Boolean {
         showDialog()
         return false
     }
-
-    private var pcListener: OnPreferenceChangeListener = OnPreferenceChangeListener { preference, newValue ->
-            Log.e("onPreferenceChange", "newValue : $newValue")
-            swapThemeSwatch(getThemeColor())
-            ColorPrefUtils.setThemeColorsToPrefs(newValue.toString() + themeHue, "ThemeChooserPreference.pcListener()")
-            preference.summary = newValue.toString() + themeHue
-            true
-        }
 
     private fun showDialog() {
         val fm: FragmentManager? = getFragMan()
@@ -164,9 +158,15 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
         val tName = themeName.toString()
         val colors: IntArray = ColorUtils.getColorSet(tName, false)
 
-        if (tName.contains(THEME_SPLITTER)) {
-            val tn: Array<String> = tName.split(THEME_SPLITTER).toTypedArray()
-            colors[2] = AccentColor().getColor(tn[1], mCtx)
+        if (tName.contains(HUE_SPLITTER)) {
+            // SHOULD ALWAYS BE TRUE
+            val hSplit: List<String> = tName.split(HUE_SPLITTER)
+            if (hSplit[0].contains(THEME_SPLITTER)) {
+                val tn: List<String> = hSplit[0].split(THEME_SPLITTER)
+                colors[2] = AccentColor.getColor(tn[1])
+            } else {
+                colors[2] = AccentColor.getColor(hSplit[0])
+            }
         }
 
         val ll = LinearLayout(mContext)

@@ -4,9 +4,6 @@ import android.content.Context
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.Drawable
-import android.os.Build
-import android.text.Html
-import android.text.SpannableString
 import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View

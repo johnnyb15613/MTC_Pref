@@ -65,7 +65,7 @@
 		android:layout_height="wrap_content"
 		android:layout_centerHorizontal="true"
 		android:textColor="?attr/textColorPrimary"/>
-	
+
 	<HorizontalScrollView
 		android:id="@+id/tcd_accentParent"
 		android:gravity="center"
@@ -89,7 +89,7 @@
 	<androidx.appcompat.widget.SwitchCompat
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
-		android:text="@string/ph_day_mode"
+		android:text="Light Theme"
 		android:textColor="?attr/textColorPrimary"
 		android:id="@+id/tcd_switch"
 		android:paddingLeft="15dp"

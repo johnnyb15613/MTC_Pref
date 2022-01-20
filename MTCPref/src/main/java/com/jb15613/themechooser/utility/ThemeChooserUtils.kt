@@ -1,15 +1,10 @@
 package com.jb15613.themechooser.utility
 
-import android.content.Context
 import android.graphics.Color
-import android.util.Log
 
-import android.util.TypedValue
-import com.jb15613.themechooser.mtcpref.R
-import com.jb15613.themechooser.utility.PrefUtils.getThemeHue
 
 /**
- * \object ThemeChooserUtils
+ * object ThemeChooserUtils
  *
  * Class that holds all public endpoints for usage with the Library
  *
@@ -17,44 +12,39 @@ import com.jb15613.themechooser.utility.PrefUtils.getThemeHue
 object ThemeChooserUtils {
 
     /**
-     * getThemeColor(): [Int]
+     * getThemeColor(vararg opacities: Float): [Int]
      *
      * Retrieves color value of Primary Theme Color
      *
+     * @param opacities an optional [Float] used to derive opaqueness for semi-transparent coloring
+     *
      * @return [Int] that is the color value for Primary Theme Color
      */
-    fun getThemeColor(): Int {
-        val color = PrefUtils.getThemeColorInt()
-        // Log.e("getThemeColor.prefs", "$color")
-        return color
-    } // getThemeColor
+    fun getThemeColor(vararg opacities: Float): Int {
 
-    /**
-     * getThemeColor(opacity: [Float]): [Int]
-     *
-     * Retrieves color value of Primary Theme Color with Opacity
-     *
-     * @param opacity a [Float] that is used to derive an opaque version of a solid color
-     *
-     * @return [Int] that is the color value for Primary Theme Color with desired opacity
-     */
-    fun getThemeColor(opacity: Float): Int {
         val themeColor = PrefUtils.getThemeColorInt()
-        val color: Int = when (opacity.toDouble()) {
-            1.0 -> themeColor
-            0.9 -> themeColor and 0x00FFFFFF or -0x20000000
-            0.8 -> themeColor and 0x00FFFFFF or -0x30000000
-            0.7 -> themeColor and 0x00FFFFFF or -0x40000000
-            0.6 -> themeColor and 0x00FFFFFF or -0x50000000
-            0.5 -> themeColor and 0x00FFFFFF or -0x60000000
-            0.4 -> themeColor and 0x00FFFFFF or -0x70000000
-            0.3 -> themeColor and 0x00FFFFFF or -0x80000000
-            0.2 -> themeColor and 0x00FFFFFF or 0x70000000
-            0.1 -> themeColor and 0x00FFFFFF or 0x60000000
-            else -> Color.TRANSPARENT
-        }
-        // Log.e("getThemeColorWO", "$color")
-        return color
+
+        val arraySize = opacities.size
+
+        if (arraySize == 0) {
+            return themeColor
+        } else {
+            val opacity = opacities[0]
+            val color: Int = when (opacity.toDouble()) {
+                1.0 -> themeColor
+                0.9 -> themeColor and 0x00FFFFFF or -0x20000000
+                0.8 -> themeColor and 0x00FFFFFF or -0x30000000
+                0.7 -> themeColor and 0x00FFFFFF or -0x40000000
+                0.6 -> themeColor and 0x00FFFFFF or -0x50000000
+                0.5 -> themeColor and 0x00FFFFFF or -0x60000000
+                0.4 -> themeColor and 0x00FFFFFF or -0x70000000
+                0.3 -> themeColor and 0x00FFFFFF or -0x80000000
+                0.2 -> themeColor and 0x00FFFFFF or 0x70000000
+                0.1 -> themeColor and 0x00FFFFFF or 0x60000000
+                else -> Color.TRANSPARENT
+            }
+            return color
+        } // if array is empty or not
     } // getThemeColor
 
     /**
@@ -62,40 +52,34 @@ object ThemeChooserUtils {
      *
      * Retrieves color value of Primary Theme Color Dark
      *
+     * @param opacities an optional [Float] used to derive opaqueness for semi-transparent coloring
+     *
      * @return [Int] that is the color value for Primary Theme Color Dark
      */
-    fun getThemeDarkColor(): Int {
-        val color = PrefUtils.getThemeDarkColorInt()
-        // Log.e("getThemeDarkColor", "$color")
-        return color
-    } // getThemeDarkColor
+    fun getThemeDarkColor(vararg opacities: Float): Int {
+        val themeColor = PrefUtils.getThemeDarkColorInt()
 
-    /**
-     * getThemeDarkColor(opacity: [Float]): [Int]
-     *
-     * Retrieves color value of Primary Theme Color Dark with Opacity
-     *
-     * @param opacity a [Float] that is used to derive an opaque version of a solid color\
-     *
-     * @return [Int] that is the color value for Primary Theme Color Dark with desired opacity
-     */
-    fun getThemeDarkColor(opacity: Float): Int {
-        val themeDarkColor = PrefUtils.getThemeDarkColorInt()
-        val color: Int = when (opacity.toDouble()) {
-            1.0 -> themeDarkColor
-            0.9 -> themeDarkColor and 0x00FFFFFF or -0x20000000
-            0.8 -> themeDarkColor and 0x00FFFFFF or -0x30000000
-            0.7 -> themeDarkColor and 0x00FFFFFF or -0x40000000
-            0.6 -> themeDarkColor and 0x00FFFFFF or -0x50000000
-            0.5 -> themeDarkColor and 0x00FFFFFF or -0x60000000
-            0.4 -> themeDarkColor and 0x00FFFFFF or -0x70000000
-            0.3 -> themeDarkColor and 0x00FFFFFF or -0x80000000
-            0.2 -> themeDarkColor and 0x00FFFFFF or 0x70000000
-            0.1 -> themeDarkColor and 0x00FFFFFF or 0x60000000
-            else -> Color.TRANSPARENT
+        val arraySize = opacities.size
+
+        if (arraySize == 0) {
+            return themeColor
+        } else {
+            val opacity = opacities[0]
+            val color: Int = when (opacity.toDouble()) {
+                1.0 -> themeColor
+                0.9 -> themeColor and 0x00FFFFFF or -0x20000000
+                0.8 -> themeColor and 0x00FFFFFF or -0x30000000
+                0.7 -> themeColor and 0x00FFFFFF or -0x40000000
+                0.6 -> themeColor and 0x00FFFFFF or -0x50000000
+                0.5 -> themeColor and 0x00FFFFFF or -0x60000000
+                0.4 -> themeColor and 0x00FFFFFF or -0x70000000
+                0.3 -> themeColor and 0x00FFFFFF or -0x80000000
+                0.2 -> themeColor and 0x00FFFFFF or 0x70000000
+                0.1 -> themeColor and 0x00FFFFFF or 0x60000000
+                else -> Color.TRANSPARENT
+            }
+            return color
         }
-        // Log.e("getDarkColorWO", "$color")
-        return color
     } // getThemeDarkColor
 
     /**
@@ -103,40 +87,34 @@ object ThemeChooserUtils {
      *
      * Retrieves color value of Accent Theme Color
      *
+     * @param opacities an optional [Float] used to derive opaqueness for semi-transparent coloring
+     *
      * @return [Int] that is the color value for Accent Theme Color
      */
-    fun getThemeAccentColor(): Int {
-        val color = PrefUtils.getThemeAccentColorInt()
-        // Log.e("getThemeAccentColor", "$color")
-        return color
-    } // getThemeAccentColor
-
-    /**
-     * getThemeAccentColor(opacity: [Float]): [Int]
-     *
-     * Retrieves color value of Accent Theme Color with Opacity
-     *
-     * @param opacity a [Float] that is used to derive an opaque version of a solid color
-     *
-     * @return [Int] that is the color value for Accent Theme Color with desired opacity
-     */
-    fun getThemeAccentColor(opacity: Float): Int {
+    fun getThemeAccentColor(vararg opacities: Float): Int {
         val themeAccentColor = PrefUtils.getThemeAccentColorInt()
-        val color: Int = when (opacity.toDouble()) {
-            1.0 -> themeAccentColor
-            0.9 -> themeAccentColor and 0x00FFFFFF or -0x20000000
-            0.8 -> themeAccentColor and 0x00FFFFFF or -0x30000000
-            0.7 -> themeAccentColor and 0x00FFFFFF or -0x40000000
-            0.6 -> themeAccentColor and 0x00FFFFFF or -0x50000000
-            0.5 -> themeAccentColor and 0x00FFFFFF or -0x60000000
-            0.4 -> themeAccentColor and 0x00FFFFFF or -0x70000000
-            0.3 -> themeAccentColor and 0x00FFFFFF or -0x80000000
-            0.2 -> themeAccentColor and 0x00FFFFFF or 0x70000000
-            0.1 -> themeAccentColor and 0x00FFFFFF or 0x60000000
-            else -> Color.TRANSPARENT
+
+        val arraySize = opacities.size
+
+        if (arraySize == 0) {
+            return themeAccentColor
+        } else {
+            val opacity = opacities[0]
+            val color: Int = when (opacity.toDouble()) {
+                1.0 -> themeAccentColor
+                0.9 -> themeAccentColor and 0x00FFFFFF or -0x20000000
+                0.8 -> themeAccentColor and 0x00FFFFFF or -0x30000000
+                0.7 -> themeAccentColor and 0x00FFFFFF or -0x40000000
+                0.6 -> themeAccentColor and 0x00FFFFFF or -0x50000000
+                0.5 -> themeAccentColor and 0x00FFFFFF or -0x60000000
+                0.4 -> themeAccentColor and 0x00FFFFFF or -0x70000000
+                0.3 -> themeAccentColor and 0x00FFFFFF or -0x80000000
+                0.2 -> themeAccentColor and 0x00FFFFFF or 0x70000000
+                0.1 -> themeAccentColor and 0x00FFFFFF or 0x60000000
+                else -> Color.TRANSPARENT
+            }
+            return color
         }
-        // Log.e("getAccentColorWO", "$color")
-        return color
     } // getThemeAccentColor
 
     /**
@@ -147,9 +125,7 @@ object ThemeChooserUtils {
      * @return [Int] that is the color value for Primary BG Color
      */
     fun getPrimaryBgColor(): Int {
-        val color = PrefUtils.getThemePrimaryBgColorInt()
-        // Log.e("getPrimaryBgColor", "$color")
-        return color
+        return PrefUtils.getThemePrimaryBgColorInt()
     } // getPrimaryBgColor
 
     /**
@@ -160,10 +136,30 @@ object ThemeChooserUtils {
      * @return [Int] that is the color value for Secondary BG Color
      */
     fun getSecondaryBgColor(): Int {
-        val color = PrefUtils.getThemeSecondaryBgColorInt()
-        // Log.e("getSecondaryBgColor", "$color")
-        return color
+        return PrefUtils.getThemeSecondaryBgColorInt()
     } // getSecondaryBgColor
+
+    /**
+     * getPrimaryBgInverseColor(): [Int]
+     *
+     * Retrieves color value of Primary BG Inverse Color
+     *
+     * @return [Int] that is the color value for Primary BG Inverse Color
+     */
+    fun getPrimaryBgInverseColor(): Int {
+        return PrefUtils.getThemePrimaryBgInverseColorInt()
+    } // getPrimaryBgInverseColor
+
+    /**
+     * getSecondaryBgInverseColor(): [Int]
+     *
+     * Retrieves color value of Secondary BG Inverse Color
+     *
+     * @return [Int] that is the color value for Secondary BG Inverse Color
+     */
+    fun getSecondaryBgInverseColor(): Int {
+        return PrefUtils.getThemeSecondaryBgInverseColorInt()
+    } // getSecondaryBgInverseColor
 
     /**
      * getPrimaryTextColor(): [Int]
@@ -173,9 +169,7 @@ object ThemeChooserUtils {
      * @return [Int] that is the color value for Primary Text Color
      */
     fun getPrimaryTextColor(): Int {
-        val color = PrefUtils.getThemePrimaryTextColorInt()
-        // Log.e("getPrimaryTextColor", "$color")
-        return color
+        return PrefUtils.getThemePrimaryTextColorInt()
     } // getPrimaryTextColor
 
     /**
@@ -186,9 +180,29 @@ object ThemeChooserUtils {
      * @return [Int] that is the color value for Secondary Text Color
      */
     fun getSecondaryTextColor(): Int {
-        val color = PrefUtils.getThemeSecondaryTextColorInt()
-        // Log.e("getSecondaryTextColor", "$color")
-        return color
+        return PrefUtils.getThemeSecondaryTextColorInt()
+    } // getSecondaryTextColor
+
+    /**
+     * getPrimaryInverseTextColor(): [Int]
+     *
+     * Retrieves color value of Primary Inverse Text Color
+     *
+     * @return [Int] that is the color value for Primary Inverse Text Color
+     */
+    fun getPrimaryInverseTextColor(): Int {
+        return PrefUtils.getThemePrimaryTextInverseColorInt()
+    } // getPrimaryInverseTextColor
+
+    /**
+     * getSecondaryInverseTextColor(): [Int]
+     *
+     * Retrieves color value of Secondary Inverse Text Color
+     *
+     * @return [Int] that is the color value for Secondary Inverse Text Color
+     */
+    fun getSecondaryInverseTextColor(): Int {
+        return PrefUtils.getThemeSecondaryTextInverseColorInt()
     } // getSecondaryTextColor
 
     /**
@@ -199,7 +213,6 @@ object ThemeChooserUtils {
      * @return [Boolean] that is true for light, and false or dark
      */
     fun isLightTheme(): Boolean {
-        // Log.e("isLightTheme", getThemeHue().toString())
-        return getThemeHue()
+        return PrefUtils.getThemeHue()
     }
 } // Class
