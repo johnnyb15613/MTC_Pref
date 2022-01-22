@@ -73,7 +73,7 @@
 		android:paddingTop="4dp"
 		android:paddingRight="10dp"
 		android:paddingBottom="10dp"
-		android:layout_above="@+id/tcd_switch"
+		android:layout_above="@+id/toggleButton"
 		android:layout_gravity="center"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content">
@@ -85,6 +85,14 @@
 			android:layout_height="wrap_content"/>
 
 	</HorizontalScrollView>
+
+	<ToggleButton
+		android:id="@+id/toggleButton"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_above="@+id/tcd_switch"
+		android:textOn="Light Theme"
+		android:textOff="Dark Theme"/>
 
 	<androidx.appcompat.widget.SwitchCompat
 		android:layout_height="wrap_content"

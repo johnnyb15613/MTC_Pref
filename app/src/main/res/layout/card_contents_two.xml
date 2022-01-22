@@ -51,14 +51,13 @@
             android:id="@+id/toggleButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="?attr/colorPrimary"
             android:text="ToggleButton" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="?attr/colorPrimary"
+            card_view:backgroundTint="?attr/colorAccent"
             android:clickable="true"
             card_view:srcCompat="@android:drawable/ic_menu_manage" />
 

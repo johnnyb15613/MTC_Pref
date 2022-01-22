@@ -1,12 +1,14 @@
 package com.jb15613.themechooser.utility.color
 
-import android.content.Context
 import android.content.res.Resources
 import androidx.core.content.res.ResourcesCompat
 import com.jb15613.themechooser.mtcpref.R
 import com.jb15613.themechooser.startup.AccentColorInitializer
 import com.jb15613.themechooser.utility.*
 
+/**
+## Utilities for Retrieving *Accent* Colors
+ */
 object AccentColor {
 
     private var mResources: Resources
@@ -19,9 +21,7 @@ object AccentColor {
     }
 
     /**
-     * getAccentColor(themeName: [String]) : [Int]
-     *
-     * This method gets light version of theme
+     ## This will retrieve the specified Accent Color
      *
      * @param themeName a [String] containing the Theme Name
      *

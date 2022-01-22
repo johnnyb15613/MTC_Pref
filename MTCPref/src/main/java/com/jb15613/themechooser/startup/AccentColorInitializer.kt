@@ -5,6 +5,9 @@ import android.content.res.Resources
 import androidx.startup.Initializer
 import com.jb15613.themechooser.utility.color.AccentColor
 
+/**
+ ## Startup Initializer for the [AccentColor] Class
+ */
 class AccentColorInitializer : Initializer<AccentColor> {
 
     override fun create(context: Context): AccentColor {

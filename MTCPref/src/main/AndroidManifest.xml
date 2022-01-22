@@ -11,9 +11,6 @@
             tools:node="merge">
 
             <!-- Automatically Initialize Initializer1A.Dependency at app startup -->
-            <meta-data
-                android:name="com.jb15613.themechooser.startup.ThemeChooserInitializer"
-                android:value="androidx.startup" />
 
             <meta-data
                 android:name="com.jb15613.themechooser.startup.PrefUtilsInitializer"

@@ -29,6 +29,9 @@ import com.jb15613.themechooser.utility.color.AccentColor
 import java.lang.ClassCastException
 import java.lang.NullPointerException
 
+/**
+ * ## Custom [Preference] Implementation
+ */
 class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener, OnThemeChangedListener {
 
     private var mContext: Context? = null
@@ -72,23 +75,14 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
     }
 
     override fun onThemeChanged(theme: String?, hue: Boolean, isSwitch: Boolean) {
-        // 1st
-        // all switching of prefs is done
-        // this is asthetic only
-        // if isSwitch is true, only change the summary
-        // if it is false, themes or accents have changed
-
         try {
             onPreferenceChangeListener.onPreferenceChange(this, isSwitch)
         } catch (e: NullPointerException) {
             e.printStackTrace()
         }
-
-    }
+    } // onThemeChanged
 
     private var pcListener: OnPreferenceChangeListener = OnPreferenceChangeListener { preference, newValue ->
-        // 2nd
-
         Log.e("onPreferenceChange", "$preference : newValue : $newValue")
 
         val themeName = PrefUtils.getThemeName()
@@ -103,12 +97,12 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
 
         preference.summary = themeName
         true
-    }
+    } // OnPreferenceChangeListener
 
     override fun onSaveInstanceState(): Parcelable {
         Log.e("MTCPref", "onSaveInstanceState() called")
         return super.onSaveInstanceState()
-    }
+    } // onSaveInstanceState
 
     override fun onRestoreInstanceState(state: Parcelable?) {
         super.onRestoreInstanceState(state)
@@ -120,13 +114,16 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
         }
         onPreferenceClickListener = this
         onPreferenceChangeListener = pcListener
-    }
+    } // onRestoreInstanceState
 
     override fun onPreferenceClick(preference: Preference?): Boolean {
         showDialog()
         return false
-    }
+    } // onPreferenceClick
 
+    /**
+     * ## Shows the Dialog
+     */
     private fun showDialog() {
         val fm: FragmentManager? = getFragMan()
         if (fm != null) {
@@ -134,8 +131,13 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
             mDialog.setOnThemeChangedListener(this)
             mDialog.show(fm, "TCD")
         }
-    }
+    } // showDialog
 
+    /**
+     * ## Retrieves the [FragmentManager]
+     *
+     * @return [FragmentManager]
+     */
     private fun getFragMan(): FragmentManager? {
         return try {
             val a: FragmentActivity = mContext as FragmentActivity
@@ -144,15 +146,27 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
             e.printStackTrace()
             null
         }
-    }
+    }// getFragMan
 
+    /**
+     * ## Used to clear and reload the new Theme Icon
+     *
+     * @param theme a [String] that is the new Theme Name
+     */
     private fun swapThemeSwatch(theme: String?) {
         if (mSwatchContainer!!.childCount > 0) {
             mSwatchContainer!!.removeAllViews()
         }
         mSwatchContainer!!.addView(getCellItem(theme))
-    }
+    } // swapThemeSwatch
 
+    /**
+     * ## Creates a new MTC Pref Icon representing the 3 Main Theme Colors
+     *
+     * @param themeName a [String] that is the Theme Name
+     *
+     * @return [LinearLayout] that holds the icon view
+     */
     private fun getCellItem(themeName: String?): LinearLayout {
 
         val tName = themeName.toString()
@@ -216,7 +230,15 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
         return ll
     } // getCellItem
 
+    /**
+     * ## Converts Pixels to DensityPixels
+     *
+     * @param p an [Int] in pixels
+     *
+     * @return [Int] the density pixel value
+     */
     private fun pToDp(p: Int): Int {
         return (p * getDensityScale() + 0.5f).toInt()
-    }
+    } // pToDp
+
 } // Class

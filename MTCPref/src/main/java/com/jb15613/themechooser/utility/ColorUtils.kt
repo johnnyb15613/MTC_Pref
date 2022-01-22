@@ -5,6 +5,9 @@ import androidx.core.content.res.ResourcesCompat
 import com.jb15613.themechooser.mtcpref.R
 import com.jb15613.themechooser.startup.ColorUtilsInitializer
 
+/**
+## Utilities for Retrieving Color Sets
+ */
 object ColorUtils {
 
     private var mResources: Resources
@@ -17,17 +20,16 @@ object ColorUtils {
     }
 
     /**
-     * getColorSet(themeName: [String], isTrue: [Boolean]): [IntArray]
-     *
-     * Creates a set of colors that represent Primary, Dark, and Accent colors for a theme
-     *
+     ## getColorSet(themeName: [String], isTrue: [Boolean]): [IntArray]
+
+     ### Creates a set of colors that represent Primary, Dark, and Accent colors for a theme
+
      * @param themeName a [String] that contains the Theme Name (eg: Purple)
-     * @param isTrue a [Boolean] telling if its a custom accent color
-     *
+     * @param isTrue a [Boolean] telling if its a custom accent color (true is custom : false is matching)
+
      * @return [IntArray] that contains Primary, Dark, and Accent theme colors
      */
     fun getColorSet(themeName: String, isTrue: Boolean): IntArray {
-        // Light Green - Dark
 
         val colors = IntArray(3)
         var isCustom = false
@@ -38,14 +40,14 @@ object ColorUtils {
         if (themeName.contains(HUE_SPLITTER)) {
             // SHOULD ALWAYS BE TRUE
             val hueSplit: List<String> = themeName.split(HUE_SPLITTER)
-            val hs1 = hueSplit[0] // Light Green
+            val hs1 = hueSplit[0]
             if (hs1.contains(THEME_SPLITTER)) {
                 isCustom = true
                 val hsSplit: List<String> = hs1.split(THEME_SPLITTER)
                 tn = hsSplit[0]
                 ta = hsSplit[1]
             } else {
-                tn = hs1 // Light Green
+                tn = hs1
             }
 
         } else {
@@ -249,13 +251,18 @@ object ColorUtils {
     } // getColorSet()
 
     /**
-     * getTrueAccentColorSet(themeName: [String]) : [IntArray]
-     *
-     * This function will return a list of all the true accent colors for each primary theme color
-     *
+     ## getTrueAccentColorSet(themeName: [String]) : [IntArray]
+
+     ### This function will return a list of all the true accent colors for each primary theme color
+
      * @param themeName a [String] containing Theme Name (eg: Deep Orange)
-     *
+
      * @return [IntArray] with all available hues of a theme color
+     - Primary
+     - A1
+     - A2
+     - A4
+     - A7
      */
     fun getTrueAccentColorSet(themeName: String): IntArray {
         val colors = IntArray(5)
@@ -378,12 +385,12 @@ object ColorUtils {
     } // getTrueAccentColorSet()
 
     /**
-     * getCustomAccentColor()
-     *
-     * Retrieves an Accent Color that does not match the Primary Theme Color
-     *
+     ## getCustomAccentColor(themeName: [String]): [Int]
+
+     ### Retrieves an Accent Color that does not match the Primary Theme Color
+
      * @param  themeName a String that contains the theme name
-     *
+
      * @return [Int] that contains the Accent theme color
      */
     private fun getCustomAccentColor(themeName: String): Int {
@@ -413,19 +420,5 @@ object ColorUtils {
 
         return color
     } // getCustomAccentColor
-
-    /**
-     * getColorAsHtmlString([Int] color)
-     *
-     * Retrieves a color in the form of an HTML String
-     *
-     * @param color An Int that represents the color
-     *
-     * @return [String] that contains the formatted color for use in HTML
-     */
-    fun getColorAsHtmlString(color: Int): String {
-        val s = Integer.toHexString(color)
-        return "#$s"
-    } // getColorAsHtmlString
 
 } // Class

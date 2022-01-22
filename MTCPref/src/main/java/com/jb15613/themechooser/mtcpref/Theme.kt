@@ -3,16 +3,18 @@ package com.jb15613.themechooser.mtcpref
 import com.jb15613.themechooser.utility.MtcPrefException
 
 /**
- * class Theme(builder: ThemeBuilder)
- *
- * This Class will let you use a Builder to construct a theme
- *
+ ## This Class will let you use a Builder to construct a theme
+
+ ### Using the Builder ensures that your Theme String is valid
+
+ * ```
  * setTheme(new Theme.ThemeBuilder()
  *                  .themeColor(Themes.ThemeColor.getRandomThemeColor())
  *                  .accentColor(Themes.AccentColor.getRandomAccentColor())
  *                  .isLightTheme(Themes.getRandomThemeHue())
  *                  .build()
  *                  .getTheme())
+ * ```
  */
 class Theme(builder: ThemeBuilder) {
 

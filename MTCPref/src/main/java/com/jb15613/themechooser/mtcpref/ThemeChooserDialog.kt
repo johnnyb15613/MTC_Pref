@@ -19,9 +19,11 @@ import androidx.cardview.widget.CardView
 import androidx.fragment.app.DialogFragment
 import com.jb15613.themechooser.utility.*
 import com.jb15613.themechooser.utility.PrefUtils.getThemeHue
-import com.jb15613.themechooser.utility.PrefUtils.setThemeHue
 import com.jb15613.themechooser.utility.color.AccentColor
 
+/**
+ * ## Custom [DialogFragment] Implementation
+ */
 class ThemeChooserDialog : DialogFragment() {
 
     // Context
@@ -82,7 +84,7 @@ class ThemeChooserDialog : DialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         return inflater.inflate(R.layout.themechooser_dialog, container)
-    }
+    } // onCreateView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -124,6 +126,9 @@ class ThemeChooserDialog : DialogFragment() {
 
     } // onViewCreated
 
+    /**
+     * ## Loads the Table with Theme Swatches
+     */
     private fun initTable() {
 
         val swatchArray: ArrayList<CardView> = getSwatchArray()
@@ -244,13 +249,14 @@ class ThemeChooserDialog : DialogFragment() {
 
     } // initTable
 
-    // Switch Listener
+    /**
+     * ## Listener on the [SwitchCompat] controlling Theme *Hue*
+     */
     private var mSwitchListener = CompoundButton.OnCheckedChangeListener { _, isChecked ->
         // if theme is light or dark
         val oldTheme = PrefUtils.getThemeName()
 
         var old = ""
-        val newTheme: String
 
         if (oldTheme.contains(HUE_SPLITTER)) {
             // SHOULD ALWAYS BE TRUE
@@ -258,7 +264,7 @@ class ThemeChooserDialog : DialogFragment() {
             old = oldSplit[0]
         }
 
-        newTheme = if (isChecked) {
+        val newTheme: String = if (isChecked) {
             // Light Theme
             "$old - Light"
         } else {
@@ -271,20 +277,11 @@ class ThemeChooserDialog : DialogFragment() {
 
         mListener?.onThemeChanged(newTheme, isChecked, true)
     } // onCheckChanged
-    // mSwitchListener
 
-    // SwatchListener
+    /**
+     * ## Listener on the Theme Swatch
+     */
     private var swatchClickListener = View.OnClickListener { v ->
-
-        /*
-            On a swatch click, we want to change the theme color to chosen color
-            It will in turn use the matching accent color
-            We need to keep the old Hue
-            Add a checkmark to theme item
-            Add a checkmark to accent item
-            Scroll the accent panel to new accent color
-            Tell the preference that a new theme was selected
-         */
 
         // this tag holds the new Theme Color
         val themeName = v.tag.toString()
@@ -308,17 +305,7 @@ class ThemeChooserDialog : DialogFragment() {
             oldHue = "Dark"
         }
 
-        /*
-        val accentLabel: String =
-            if (themeName == BROWN || themeName == GREY || themeName == BLUEGREY) {
-                " 3"
-            } else {
-                " A1"
-            }
-         */
-
-        // set new value using new theme name, the splitter, and the old hue
-        // its possible to let this slide to the preference listener
+        // Set Theme Name
         PrefUtils.setThemeName("$themeName$HUE_SPLITTER$oldHue")
 
         // put a checkmark on theme item
@@ -333,24 +320,20 @@ class ThemeChooserDialog : DialogFragment() {
         // report preference change
         mListener?.onThemeChanged("$themeName$HUE_SPLITTER$oldHue", getThemeHue(), false)
 
-        } // onClick
-    // swatchClickListener
+        } // swatchClickListener
 
-    // AccentListener
+    /**
+     * ## Listener on the Accent Swatchj controlling Theme *Accent*
+     */
     private var accentClickListener = View.OnClickListener { v ->
-
-        /*
-            Keep base theme color and hue
-         */
 
         val accentName = v.tag.toString()
         Log.e("accentClick", accentName)
 
         val oldHue: String
         var oldTheme = ""
-        val newTheme: String
 
-        var themeName = PrefUtils.getThemeName()
+        val themeName = PrefUtils.getThemeName()
 
         if (themeName.contains(HUE_SPLITTER)) {
             // SHOULD ALWAYS BE TRUE
@@ -368,14 +351,18 @@ class ThemeChooserDialog : DialogFragment() {
             oldHue = "Dark"
         }
 
-        newTheme = "$oldTheme$THEME_SPLITTER$accentName$HUE_SPLITTER$oldHue"
+        val newTheme = "$oldTheme$THEME_SPLITTER$accentName$HUE_SPLITTER$oldHue"
         PrefUtils.setThemeName(newTheme)
         recheckAccentColor(mAccentContainer!!)
         mListener?.onThemeChanged(newTheme, getThemeHue(), false)
-    } // onClick
-    // accentClickListener
+    } // accentClickListener
 
-    // Processes Swatch Items
+
+    /**
+     * ## Loads an [ArrayList] with [CardView]s containing Theme Swatches
+     *
+     * @return [ArrayList] with Theme Swatches
+     */
     private fun getSwatchArray(): ArrayList<CardView> {
         val cells: ArrayList<CardView> = ArrayList()
         val themesArray = resources.getStringArray(R.array.theme_color_names)
@@ -385,7 +372,11 @@ class ThemeChooserDialog : DialogFragment() {
         return cells
     } // getSwatchArray
 
-    // Processes Accent Items
+    /**
+     * ## Loads an [ArrayList] with [CardView]s containing Accent Swatches
+     *
+     * @return [ArrayList] with Accent Swatches
+     */
     private fun getAccentsArray(): ArrayList<CardView> {
         val cells: ArrayList<CardView> = ArrayList()
         val themesArray = resources.getStringArray(R.array.accent_color_names)
@@ -395,15 +386,17 @@ class ThemeChooserDialog : DialogFragment() {
         return cells
     } // getAccentsArray
 
-    // Get Orientation as Boolean
+    /**
+     * ## Gets Device Orientation
+     *
+     * @return [Boolean] (true = Portrait | false = Landscape)
+     */
     private fun getIsPortrait(): Boolean {
         return resources.configuration.orientation == 1
     } // getIsPortrait
 
     /**
-     * scrollVerticalThemePanelTo(themeName: [String], portraitParent: [ScrollView], portraitContainer: [TableLayout])
-     *
-     * Scrolls the Vertical Theme Table to desired position
+     ## Scrolls the Vertical Theme Table to desired position
      *
      * @param  themeName a [String] that represents which item to scroll to
      * @param  portraitParent a [ScrollView] that will get its scroll position set
@@ -444,9 +437,7 @@ class ThemeChooserDialog : DialogFragment() {
     } // scrollVerticalThemePanelTo()
 
     /**
-     * scrollHorizontalThemePanelTo(themeName: [String], landscapeParent: [HorizontalScrollView], landscapeContainer: [LinearLayout])
-     *
-     * Scrolls the Vertical Theme Table to desired position
+     ## Scrolls the Vertical Theme Table to desired position
      *
      * @param  themeName a [String] that represents which item to scroll to
      * @param  landscapeParent a [HorizontalScrollView] that will get its scroll position set
@@ -470,9 +461,7 @@ class ThemeChooserDialog : DialogFragment() {
     } // scrollHorizontalThemePanelTo
 
     /**
-     * recheckThemeColor(context: [Context], isPortrait: [Boolean], portraitContainer: [TableLayout], landscapeContainer: [LinearLayout])
-     *
-     * Sets a Checkmark on appropriate Theme Item
+     ## Sets a Checkmark on appropriate Theme Item
      *
      * @param  isPortrait a [Boolean] that is true if Portrait, false if Landscape
      * @param  portraitContainer a [TableLayout] that holds all the table rows
@@ -555,9 +544,7 @@ class ThemeChooserDialog : DialogFragment() {
     } // recheckThemeColor()
 
     /**
-     * recheckAccentColor(accentContainer: [LinearLayout])
-     *
-     * Sets a Checkmark on appropriate Accent Item
+     ## Sets a Checkmark on appropriate Accent Item
      *
      * @param  accentContainer a [LinearLayout] that holds all the accent items
      */
@@ -595,9 +582,7 @@ class ThemeChooserDialog : DialogFragment() {
     } // recheckAccentColor()
 
     /**
-     * getSwatchItem(context: [Context], themeName: [String], isPortrait: [Boolean]) : [CardView]
-     *
-     * Creates a [CardView] containing a Swatch Item
+     ## Creates a [CardView] containing a Swatch Item
      *
      * @param context a [Context] to retrieve [LayoutInflater]
      * @param  themeName a [String] containing the Theme Name
@@ -725,9 +710,7 @@ class ThemeChooserDialog : DialogFragment() {
     } // getSwatchItem()
 
     /**
-     * getAccentItem(context: [Context], themeName: [String]): [CardView]
-     *
-     * Creates a [CardView] containing an Accent Item
+     ## Creates a [CardView] containing an Accent Item
      *
      * @param context a [Context] to retrieve a [LayoutInflater]
      * @param  themeName a [String] that contains the Theme Name
@@ -831,9 +814,7 @@ class ThemeChooserDialog : DialogFragment() {
     } // getAccentItem
 
     /**
-     * private loadDrawable(context: [Context], title: [String], imageView: [ImageView], id: [Int], color: [Int])
-     *
-     * Loads drawables asynchronously
+     ## Loads drawables asynchronously
      *
      * @param context a [Context] to retrieve Resources
      * @param  title a [String] that is used to identify a drawable

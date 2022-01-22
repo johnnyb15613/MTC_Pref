@@ -3,18 +3,22 @@ package com.jb15613.themechooser.mtcpref
 import com.jb15613.themechooser.utility.*
 import java.util.*
 
+/**
+## Utilities for the [Theme.ThemeBuilder] Class
+ */
 object Themes {
 
     /**
-     * randomThemeHue: [Boolean]
-     *
-     * Gets a random ThemeHue
+     ## Gets a random ThemeHue
      *
      * @return [Boolean] (false = Dark : true = Light)
      */
     val randomThemeHue: Boolean
         get() = Math.random() < 0.5
 
+    /**
+    ## Used to set the *ThemeColor* with the [Theme.ThemeBuilder]
+     */
     object ThemeColor {
         // Red
         const val Red: String = RED
@@ -74,9 +78,7 @@ object Themes {
         const val BlueGrey: String = BLUEGREY
 
         /**
-         * randomThemeColor: [String]
-         *
-         * Gets a random ThemeColor
+         ## Gets a random ThemeColor
          *
          * @return [String] defining random Theme Color
          */
@@ -92,6 +94,9 @@ object Themes {
 
     } // ThemeColor
 
+    /**
+    ## Used to set the *AccentColor* with the [Theme.ThemeBuilder]
+     */
     object AccentColor {
         // Red
         const val Red_A1: String = RED_A1
@@ -199,9 +204,7 @@ object Themes {
         private const val BlueGrey_A3: String = BLUEGREY_3
 
         /**
-         * randomAccentColor: [String]
-         *
-         * Gets a random Accent Color
+         ## Gets a random Accent Color
          *
          * @return [String] defining random Accent Color
          */

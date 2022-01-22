@@ -2,16 +2,17 @@ package com.jb15613.themechooser.utility
 
 import com.jb15613.themechooser.utility.color.*
 
+/**
+## Utilities for Retrieving Light Themes
+ */
 internal object LightThemeUtils {
 
     /**
-     * getCustomColoredLightTheme(themeName: [String]): [Int]
-     *
-     * Retrieves Resource ID of a theme
+     ## Retrieves Resource ID of a theme
      *
      * @param  themeName a [String] that is the name of the Theme
      *
-     * @return  theme an [Int] that is the Resource ID of the theme
+     * @return  [Int] that is the Resource ID of the theme
      */
     fun getCustomColoredLightTheme(themeName: String): Int {
         var theme = 0

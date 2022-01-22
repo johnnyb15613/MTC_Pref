@@ -2,16 +2,17 @@ package com.jb15613.themechooser.utility
 
 import com.jb15613.themechooser.mtcpref.R
 
+/**
+ ## Utilities for Retrieving Theme Colors
+ */
 internal object ThemeUtils {
 
     /**
-     * getColoredThemeDark(themeName: [String?]): [Int]
+     ### Retrieves Resource ID of a Theme
      *
-     * Retrieves Resource id of a theme
+     * @param themeName a [String] that is the name of the Theme
      *
-     * @param themeName a [String] that is the name of the theme
-     *
-     * @return [Int] that is the Resource ID of the theme
+     * @return [Int] that is the Resource ID of the Theme
      */
     fun getColoredThemeDark(themeName: String?): Int {
         var theme = 0
@@ -40,13 +41,11 @@ internal object ThemeUtils {
     } // getColoredThemeDark
 
     /**
-     * getColoredThemeLight(themeName: [String?]): [Int]
+     ## Retrieves Resource Id of a Light Theme
      *
-     * Retrieves Resource id of a theme
+     * @param themeName a [String] that is the name of the Theme
      *
-     * @param themeName a [String] that is the name of the theme
-     *
-     * @return [Int] that is the Resource ID of the theme
+     * @return [Int] that is the Resource ID of the Theme
      */
     fun getColoredThemeLight(themeName: String?): Int {
         var theme = 0

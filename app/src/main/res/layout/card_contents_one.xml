@@ -23,8 +23,8 @@
 
         <TextView
             android:id="@+id/themeColorTV"
-            android:text="Theme Color"
             android:layout_margin="4dp"
+            android:textAppearance="?android:textAppearanceLarge"
             android:layout_gravity="center_horizontal"
             android:textColor="?attr/colorPrimary"
             android:layout_width="wrap_content"
@@ -38,16 +38,16 @@
 
         <TextView
             android:id="@+id/themeDarkColorTV"
-            android:text="Theme Dark Color"
             android:layout_margin="4dp"
+            android:textAppearance="?android:textAppearanceMedium"
             android:textColor="?attr/colorPrimaryDark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/themeAccentColorTV"
-            android:text="Theme Accent Color"
             android:layout_margin="4dp"
+            android:textAppearance="?android:textAppearanceMedium"
             android:textColor="?attr/colorAccent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -60,7 +60,6 @@
 
         <TextView
             android:id="@+id/themePrimaryTextColorTV"
-            android:text="Primary Text Color"
             android:layout_margin="4dp"
             android:textColor="?attr/textColorPrimary"
             android:layout_width="wrap_content"
@@ -68,11 +67,35 @@
 
         <TextView
             android:id="@+id/themeSecondaryTextColorTV"
-            android:text="Secondary Text Color"
             android:layout_margin="4dp"
+            android:textAppearance="?android:textAppearanceSmall"
             android:textColor="?attr/textColorSecondary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textColor="?attr/colorPrimary"
+            android:textColorHint="?attr/colorAccent"
+            android:hint="This is a normal EditText......" />
+
+        <MultiAutoCompleteTextView
+            android:id="@+id/multiAutoCompleteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/colorPrimaryDark"
+            android:text="Multi Auto Complete TextView" />
+
+        <CheckedTextView
+            android:id="@+id/checkedTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:textColor="?attr/textColorPrimary"
+            android:text="CheckedTextView" />
 
     </LinearLayout>
 

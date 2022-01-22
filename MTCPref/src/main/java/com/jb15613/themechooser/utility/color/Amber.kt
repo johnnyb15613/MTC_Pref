@@ -88,12 +88,13 @@ import com.jb15613.themechooser.utility.GREY_3
 import com.jb15613.themechooser.utility.BLUEGREY
 import com.jb15613.themechooser.utility.BLUEGREY_3
 
+/**
+## Utilities for Retrieving *Amber* Themes
+ */
 internal class Amber {
 
     /**
-     * getThemeDark(themeName: [String]) : [Int]
-     *
-     * This method gets dark version of theme
+     ## This method gets dark version of theme
      *
      * @param themeName a [String] containing the Theme Name
      *
@@ -215,9 +216,7 @@ internal class Amber {
     } // getThemeDark()
 
     /**
-     * getThemeLight(themeName: [String]) : [Int]
-     *
-     * This method gets light version of theme
+     ## This method gets light version of theme
      *
      * @param themeName a [String] containing the Theme Name
      *

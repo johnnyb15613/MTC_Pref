@@ -10,6 +10,9 @@ import android.graphics.PorterDuff
 import com.jb15613.themechooser.mtcpref.R
 import android.graphics.drawable.BitmapDrawable
 
+/**
+## Utilities for Loading Images
+ */
 internal class ImageLoader(imageView: ImageView, r: Resources, id: Int, color: Int) : AsyncTask<String, Void, Drawable>() {
 
 

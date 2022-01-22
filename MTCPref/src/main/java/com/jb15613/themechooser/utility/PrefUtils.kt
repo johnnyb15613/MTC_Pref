@@ -6,7 +6,9 @@ import androidx.core.content.res.ResourcesCompat
 import com.jb15613.themechooser.mtcpref.R
 import com.jb15613.themechooser.startup.PrefUtilsInitializer
 
-
+/**
+## Utilities for Working With [SharedPreferences]
+ */
 object PrefUtils {
 
     private var mPrefs: SharedPreferences
@@ -20,122 +22,28 @@ object PrefUtils {
         mResources = PrefUtilsInitializer.mResources
     }
 
-    /*
     /**
-     * setThemeName(themeName: [String])
-     *
-     * Saves name of Theme Color to [SharedPreferences]
-     *
+     ## setThemeName(themeName: [String])
+
+     ### Saves all needed Theme Info into [SharedPreferences]
+     ```
+      themeName: [String]
+      accentName: [String]
+      themeColorInt: [Int]
+      themeDarkColorInt: [Int]
+      themeAccentColorInt: [Int]
+      textColorPrimaryInt: [Int]
+      textColorPrimaryInverseInt: [Int]
+      textColorSecondaryInt: [Int]
+      textColorSecondaryInverseInt: [Int]
+      bgColorPrimaryInt: [Int]
+      bgColorPrimaryInverseInt: [Int]
+      bgColorSecondaryInt: [Int]
+      bgColorSecondaryInverseInt: [Int]
+     ```
      * @param  themeName a [String] that will be saved as the theme name
      */
     fun setThemeName(themeName: String) {
-        val editor = mPrefs.edit()
-        editor.putString(PREF_THEME_NAME_KEY, themeName)
-        editor.apply()
-    } // setThemeName
-
-    /**
-     * getThemeName(themeName: [String])
-     *
-     * Gets name of Theme Color from [SharedPreferences]
-     *
-     * @return [String] that represents the Theme Name
-     */
-    fun getThemeName(): String {
-        return mPrefs.getString(PREF_THEME_NAME_KEY, LIGHTBLUE).toString()
-    } // getThemeName
-
-    /**
-     * setThemeNameHueless(themeName: [String])
-     *
-     * Saves name of Theme Color to [SharedPreferences]
-     *
-     * @param  themeName a [String] that will be saved as the theme name less hue
-     */
-    fun setThemeNameHueless(themeName: String) {
-        val editor = mPrefs.edit()
-        editor.putString(PREF_THEME_NAME_NOHUE_KEY, themeName)
-        editor.apply()
-    } // setThemeNameHueless
-
-    /**
-     * getThemeNameHueless(themeName: [String])
-     *
-     * Gets name of Theme Color from [SharedPreferences]
-     *
-     * @return [String] that represents the Theme Name less hue
-     */
-    fun getThemeNameHueless(): String {
-        return mPrefs.getString(PREF_THEME_NAME_NOHUE_KEY, LIGHTBLUE).toString()
-    } // getThemeNameHueless
-
-    /**
-     * setThemeColorString(themeName: [String])
-     *
-     * Saves name of theme color to prefs
-     *
-     * @param  themeName a [String] that will be saved as the theme name
-     */
-    fun setThemeColorString(themeName: String) {
-        val editor = mPrefs.edit()
-        editor.putString(PREF_THEME_KEY, themeName)
-        editor.apply()
-    } // setThemeColorString
-
-    /**
-     * getThemeColor(): String
-     *
-     * Retrieves name of theme color from prefs
-     *
-     * @return [String] that was saved as the theme name
-     */
-    fun getThemeColorString(): String {
-        return mPrefs.getString(PREF_THEME_KEY, LIGHTBLUE).toString()
-    } // getThemeColorString
-
-    /**
-     * setAccentColorString(accentName: [String])
-     *
-     * Saves name of accent color to prefs
-     *
-     * @param  accentName a [String] that will be saved as the accent name
-     */
-    fun setAccentColorString(accentName: String?) {
-        val editor = mPrefs.edit()
-        editor.putString(PREF_THEME_ACCENT_KEY, accentName)
-        editor.apply()
-    } // setAccentColorString
-
-    /**
-     * getAccentColorString(): String
-     *
-     * Retrieves name of accent color from prefs
-     *
-     * @return [String] that was saved as the accent name
-     */
-    fun getAccentColorString(): String? {
-        return mPrefs.getString(PREF_THEME_ACCENT_KEY, LIGHTBLUE)
-    } // getAccentColorString
-     */
-
-    /**
-     * setThemeName(themeName: [String])
-     *
-     * Saves name of Theme Color to [SharedPreferences]
-     *
-     * @param  themeName a [String] that will be saved as the theme name
-     */
-    fun setThemeName(themeName: String) {
-
-        /*
-            Set Theme Name to prefs ->
-            Set Theme Color Int to prefs ->
-            Set Accent Color Int to prefs ->
-            Set Theme Dark Color Int to prefs ->
-            Set Text Color Ints to prefs ->
-            Set BG Color Ints to prefs ->
-            Set hue to prefs?
-         */
 
         val editor = mPrefs.edit()
         editor.putString(PREF_THEME_NAME_KEY, themeName)
@@ -145,7 +53,6 @@ object PrefUtils {
 
         if (themeName.contains(HUE_SPLITTER)) {
             // Contains Hue Splitter
-            // Trying to make this go away
             val hueSplit: Array<String> = themeName.split(HUE_SPLITTER).toTypedArray()
             val hs1 = hueSplit[0]
             if (hs1.contains(THEME_SPLITTER)) {
@@ -154,15 +61,15 @@ object PrefUtils {
                 // Isolate accent name
                 val hs1split: List<String> = hs1.split(THEME_SPLITTER)
                 mAccentName = hs1split[1]
-                editor.putString(PREF_ACCENT_NAME_KEY, mAccentName)
+                setAccentName(mAccentName)
 
                 val colors: IntArray = ColorUtils.getColorSet(hs1, false)
-                editor.putInt(PREF_THEME_COLOR_INT_KEY, colors[0])
-                editor.putInt(PREF_THEME_DARK_COLOR_INT_KEY, colors[1])
-                editor.putInt(PREF_THEME_ACCENT_COLOR_INT_KEY, colors[2])
-                editor.apply()
+                setThemeColorInt(colors[0])
+                setThemeDarkColorInt(colors[1])
+                setThemeAccentColorInt(colors[2])
             } else {
                 // Matching Accent Color (A1)
+
                 // True Color Set
                 val accentLabel: String =
                     if (hs1 == BROWN || hs1 == GREY || hs1 == BLUEGREY) {
@@ -172,12 +79,11 @@ object PrefUtils {
                     }
 
                 mAccentName = "$hs1$accentLabel"
-                editor.putString(PREF_ACCENT_NAME_KEY, mAccentName)
+                setAccentName(mAccentName)
                 val colors: IntArray = ColorUtils.getColorSet(hs1, true)
-                editor.putInt(PREF_THEME_COLOR_INT_KEY, colors[0])
-                editor.putInt(PREF_THEME_DARK_COLOR_INT_KEY, colors[1])
-                editor.putInt(PREF_THEME_ACCENT_COLOR_INT_KEY, colors[2])
-                editor.apply()
+                setThemeColorInt(colors[0])
+                setThemeDarkColorInt(colors[1])
+                setThemeAccentColorInt(colors[2])
             }
         } else {
             // Does not contain Hue Splitter
@@ -185,18 +91,16 @@ object PrefUtils {
             if (themeName.contains(THEME_SPLITTER)) {
                 // Custom Accent Color
                 val colors: IntArray = ColorUtils.getColorSet(themeName, false)
-                editor.putInt(PREF_THEME_COLOR_INT_KEY, colors[0])
-                editor.putInt(PREF_THEME_DARK_COLOR_INT_KEY, colors[1])
-                editor.putInt(PREF_THEME_ACCENT_COLOR_INT_KEY, colors[2])
-                editor.apply()
+                setThemeColorInt(colors[0])
+                setThemeDarkColorInt(colors[1])
+                setThemeAccentColorInt(colors[2])
             } else {
                 // Matching Accent Color (A1)
                 // True Color Set
                 val colors: IntArray = ColorUtils.getColorSet(themeName, true)
-                editor.putInt(PREF_THEME_COLOR_INT_KEY, colors[0])
-                editor.putInt(PREF_THEME_DARK_COLOR_INT_KEY, colors[1])
-                editor.putInt(PREF_THEME_ACCENT_COLOR_INT_KEY, colors[2])
-                editor.apply()
+                setThemeColorInt(colors[0])
+                setThemeDarkColorInt(colors[1])
+                setThemeAccentColorInt(colors[2])
             }
         }
 
@@ -218,22 +122,22 @@ object PrefUtils {
     } // setThemeName
 
     /**
-     * setAccentName(): String
+     ## setAccentName(accentName: String)
      *
-     * Saves accent Name to [SharedPreferences]
+     ### Saves accent Name to [SharedPreferences]
      *
      * @param accentName a [String] that was saved as the accent name
      */
-    fun setAccentName(accentName: String) {
+    private fun setAccentName(accentName: String) {
         val editor = mPrefs.edit()
         editor.putString(PREF_ACCENT_NAME_KEY, accentName)
         editor.apply()
     } // setAccentName
 
     /**
-     * getAccentName(): String
+     ## getAccentName(): String
      *
-     * Retrieves name of accent color from prefs
+     ### Retrieves name of accent color from prefs
      *
      * @return [String] that was saved as the accent name
      */
@@ -242,66 +146,64 @@ object PrefUtils {
     } // getAccentName
 
     /**
-     * setLightThemeTextAndBgColors()
+     ## setLightThemeTextAndBgColors()
      *
-     * This function will save Text and Bg Colors for a Light Theme
+     ### This function will save Text and Bg Colors for a Light Theme
      */
     private fun setLightThemeTextAndBgColors() {
-        val editor = mPrefs.edit()
         // Text Colors
-        editor.putInt(PREF_THEME_PRIMARY_TEXT_COLOR_INT_KEY, ResourcesCompat.getColor(mResources, R.color.textColorPrimaryInverse, null))
-        editor.putInt(PREF_THEME_SECONDARY_TEXT_COLOR_INT_KEY, ResourcesCompat.getColor(mResources, R.color.textColorSecondaryInverse, null))
-        editor.putInt(PREF_THEME_PRIMARY_TEXT_COLOR_INVERSE_INT_KEY, ResourcesCompat.getColor(mResources, R.color.textColorPrimary, null))
-        editor.putInt(PREF_THEME_SECONDARY_TEXT_COLOR_INVERSE_INT_KEY, ResourcesCompat.getColor(mResources, R.color.textColorSecondary, null))
+        setThemePrimaryTextColorInt(ResourcesCompat.getColor(mResources, R.color.textColorPrimaryInverse, null))
+        setThemeSecondaryTextColorInt(ResourcesCompat.getColor(mResources, R.color.textColorSecondaryInverse, null))
+        setThemePrimaryTextInverseColorInt(ResourcesCompat.getColor(mResources, R.color.textColorPrimary, null))
+        setThemeSecondaryTextInverseColorInt(ResourcesCompat.getColor(mResources, R.color.textColorSecondary, null))
 
         // BG Colors
-        editor.putInt(PREF_THEME_PRIMARY_BG_COLOR_INT_KEY, ResourcesCompat.getColor(mResources, R.color.primaryBgColorInverse, null))
-        editor.putInt(PREF_THEME_SECONDARY_BG_COLOR_INT_KEY, ResourcesCompat.getColor(mResources, R.color.secondaryBgColorInverse, null))
-        editor.putInt(PREF_THEME_PRIMARY_BG_COLOR_INVERSE_INT_KEY, ResourcesCompat.getColor(mResources, R.color.primaryBgColor, null))
-        editor.putInt(PREF_THEME_SECONDARY_BG_COLOR_INVERSE_INT_KEY, ResourcesCompat.getColor(mResources, R.color.secondaryBgColor, null))
+        setThemePrimaryBgColorInt(ResourcesCompat.getColor(mResources, R.color.primaryBgColorInverse, null))
+        setThemeSecondaryBgColorInt(ResourcesCompat.getColor(mResources, R.color.secondaryBgColorInverse, null))
+        setThemePrimaryBgInverseColorInt(ResourcesCompat.getColor(mResources, R.color.primaryBgColor, null))
+        setThemeSecondaryBgInverseColorInt(ResourcesCompat.getColor(mResources, R.color.secondaryBgColor, null))
 
-        editor.apply()
     } // setLightThemeTextAndBgColors
 
     /**
-     * setDarkThemeTextAndBgColors()
+     ## setDarkThemeTextAndBgColors()
      *
-     * This function will save Text and Bg Colors for a Dark Theme
+     ### This function will save Text and Bg Colors for a Dark Theme
      */
     private fun setDarkThemeTextAndBgColors() {
-        val editor = mPrefs.edit()
         // Text Colors
-        editor.putInt(PREF_THEME_PRIMARY_TEXT_COLOR_INT_KEY, ResourcesCompat.getColor(mResources, R.color.textColorPrimary, null))
-        editor.putInt(PREF_THEME_SECONDARY_TEXT_COLOR_INT_KEY, ResourcesCompat.getColor(mResources, R.color.textColorSecondary, null))
-        editor.putInt(PREF_THEME_PRIMARY_TEXT_COLOR_INVERSE_INT_KEY, ResourcesCompat.getColor(mResources, R.color.textColorPrimaryInverse, null))
-        editor.putInt(PREF_THEME_SECONDARY_TEXT_COLOR_INVERSE_INT_KEY, ResourcesCompat.getColor(mResources, R.color.textColorSecondaryInverse, null))
+        setThemePrimaryTextColorInt(ResourcesCompat.getColor(mResources, R.color.textColorPrimary, null))
+        setThemeSecondaryTextColorInt(ResourcesCompat.getColor(mResources, R.color.textColorSecondary, null))
+        setThemePrimaryTextInverseColorInt(ResourcesCompat.getColor(mResources, R.color.textColorPrimaryInverse, null))
+        setThemeSecondaryTextInverseColorInt(ResourcesCompat.getColor(mResources, R.color.textColorSecondaryInverse, null))
 
         // BG Colors
-        editor.putInt(PREF_THEME_PRIMARY_BG_COLOR_INT_KEY, ResourcesCompat.getColor(mResources, R.color.primaryBgColor, null))
-        editor.putInt(PREF_THEME_SECONDARY_BG_COLOR_INT_KEY, ResourcesCompat.getColor(mResources, R.color.secondaryBgColor, null))
-        editor.putInt(PREF_THEME_PRIMARY_BG_COLOR_INVERSE_INT_KEY, ResourcesCompat.getColor(mResources, R.color.primaryBgColorInverse, null))
-        editor.putInt(PREF_THEME_SECONDARY_BG_COLOR_INVERSE_INT_KEY, ResourcesCompat.getColor(mResources, R.color.secondaryBgColorInverse, null))
+        setThemePrimaryBgColorInt(ResourcesCompat.getColor(mResources, R.color.primaryBgColor, null))
+        setThemeSecondaryBgColorInt(ResourcesCompat.getColor(mResources, R.color.secondaryBgColor, null))
+        setThemePrimaryBgInverseColorInt(ResourcesCompat.getColor(mResources, R.color.primaryBgColorInverse, null))
+        setThemeSecondaryBgInverseColorInt(ResourcesCompat.getColor(mResources, R.color.secondaryBgColorInverse, null))
 
-        editor.apply()
     } // setDarkThemeTextAndBgColors
 
     /**
-     * getThemeName(themeName: [String])
+     ## getThemeName(themeName: [String])
      *
-     * Gets name of Theme Color from [SharedPreferences]
+     ### Gets name of Theme Color from [SharedPreferences]
      *
      * @return [String] that represents the Theme Name
      */
     fun getThemeName(): String {
-        return mPrefs.getString(PREF_THEME_NAME_KEY, LIGHTBLUE).toString()
+        return mPrefs.getString(PREF_THEME_NAME_KEY, LIGHTBLUE + HUE_SPLITTER + "Dark").toString()
     } // getThemeName
 
     /**
-     * setThemeHue(themeHue: [Boolean])
+     ## setThemeHue(themeHue: [Boolean])
      *
-     * Saves hue of theme color to prefs
+     ### Saves hue of theme color to [SharedPreferences]
      *
      * @param  themeHue a [Boolean] that will be saved as the theme hue
+     - true : Light Theme
+     - false : Dark Theme
      */
     fun setThemeHue(themeHue: Boolean) {
         val editor = mPrefs.edit()
@@ -310,9 +212,9 @@ object PrefUtils {
     } // setThemeHue
 
     /**
-     * getThemeHue(): [Boolean]
+     ## getThemeHue(): [Boolean]
      *
-     * Retrieves name of theme hue from prefs
+     ### Retrieves name of theme hue from [SharedPreferences]
      *
      * @return [Boolean] that represents Theme Hue (Light = true : Dark = false)
      */
@@ -321,9 +223,9 @@ object PrefUtils {
     } // getThemeHue
 
     /**
-     * setDensityScale(scale: [Float])
+     ## setDensityScale(scale: [Float])
      *
-     * Saves the device density scale to prefs
+     ### Saves the device density scale to [SharedPreferences]
      *
      * @param  scale a [Float] that will be saved as the density scale
      */
@@ -334,9 +236,9 @@ object PrefUtils {
     } // setDensityScale
 
     /**
-     * getDensityScale(): [Float]
+     ## getDensityScale(): [Float]
      *
-     * Retrieves value of density scale from prefs
+     ### Retrieves value of density scale from [SharedPreferences]
      *
      * @return [Float] that was saved as the density scale
      */
@@ -345,9 +247,9 @@ object PrefUtils {
     } // getDensityScale
 
     /**
-     * setCellSize(cellSize: [Int])
+     ## setCellSize(cellSize: [Int])
      *
-     * Saves size of cells to prefs
+     ### Saves size of cells to [SharedPreferences]
      *
      * @param  cellSize an [Int] that will be saved as the cell size
      */
@@ -358,9 +260,9 @@ object PrefUtils {
     } // setCellSize
 
     /**
-     * getCellSize(): [Int]
+     ## getCellSize(): [Int]
      *
-     * Retrieves size of cells from prefs
+     ### Retrieves size of cells from [SharedPreferences]
      *
      * @return [Int] that was saved as the cell size
      */
@@ -369,22 +271,22 @@ object PrefUtils {
     } // getCellSize
 
     /**
-     * setThemeColorInt(themeColor: [Int])
+     ## setThemeColorInt(themeColor: [Int])
      *
-     * Saves Theme Color to prefs as [Int]
+     ### Saves Theme Color to [SharedPreferences] as [Int]
      *
      * @param  themeColor an [Int] that will be saved as the ThemeColor
      */
-    fun setThemeColorInt(themeColor: Int) {
+    private fun setThemeColorInt(themeColor: Int) {
         val editor = mPrefs.edit()
         editor.putInt(PREF_THEME_COLOR_INT_KEY, themeColor)
         editor.apply()
     } // setThemeColorInt
 
     /**
-     * getThemeColorInt(): [Int]
+     ## getThemeColorInt(): [Int]
      *
-     * Gets color as [Int] from [SharedPreferences]
+     ### Gets color as [Int] from [SharedPreferences]
      *
      * @return [Int] that represents the ThemeColor
      */
@@ -393,22 +295,22 @@ object PrefUtils {
     } // getThemeColorInt
 
     /**
-     * setThemeDarkColorInt(themeColor: [Int])
+     ## setThemeDarkColorInt(themeColor: [Int])
      *
-     * Saves Theme Dark Color to prefs as [Int]
+     ### Saves Theme Dark Color to [SharedPreferences] as [Int]
      *
      * @param  themeColor an [Int] that will be saved as the ThemeColor Dark
      */
-    fun setThemeDarkColorInt(themeColor: Int) {
+    private fun setThemeDarkColorInt(themeColor: Int) {
         val editor = mPrefs.edit()
         editor.putInt(PREF_THEME_DARK_COLOR_INT_KEY, themeColor)
         editor.apply()
     } // setThemeDarkColorInt
 
     /**
-     * getThemeDarkColorInt(): [Int]
+     ## getThemeDarkColorInt(): [Int]
      *
-     * Gets color as [Int] from [SharedPreferences]
+     ### Gets color as [Int] from [SharedPreferences]
      *
      * @return [Int] that represents the ThemeColor
      */
@@ -417,22 +319,22 @@ object PrefUtils {
     } // getThemeDarkColorInt
 
     /**
-     * setThemeAccentColorInt(themeColor: [Int])
+     ## setThemeAccentColorInt(themeColor: [Int])
      *
-     * Saves Theme Accent Color to prefs as [Int]
+     ### Saves Theme Accent Color to [SharedPreferences] as [Int]
      *
      * @param  themeColor an [Int] that will be saved as the Theme Accent Color
      */
-    fun setThemeAccentColorInt(themeColor: Int) {
+    private fun setThemeAccentColorInt(themeColor: Int) {
         val editor = mPrefs.edit()
         editor.putInt(PREF_THEME_ACCENT_COLOR_INT_KEY, themeColor)
         editor.apply()
     } // setThemeDarkColorInt
 
     /**
-     * getThemeAccentColorInt(): [Int]
+     ## getThemeAccentColorInt(): [Int]
      *
-     * Gets color as [Int] from [SharedPreferences]
+     ### Gets color as [Int] from [SharedPreferences]
      *
      * @return [Int] that represents the Theme Accent Color
      */
@@ -441,22 +343,22 @@ object PrefUtils {
     } // getThemeAccentColorInt
 
     /**
-     * setThemePrimaryBgColorInt(themeColor: [Int])
+     ## setThemePrimaryBgColorInt(themeColor: [Int])
      *
-     * Saves Theme Primary BG Color to prefs as [Int]
+     ### Saves Theme Primary BG Color to [SharedPreferences] as [Int]
      *
      * @param  themeColor an [Int] that will be saved as the Theme Primary BG Color
      */
-    fun setThemePrimaryBgColorInt(themeColor: Int) {
+    private fun setThemePrimaryBgColorInt(themeColor: Int) {
         val editor = mPrefs.edit()
         editor.putInt(PREF_THEME_PRIMARY_BG_COLOR_INT_KEY, themeColor)
         editor.apply()
     } // setThemePrimaryBgColorInt
 
     /**
-     * getThemePrimaryBgColorInt(): [Int]
+     ## getThemePrimaryBgColorInt(): [Int]
      *
-     * Gets color as [Int] from [SharedPreferences]
+     ### Gets color as [Int] from [SharedPreferences]
      *
      * @return [Int] that represents the primary Bg color
      */
@@ -465,22 +367,22 @@ object PrefUtils {
     } // getThemePrimaryBgColorInt
 
     /**
-     * setThemePrimaryBgInverseColorInt(themeColor: [Int])
+     ## setThemePrimaryBgInverseColorInt(themeColor: [Int])
      *
-     * Saves Theme Primary BG Inverse Color to [SharedPreferences] as [Int]
+     ### Saves Theme Primary BG Inverse Color to [SharedPreferences] as [Int]
      *
      * @param  themeColor an [Int] that will be saved as the Theme Primary BG Inverse Color
      */
-    fun setThemePrimaryBgInverseColorInt(themeColor: Int) {
+    private fun setThemePrimaryBgInverseColorInt(themeColor: Int) {
         val editor = mPrefs.edit()
         editor.putInt(PREF_THEME_PRIMARY_BG_COLOR_INVERSE_INT_KEY, themeColor)
         editor.apply()
     } // setThemePrimaryBgInverseColorInt
 
     /**
-     * getThemePrimaryBgInverseColorInt(): [Int]
+     ## getThemePrimaryBgInverseColorInt(): [Int]
      *
-     * Gets color as [Int] from [SharedPreferences]
+     ### Gets color as [Int] from [SharedPreferences]
      *
      * @return [Int] that represents the primary Bg Inverse color
      */
@@ -489,22 +391,22 @@ object PrefUtils {
     } // getThemePrimaryBgInverseColorInt
 
     /**
-     * setThemeSecondaryBgColorInt(themeColor: [Int])
+     ## setThemeSecondaryBgColorInt(themeColor: [Int])
      *
-     * Saves Theme Secondary BG Color to prefs as [Int]
+     ### Saves Theme Secondary BG Color to prefs as [Int]
      *
      * @param  themeColor an [Int] that will be saved as the Theme Secondary BG Color
      */
-    fun setThemeSecondaryBgColorInt(themeColor: Int) {
+    private fun setThemeSecondaryBgColorInt(themeColor: Int) {
         val editor = mPrefs.edit()
         editor.putInt(PREF_THEME_SECONDARY_BG_COLOR_INT_KEY, themeColor)
         editor.apply()
     } // setThemeSecondaryBgColorInt
 
     /**
-     * getThemeSecondaryBgColorInt(): [Int]
+     ## getThemeSecondaryBgColorInt(): [Int]
      *
-     * Gets color as [Int] from [SharedPreferences]
+     ### Gets color as [Int] from [SharedPreferences]
      *
      * @return [Int] that represents the Secondary Bg color
      */
@@ -513,22 +415,22 @@ object PrefUtils {
     } // getThemeSecondaryBgColorInt
 
     /**
-     * setThemeSecondaryBgInverseColorInt(themeColor: [Int])
+     ## setThemeSecondaryBgInverseColorInt(themeColor: [Int])
      *
-     * Saves Theme Secondary BG Inverse Color to [SharedPreferences] as [Int]
+     ### Saves Theme Secondary BG Inverse Color to [SharedPreferences] as [Int]
      *
      * @param  themeColor an [Int] that will be saved as the Theme Secondary BG Inverse Color
      */
-    fun setThemeSecondaryBgInverseColorInt(themeColor: Int) {
+    private fun setThemeSecondaryBgInverseColorInt(themeColor: Int) {
         val editor = mPrefs.edit()
         editor.putInt(PREF_THEME_SECONDARY_BG_COLOR_INVERSE_INT_KEY, themeColor)
         editor.apply()
     } // setThemeSecondaryBgInverseColorInt
 
     /**
-     * getThemeSecondaryBgInverseColorInt(): [Int]
+     ## getThemeSecondaryBgInverseColorInt(): [Int]
      *
-     * Gets color as [Int] from [SharedPreferences]
+     ### Gets color as [Int] from [SharedPreferences]
      *
      * @return [Int] that represents the Secondary Bg Inverse color
      */
@@ -537,22 +439,22 @@ object PrefUtils {
     } // getThemeSecondaryBgInverseColorInt
 
     /**
-     * setThemePrimaryTextColorInt(themeColor: [Int])
+     ## setThemePrimaryTextColorInt(themeColor: [Int])
      *
-     * Saves Theme Primary Text Color to prefs as [Int]
+     ### Saves Theme Primary Text Color to [SharedPreferences] as [Int]
      *
      * @param  themeColor an [Int] that will be saved as the Theme Primary Text Color
      */
-    fun setThemePrimaryTextColorInt(themeColor: Int) {
+    private fun setThemePrimaryTextColorInt(themeColor: Int) {
         val editor = mPrefs.edit()
         editor.putInt(PREF_THEME_PRIMARY_TEXT_COLOR_INT_KEY, themeColor)
         editor.apply()
     } // setThemePrimaryTextColorInt
 
     /**
-     * getThemePrimaryTextColorInt(): [Int]
+     ## getThemePrimaryTextColorInt(): [Int]
      *
-     * Gets color as [Int] from [SharedPreferences]
+     ### Gets color as [Int] from [SharedPreferences]
      *
      * @return [Int] that represents the Primary Text color
      */
@@ -561,22 +463,22 @@ object PrefUtils {
     } // getThemePrimaryTextColorInt
 
     /**
-     * setThemePrimaryTextInverseColorInt(themeColor: [Int])
+     ## setThemePrimaryTextInverseColorInt(themeColor: [Int])
      *
-     * Saves Theme Primary Text Color Inverse to [SharedPreferences]
+     ### Saves Theme Primary Text Color Inverse to [SharedPreferences] as [Int]
      *
      * @param  themeColor an [Int] that will be saved as the Theme Primary Text Color Inverse
      */
-    fun setThemePrimaryTextInverseColorInt(themeColor: Int) {
+    private fun setThemePrimaryTextInverseColorInt(themeColor: Int) {
         val editor = mPrefs.edit()
         editor.putInt(PREF_THEME_PRIMARY_TEXT_COLOR_INVERSE_INT_KEY, themeColor)
         editor.apply()
     } // setThemePrimaryTextInverseColorInt
 
     /**
-     * getThemePrimaryTextInverseColorInt(): [Int]
+     ## getThemePrimaryTextInverseColorInt(): [Int]
      *
-     * Gets color as [Int] from [SharedPreferences]
+     ### Gets color as [Int] from [SharedPreferences]
      *
      * @return [Int] that represents the Primary Text Inverse Color
      */
@@ -585,22 +487,22 @@ object PrefUtils {
     } // getThemePrimaryTextInverseColorInt
 
     /**
-     * setThemeSecondaryTextColorInt(themeColor: [Int])
+     ## setThemeSecondaryTextColorInt(themeColor: [Int])
      *
-     * Saves Theme Secondary Text Color to prefs as [Int]
+     ### Saves Theme Secondary Text Color to prefs as [Int]
      *
      * @param  themeColor an [Int] that will be saved as the Theme Secondary Text Color
      */
-    fun setThemeSecondaryTextColorInt(themeColor: Int) {
+    private fun setThemeSecondaryTextColorInt(themeColor: Int) {
         val editor = mPrefs.edit()
         editor.putInt(PREF_THEME_SECONDARY_TEXT_COLOR_INT_KEY, themeColor)
         editor.apply()
     } // setThemeSecondaryTextColorInt
 
     /**
-     * getThemeSecondaryTextColorInt(): [Int]
+     ## getThemeSecondaryTextColorInt(): [Int]
      *
-     * Gets color as [Int] from [SharedPreferences]
+     ### Gets color as [Int] from [SharedPreferences]
      *
      * @return [Int] that represents the Secondary Text color
      */
@@ -609,27 +511,27 @@ object PrefUtils {
     } // getThemeSecondaryTextColorInt
 
     /**
-     * setThemeSecondaryTextInverseColorInt(themeColor: [Int])
+     ## setThemeSecondaryTextInverseColorInt(themeColor: [Int])
      *
-     * Saves Theme Secondary Text Color Inverse to [SharedPreferences]
+     ### Saves Theme Secondary Text Color Inverse to [SharedPreferences] as [Int]
      *
      * @param  themeColor an [Int] that will be saved as the Theme Secondary Text Color Inverse
      */
-    fun setThemeSecondaryTextInverseColorInt(themeColor: Int) {
+    private fun setThemeSecondaryTextInverseColorInt(themeColor: Int) {
         val editor = mPrefs.edit()
-        editor.putInt(PREF_THEME_PRIMARY_TEXT_COLOR_INVERSE_INT_KEY, themeColor)
+        editor.putInt(PREF_THEME_SECONDARY_TEXT_COLOR_INVERSE_INT_KEY, themeColor)
         editor.apply()
     } // setThemeSecondaryTextInverseColorInt
 
     /**
-     * getThemeSecondaryTextInverseColorInt(): [Int]
+     ## getThemeSecondaryTextInverseColorInt(): [Int]
      *
-     * Gets color as [Int] from [SharedPreferences]
+     ### Gets color as [Int] from [SharedPreferences]
      *
      * @return [Int] that represents the Secondary Text Inverse Color
      */
     fun getThemeSecondaryTextInverseColorInt(): Int {
-        return mPrefs.getInt(PREF_THEME_PRIMARY_TEXT_COLOR_INVERSE_INT_KEY, 0)
+        return mPrefs.getInt(PREF_THEME_SECONDARY_TEXT_COLOR_INVERSE_INT_KEY, 0)
     } // getThemeSecondaryTextInverseColorInt
 
 } // Class

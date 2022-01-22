@@ -7,6 +7,9 @@ import androidx.startup.Initializer
 import com.jb15613.themechooser.utility.PREF_NAME_KEY
 import com.jb15613.themechooser.utility.PrefUtils
 
+/**
+## Startup Initializer for the [PrefUtils] Class
+ */
 class PrefUtilsInitializer : Initializer<PrefUtils> {
 
     override fun create(context: Context): PrefUtils {

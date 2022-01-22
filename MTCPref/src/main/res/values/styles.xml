@@ -55,4 +55,11 @@
         <item name="selectableItemBackgroundBorderless">?android:selectableItemBackground</item>
 	</style>
 
+	<!-- ToggleButton Theme -->
+	<style name="ToggleButton" parent="Base.Widget.AppCompat.Button">
+		<item name="colorButtonNormal">@color/primaryBgColor</item>
+		<item name="android:textColor">@color/textColorPrimary</item>
+		<item name="colorAccent">@color/material_primary</item>
+	</style>
+
 </resources>

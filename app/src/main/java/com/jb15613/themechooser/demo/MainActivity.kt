@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
@@ -95,7 +96,7 @@ class MainActivity : AppCompatActivity() {
         mFragmentManager = supportFragmentManager
 
         try {
-            val color: String = ColorUtils.getColorAsHtmlString(ThemeChooserUtils.getThemeColor())
+            val color: String = ThemeChooserUtils.getColorAsHtmlString(ThemeChooserUtils.getThemeColor())
             var v = ""
             mVersion = "v" + packageManager.getPackageInfo(PACKAGE, 0).versionName
             if (isDebugMode()) {
@@ -117,11 +118,34 @@ class MainActivity : AppCompatActivity() {
         mAdapter = setupAdapter(this)
         mRecyclerView.adapter = mAdapter
 
+        val themeColorTextView: TextView = findViewById(R.id.themeColorTV)
+        val themeDarkColorTextView: TextView = findViewById(R.id.themeDarkColorTV)
+        val accentColorTextView: TextView = findViewById(R.id.themeAccentColorTV)
+        val themePrimaryTextColorTextView: TextView = findViewById(R.id.themePrimaryTextColorTV)
+        val themeSecondaryTextColorTextView: TextView = findViewById(R.id.themeSecondaryTextColorTV)
+
+        val themeColor = ThemeChooserUtils.getColorAsHtmlString(ThemeChooserUtils.getThemeColor())
+        val themeDarkColor = ThemeChooserUtils.getColorAsHtmlString(ThemeChooserUtils.getThemeDarkColor())
+        val themeAccentColor = ThemeChooserUtils.getColorAsHtmlString(ThemeChooserUtils.getThemeAccentColor())
+        val primaryTextColor = ThemeChooserUtils.getColorAsHtmlString(ThemeChooserUtils.getPrimaryTextColor())
+        val secondaryTextColor = ThemeChooserUtils.getColorAsHtmlString(ThemeChooserUtils.getSecondaryTextColor())
+
+        val themeColorName = ThemeChooserUtils.getColorNameAsString("Theme")
+        val themeDarkColorName = ThemeChooserUtils.getColorNameAsString("ThemeDark")
+        val accentColorName = ThemeChooserUtils.getColorNameAsString("Accent")
+        val primaryTextColorName = ThemeChooserUtils.getColorNameAsString("PrimaryText")
+        val secondaryTextColorName = ThemeChooserUtils.getColorNameAsString("SecondaryText")
+
+        themeColorTextView.text = "Theme Color : $themeColor : $themeColorName"
+        themeDarkColorTextView.text = "Theme Dark Color : $themeDarkColor : $themeDarkColorName"
+        accentColorTextView.text = "Theme Accent Color : $themeAccentColor : $accentColorName"
+        themePrimaryTextColorTextView.text = "Primary Text Color : $primaryTextColor : $primaryTextColorName"
+        themeSecondaryTextColorTextView.text = "Secondary Text Color : $secondaryTextColor : $secondaryTextColorName"
+
     } // onCreate
 
     private fun isAutomaticInitializationDone(): Boolean {
-        return ThemeChooser.isInitialized &&
-                PrefUtils.isInitialized &&
+        return PrefUtils.isInitialized &&
                 ColorUtils.isInitialized &&
                 AccentColor.isInitialized
     }

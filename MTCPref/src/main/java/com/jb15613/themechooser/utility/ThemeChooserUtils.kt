@@ -4,19 +4,37 @@ import android.graphics.Color
 
 
 /**
- * object ThemeChooserUtils
+ ## ThemeChooserUtils
  *
- * Class that holds all public endpoints for usage with the Library
+ ### Class that holds all *Public* endpoints for usage with the Library
+
+ Available Methods:
+ ```
+ getThemeColor(vararg opacity: Float): Int
+ getThemeDarkColor(vararg opacity: Float): Int
+ getThemeAccentColor(vararg opacity: Float): Int
+ getPrimaryBgColor(): Int
+ getPrimaryBgInverseColor(): Int
+ getSecondaryBgColor(): Int
+ getSecondaryBgInverseColor(): Int
+ getPrimaryTextColor(): Int
+ getPrimaryInverseTextColor(): Int
+ getSecondaryTextColor(): Int
+ getSecondaryInverseTextColor(): Int
+ getThemeHue(): Boolean
+ getColorAsHtmlString(color: Int): String
+ getColorNameAsString(type: String): String
+ ```
  *
  */
 object ThemeChooserUtils {
 
     /**
-     * getThemeColor(vararg opacities: Float): [Int]
+     ## getThemeColor(*vararg* opacities: Float): [Int]
      *
-     * Retrieves color value of Primary Theme Color
+     #### Retrieves color value of Primary Theme Color
      *
-     * @param opacities an optional [Float] used to derive opaqueness for semi-transparent coloring
+     * @param opacities an *optional* [Float] used to derive opaqueness for semi-transparent coloring
      *
      * @return [Int] that is the color value for Primary Theme Color
      */
@@ -48,11 +66,11 @@ object ThemeChooserUtils {
     } // getThemeColor
 
     /**
-     * getThemeDarkColor(): [Int]
+     ## getThemeDarkColor(*vararg* opacities: [Float]): [Int]
      *
-     * Retrieves color value of Primary Theme Color Dark
+     #### Retrieves color value of Primary Theme Color Dark
      *
-     * @param opacities an optional [Float] used to derive opaqueness for semi-transparent coloring
+     * @param opacities an *optional* [Float] used to derive opaqueness for semi-transparent coloring
      *
      * @return [Int] that is the color value for Primary Theme Color Dark
      */
@@ -83,11 +101,11 @@ object ThemeChooserUtils {
     } // getThemeDarkColor
 
     /**
-     * getThemeAccentColor(): [Int]
+     ## getThemeAccentColor(*vararg* opacities: [Float]): [Int]
      *
-     * Retrieves color value of Accent Theme Color
+     #### Retrieves color value of Accent Theme Color
      *
-     * @param opacities an optional [Float] used to derive opaqueness for semi-transparent coloring
+     * @param opacities an *optional* [Float] used to derive opaqueness for semi-transparent coloring
      *
      * @return [Int] that is the color value for Accent Theme Color
      */
@@ -118,9 +136,9 @@ object ThemeChooserUtils {
     } // getThemeAccentColor
 
     /**
-     * getPrimaryBgColor(): [Int]
+     ## getPrimaryBgColor(): [Int]
      *
-     * Retrieves color value of Primary BG Color
+     #### Retrieves color value of Primary BG Color
      *
      * @return [Int] that is the color value for Primary BG Color
      */
@@ -129,9 +147,9 @@ object ThemeChooserUtils {
     } // getPrimaryBgColor
 
     /**
-     * getSecondaryBgColor(): [Int]
+     ## getSecondaryBgColor(): [Int]
      *
-     * Retrieves color value of Secondary BG Color
+     #### Retrieves color value of Secondary BG Color
      *
      * @return [Int] that is the color value for Secondary BG Color
      */
@@ -140,9 +158,9 @@ object ThemeChooserUtils {
     } // getSecondaryBgColor
 
     /**
-     * getPrimaryBgInverseColor(): [Int]
+     ## getPrimaryBgInverseColor(): [Int]
      *
-     * Retrieves color value of Primary BG Inverse Color
+     #### Retrieves color value of Primary BG Inverse Color
      *
      * @return [Int] that is the color value for Primary BG Inverse Color
      */
@@ -151,9 +169,9 @@ object ThemeChooserUtils {
     } // getPrimaryBgInverseColor
 
     /**
-     * getSecondaryBgInverseColor(): [Int]
+     ## getSecondaryBgInverseColor(): [Int]
      *
-     * Retrieves color value of Secondary BG Inverse Color
+     #### Retrieves color value of Secondary BG Inverse Color
      *
      * @return [Int] that is the color value for Secondary BG Inverse Color
      */
@@ -162,9 +180,9 @@ object ThemeChooserUtils {
     } // getSecondaryBgInverseColor
 
     /**
-     * getPrimaryTextColor(): [Int]
+     ## getPrimaryTextColor(): [Int]
      *
-     * Retrieves color value of Primary Text Color
+     #### Retrieves color value of Primary Text Color
      *
      * @return [Int] that is the color value for Primary Text Color
      */
@@ -173,9 +191,9 @@ object ThemeChooserUtils {
     } // getPrimaryTextColor
 
     /**
-     * getSecondaryTextColor(): [Int]
+     ## getSecondaryTextColor(): [Int]
      *
-     * Retrieves color value of Secondary Text Color
+     #### Retrieves color value of Secondary Text Color
      *
      * @return [Int] that is the color value for Secondary Text Color
      */
@@ -184,9 +202,9 @@ object ThemeChooserUtils {
     } // getSecondaryTextColor
 
     /**
-     * getPrimaryInverseTextColor(): [Int]
+     ## getPrimaryInverseTextColor(): [Int]
      *
-     * Retrieves color value of Primary Inverse Text Color
+     #### Retrieves color value of Primary Inverse Text Color
      *
      * @return [Int] that is the color value for Primary Inverse Text Color
      */
@@ -195,9 +213,9 @@ object ThemeChooserUtils {
     } // getPrimaryInverseTextColor
 
     /**
-     * getSecondaryInverseTextColor(): [Int]
+     ## getSecondaryInverseTextColor(): [Int]
      *
-     * Retrieves color value of Secondary Inverse Text Color
+     #### Retrieves color value of Secondary Inverse Text Color
      *
      * @return [Int] that is the color value for Secondary Inverse Text Color
      */
@@ -206,13 +224,121 @@ object ThemeChooserUtils {
     } // getSecondaryTextColor
 
     /**
-     * isLightTheme(): [Boolean]
+     ## getThemeHue(): [Boolean]
      *
-     * Retrieves value of Day/Night Boolean
+     #### Retrieves value of Day/Night Boolean
      *
      * @return [Boolean] that is true for light, and false or dark
      */
-    fun isLightTheme(): Boolean {
+    fun getThemeHue(): Boolean {
         return PrefUtils.getThemeHue()
-    }
+    } // getThemeHue
+
+    /**
+     ## getColorAsHtmlString(color: [Int]): [String]
+     *
+     #### Retrieves a color in the form of an HTML [String]
+     *
+     * @param color An Int that represents the color
+     *
+     * @return [String] that contains the formatted color for use in HTML
+     */
+    fun getColorAsHtmlString(color: Int): String {
+        val s = Integer.toHexString(color)
+        return "#$s"
+    } // getColorAsHtmlString
+
+    /**
+        ## getColorNameAsString(type: [String]): [String]
+
+        #### Retrieves a color name in the form of a [String]
+
+        #### Possible Args for [type]:
+        ```
+         - Theme
+         - ThemeDark
+         - Accent
+         - PrimaryBg
+         - SecondaryBg
+         - PrimaryText
+         - SecondaryText
+         ```
+
+      *  @param [type] a [String] that represents the color being requested
+
+      *  @return [String] that contains the color as a name
+
+     */
+    fun getColorNameAsString(type: String): String {
+
+        val isUnitTest = TestUtils.isRunningUnitTest()
+
+        // Get Theme Name
+        val themeName: String = if (isUnitTest) {
+            "Deep Purple & Blue Grey 3 - Dark"
+        } else {
+            PrefUtils.getThemeName()
+        }
+
+        var tName = ""
+        var aName = ""
+        var hName = ""
+
+        var pBgName = ""
+        var sBgName = ""
+
+        var pTxName = ""
+        var sTxName = ""
+
+        // Split it at the Hue
+        if (themeName.contains(HUE_SPLITTER)) {
+            // SHOULD ALWAYS BE TRUE
+            val hueSplit: List<String> = themeName.split(HUE_SPLITTER)
+            hName = hueSplit[1]
+            if (hueSplit[0].contains(THEME_SPLITTER)) {
+                val themeSplit: List<String> = hueSplit[0].split(THEME_SPLITTER)
+                tName = themeSplit[0]
+                aName = themeSplit[1]
+            } else {
+                tName = hueSplit[0]
+
+                val accentLabel: String =
+                    if (tName == BROWN || tName == GREY || tName == BLUEGREY) {
+                        " 3"
+                    } else {
+                        " A1"
+                    }
+                aName = "$tName$accentLabel"
+            }
+        }
+
+        when (hName) {
+            "Dark" -> {
+                pBgName = "Grey #30"
+                sBgName = "Grey #42"
+                pTxName = "White"
+                sTxName = "Opaque White #B3"
+            }
+            "Light" -> {
+                pBgName = "White #F0"
+                sBgName = "White #FF"
+                pTxName = "Black"
+                sTxName = "Opaque Black #8B"
+            }
+        }
+
+        var name = ""
+        when (type) {
+            "Theme" -> name = tName
+            "ThemeDark" -> name = "$tName 700"
+            "Accent" -> name = aName
+            "PrimaryBg" -> name = pBgName
+            "SecondaryBg" -> name = sBgName
+            "PrimaryText" -> name = pTxName
+            "SecondaryText" -> name = sTxName
+        }
+
+        return name
+    } // getColorNameAsString
+
 } // Class
