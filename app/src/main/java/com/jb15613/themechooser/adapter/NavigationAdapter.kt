@@ -169,10 +169,26 @@ class NavigationAdapter(private val mNavTitles: Array<String?>, private val mIco
                 }
             }
 
+            if (mNavTitles[position].equals(NAV_ITEM_LOG)) {
+                if (mContext is MainActivity) {
+                    mContext.showSnackBar("No Sense Sending A Log For A Demo App!!")
+                }
+            }
+
+            if (mNavTitles[position].equals(NAV_ITEM_UPDATE)) {
+                if (mContext is MainActivity) {
+                    mContext.showSnackBar("That is just for show!!")
+                }
+            }
+
             if (isPositionNavItem(position)) {
                 notifyItemChanged(selectedPosition)
                 selectedPosition = position
                 notifyItemChanged(selectedPosition)
+                // save position to prefs, then reload it from prefs in activity
+                if (mContext is MainActivity) {
+                    mContext.swapActivityFragment(mNavTitles[position].toString())
+                }
             }
             if (mContext is MainActivity) {
                 mContext.closeNavDrawer()
@@ -213,7 +229,7 @@ class NavigationAdapter(private val mNavTitles: Array<String?>, private val mIco
 
     private fun isPositionNavItem(position: Int): Boolean {
         val title = mNavTitles[position]
-        return title == NAV_ITEM_SPARE_PARTS || title == NAV_ITEM_TEXT_VIEWS || title == NAV_ITEM_BUTTON_VIEWS || title == NAV_ITEM_WIDGET_VIEWS
+        return title == NAV_ITEM_HOME || title == NAV_ITEM_SPARE_PARTS || title == NAV_ITEM_TEXT_VIEWS || title == NAV_ITEM_BUTTON_VIEWS || title == NAV_ITEM_WIDGET_VIEWS
     } // isPositionNavItem
 
     private fun isPositionAppItem(position: Int): Boolean {
@@ -224,6 +240,7 @@ class NavigationAdapter(private val mNavTitles: Array<String?>, private val mIco
     private fun isPositionAboutItem(position: Int): Boolean {
         val title = mNavTitles[position]
         return (title != NAV_ITEM_NAV
+                && title != NAV_ITEM_HOME
                 && title != NAV_ITEM_SPARE_PARTS
                 && title != NAV_ITEM_TEXT_VIEWS
                 && title != NAV_ITEM_BUTTON_VIEWS

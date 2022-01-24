@@ -6,12 +6,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,6 +27,10 @@ import com.jb15613.themechooser.mtcpref.ThemeChooser
 import com.jb15613.themechooser.mtcpref.Themes
 import com.jb15613.themechooser.utility.*
 import com.jb15613.themechooser.utility.color.AccentColor
+import com.google.android.material.snackbar.Snackbar
+
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,6 +43,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mLayoutManager: LinearLayoutManager
     private lateinit var mArray: ArrayList<NavObject>
     private lateinit var mFragmentManager: FragmentManager
+    private lateinit var mCoordinatorLayout: CoordinatorLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,6 +103,7 @@ class MainActivity : AppCompatActivity() {
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
         mFragmentManager = supportFragmentManager
+        mCoordinatorLayout = findViewById(R.id.coordinator)
 
         try {
             val color: String = ThemeChooserUtils.getColorAsHtmlString(ThemeChooserUtils.getThemeColor())
@@ -118,30 +128,7 @@ class MainActivity : AppCompatActivity() {
         mAdapter = setupAdapter(this)
         mRecyclerView.adapter = mAdapter
 
-        val themeColorTextView: TextView = findViewById(R.id.themeColorTV)
-        val themeDarkColorTextView: TextView = findViewById(R.id.themeDarkColorTV)
-        val accentColorTextView: TextView = findViewById(R.id.themeAccentColorTV)
-        val themePrimaryTextColorTextView: TextView = findViewById(R.id.themePrimaryTextColorTV)
-        val themeSecondaryTextColorTextView: TextView = findViewById(R.id.themeSecondaryTextColorTV)
-
-        val themeColor = ThemeChooserUtils.getColorAsHtmlString(ThemeChooserUtils.getThemeColor())
-        val themeDarkColor = ThemeChooserUtils.getColorAsHtmlString(ThemeChooserUtils.getThemeDarkColor())
-        val themeAccentColor = ThemeChooserUtils.getColorAsHtmlString(ThemeChooserUtils.getThemeAccentColor())
-        val primaryTextColor = ThemeChooserUtils.getColorAsHtmlString(ThemeChooserUtils.getPrimaryTextColor())
-        val secondaryTextColor = ThemeChooserUtils.getColorAsHtmlString(ThemeChooserUtils.getSecondaryTextColor())
-
-        val themeColorName = ThemeChooserUtils.getColorNameAsString("Theme")
-        val themeDarkColorName = ThemeChooserUtils.getColorNameAsString("ThemeDark")
-        val accentColorName = ThemeChooserUtils.getColorNameAsString("Accent")
-        val primaryTextColorName = ThemeChooserUtils.getColorNameAsString("PrimaryText")
-        val secondaryTextColorName = ThemeChooserUtils.getColorNameAsString("SecondaryText")
-
-        themeColorTextView.text = "Theme Color : $themeColor : $themeColorName"
-        themeDarkColorTextView.text = "Theme Dark Color : $themeDarkColor : $themeDarkColorName"
-        accentColorTextView.text = "Theme Accent Color : $themeAccentColor : $accentColorName"
-        themePrimaryTextColorTextView.text = "Primary Text Color : $primaryTextColor : $primaryTextColorName"
-        themeSecondaryTextColorTextView.text = "Secondary Text Color : $secondaryTextColor : $secondaryTextColorName"
-
+        swapActivityFragment(NAV_ITEM_HOME)
     } // onCreate
 
     private fun isAutomaticInitializationDone(): Boolean {
@@ -182,6 +169,7 @@ class MainActivity : AppCompatActivity() {
         val array: ArrayList<NavObject> = ArrayList()
         array.add(NavObject(NAV_ITEM_HEADER, null, 0))
         array.add(NavObject(NAV_ITEM_NAV, null, 0))
+        array.add(NavObject(NAV_ITEM_HOME, ResourcesCompat.getDrawable(c.resources, R.mipmap.nav_item_home, null), 2))
         array.add(NavObject(NAV_ITEM_TEXT_VIEWS, ResourcesCompat.getDrawable(c.resources, R.mipmap.nav_item_text_views, null), 2))
         array.add(NavObject(NAV_ITEM_BUTTON_VIEWS, ResourcesCompat.getDrawable(c.resources, R.mipmap.nav_item_button_views, null), 2))
         array.add(NavObject(NAV_ITEM_WIDGET_VIEWS, ResourcesCompat.getDrawable(c.resources, R.mipmap.nav_item_widget_views, null), 2))
@@ -198,6 +186,44 @@ class MainActivity : AppCompatActivity() {
     fun closeNavDrawer() {
         mDrawerLayout.closeDrawer(GravityCompat.START)
     } // closeNavDrawer
+
+    fun showSnackBar(message: String) {
+        val snackbar = Snackbar
+            .make(mCoordinatorLayout, message, Snackbar.LENGTH_LONG)
+        val sbView: View = snackbar.view
+        sbView.setBackgroundColor(ThemeChooserUtils.getThemeDarkColor())
+        snackbar.setTextColor(ThemeChooserUtils.getPrimaryTextColor())
+        snackbar.show()
+    } // showSnackBar
+
+    fun swapActivityFragment(newFrag: String) {
+
+        val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
+
+        when (newFrag) {
+            NAV_ITEM_HOME -> {
+                val frag = HomeFragment()
+                ft.replace(R.id.fragment_container, frag)
+                ft.commit()
+            }
+            NAV_ITEM_TEXT_VIEWS -> {
+                val frag = TextViewsFragment()
+                ft.replace(R.id.fragment_container, frag)
+                ft.commit()
+            }
+            NAV_ITEM_BUTTON_VIEWS -> {
+                val frag = ButtonViewsFragment()
+                ft.replace(R.id.fragment_container, frag)
+                ft.commit()
+            }
+            NAV_ITEM_WIDGET_VIEWS -> {
+                val frag = WidgetViewsFragment()
+                ft.replace(R.id.fragment_container, frag)
+                ft.commit()
+            }
+        }
+
+    }
 
     fun showSettingsFragment() {
         val mFragmentTransaction: FragmentTransaction = mFragmentManager.beginTransaction()

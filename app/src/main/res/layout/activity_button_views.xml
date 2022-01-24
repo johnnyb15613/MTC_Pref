@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/buttonCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:animateLayoutChanges="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        card_view:cardBackgroundColor="?attr/primaryBgColor"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="5dp"
+        card_view:cardPreventCornerOverlap="true">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp">
+
+            <TextView
+                android:id="@+id/buttonTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/buttons"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="?attr/colorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/buttonTitleDivider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="?attr/colorPrimaryDark"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/buttonTitleTextView" />
+
+            <Button
+                android:id="@+id/themeColorButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?attr/colorPrimary"
+                android:text="@string/themeColor"
+                android:textColor="?attr/textColorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/buttonTitleDivider"
+                tools:ignore="TextContrastCheck" />
+
+            <Button
+                android:id="@+id/themeColorDarkButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?attr/colorPrimaryDark"
+                android:text="@string/themeColorDark"
+                android:textColor="?attr/textColorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorButton"
+                tools:ignore="TextContrastCheck" />
+
+            <Button
+                android:id="@+id/accentColorButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?attr/colorAccent"
+                android:text="@string/accentColor"
+                android:textColor="?attr/textColorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorDarkButton" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/toggleButtonCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:animateLayoutChanges="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCardView"
+        card_view:cardBackgroundColor="?attr/primaryBgColor"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="5dp"
+        card_view:cardPreventCornerOverlap="true">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toggleButtonConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp">
+
+            <TextView
+                android:id="@+id/toggleButtonTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/toggleButtons"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="?attr/colorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/toggleButtonTitleDivider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="?attr/colorPrimaryDark"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/toggleButtonTitleTextView" />
+
+            <ToggleButton
+                android:id="@+id/themeColorToggleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?attr/colorPrimary"
+                android:backgroundTintMode="multiply"
+                android:buttonTintMode="multiply"
+                android:textOff="@string/toggleThemeOff"
+                android:textOn="@string/toggleThemeOn"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/toggleButtonTitleDivider" />
+
+            <ToggleButton
+                android:id="@+id/themeColorDarkToggleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?attr/colorPrimaryDark"
+                android:backgroundTintMode="multiply"
+                android:buttonTint="?attr/colorPrimaryDark"
+                android:checked="false"
+                android:textOff="@string/toggleThemeDarkOff"
+                android:textOn="@string/toggleThemeDarkOn"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorToggleButton" />
+
+            <ToggleButton
+                android:id="@+id/accentColorToggleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?attr/colorAccent"
+                android:backgroundTintMode="multiply"
+                android:buttonTint="?attr/colorAccent"
+                android:checked="false"
+                android:textOff="@string/toggleAccentOff"
+                android:textOn="@string/toggleAccentOn"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorDarkToggleButton" />
+
+            <ToggleButton
+                android:id="@+id/defaultColorToggleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textOff="@string/toggleDefaultOff"
+                android:textOn="@string/toggleDefaultOn"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/accentColorToggleButton" />
+
+            <ToggleButton
+                android:id="@+id/themeColorToggleButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?attr/colorPrimary"
+                android:backgroundTintMode="multiply"
+                android:checked="true"
+                android:textOff="@string/toggleThemeOff"
+                android:textOn="@string/toggleThemeOn"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/toggleButtonTitleDivider" />
+
+            <ToggleButton
+                android:id="@+id/themeColorDarkToggleButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?attr/colorPrimaryDark"
+                android:backgroundTintMode="multiply"
+                android:checked="true"
+                android:textOff="@string/toggleThemeDarkOff"
+                android:textOn="@string/toggleThemeDarkOn"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorToggleButton2" />
+
+            <ToggleButton
+                android:id="@+id/accentColorToggleButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="?attr/colorAccent"
+                android:backgroundTintMode="multiply"
+                android:checked="true"
+                android:textOff="@string/toggleAccentOff"
+                android:textOn="@string/toggleAccentOn"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorDarkToggleButton2" />
+
+            <ToggleButton
+                android:id="@+id/defaultColorToggleButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:textOff="@string/toggleDefaultOff"
+                android:textOn="@string/toggleDefaultOn"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/accentColorToggleButton2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/fabCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:animateLayoutChanges="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingBottom="16dp"
+        card_view:cardBackgroundColor="?attr/primaryBgColor"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="5dp"
+        card_view:cardPreventCornerOverlap="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toggleButtonCardView" >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fabConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp">
+
+            <TextView
+                android:id="@+id/fabTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/fabs"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="?attr/colorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/fabTitleDivider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="?attr/colorPrimaryDark"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/fabTitleTextView" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/themeColorFab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:contentDescription="@string/defaultt"
+                android:focusable="true"
+                android:layout_margin="10dp"
+                app:layout_constraintEnd_toStartOf="@+id/themeColorDarkFab"
+                app:layout_constraintHorizontal_bias="0.5"
+                card_view:backgroundTint="?attr/colorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/fabTitleDivider"
+                card_view:srcCompat="@android:drawable/ic_menu_manage" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/themeColorDarkFab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:contentDescription="@string/defaultt"
+                android:focusable="true"
+                android:layout_margin="10dp"
+                app:layout_constraintHorizontal_bias="0.5"
+                card_view:backgroundTint="?attr/colorPrimaryDark"
+                card_view:layout_constraintEnd_toStartOf="@+id/accentColorFab"
+                card_view:layout_constraintStart_toEndOf="@+id/themeColorFab"
+                card_view:layout_constraintTop_toBottomOf="@+id/fabTitleDivider"
+                card_view:srcCompat="@android:drawable/ic_menu_manage" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/accentColorFab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:contentDescription="@string/defaultt"
+                android:focusable="true"
+                android:layout_margin="10dp"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/themeColorDarkFab"
+                card_view:backgroundTint="?attr/colorAccent"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/fabTitleDivider"
+                card_view:srcCompat="@android:drawable/ic_menu_manage" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/switchCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:animateLayoutChanges="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingBottom="16dp"
+        card_view:cardBackgroundColor="?attr/primaryBgColor"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="5dp"
+        card_view:cardPreventCornerOverlap="true"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toBottomOf="@+id/fabCardView" >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/switchConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp" >
+
+            <TextView
+                android:id="@+id/switchTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/switches"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="?attr/colorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/switchTitleDivider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="?attr/colorPrimaryDark"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/switchTitleTextView" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/themeColorSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="?attr/colorPrimary"
+                android:minHeight="48dp"
+                android:text="@string/themeColor"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/switchTitleDivider" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/themeColorDarkSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="?attr/colorPrimaryDark"
+                android:minHeight="48dp"
+                android:text="@string/themeColorDark"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorSwitch" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/accentColorSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="?attr/colorAccent"
+                android:minHeight="48dp"
+                android:text="@string/accentColor"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorDarkSwitch" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/defaultColorSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:text="@string/defaultt"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/accentColorSwitch" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/themeColorSwitch2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="?attr/colorPrimary"
+                android:minHeight="48dp"
+                android:checked="true"
+                android:text="@string/themeColor"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/switchTitleDivider" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/themeColorDarkSwitch2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="?attr/colorPrimaryDark"
+                android:minHeight="48dp"
+                android:checked="true"
+                android:text="@string/themeColorDark"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorSwitch2" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/accentColorSwitch2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="?attr/colorAccent"
+                android:minHeight="48dp"
+                android:checked="true"
+                android:text="@string/accentColor"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorDarkSwitch2" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/defaultColorSwitch2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:checked="true"
+                android:text="@string/defaultt"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/accentColorSwitch2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/chipCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:animateLayoutChanges="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingBottom="16dp"
+        card_view:cardBackgroundColor="?attr/primaryBgColor"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="5dp"
+        card_view:cardPreventCornerOverlap="true"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toBottomOf="@+id/switchCardView" >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/chipConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp" >
+
+            <TextView
+                android:id="@+id/chipTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/chips"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="?attr/colorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/chipTitleDivider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="?attr/colorPrimaryDark"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/chipTitleTextView" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/themeColorChipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/chipTitleDivider"
+                card_view:singleSelection="false">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/themeColorChipEntry"
+                    style="@style/Widget.MaterialComponents.Chip.Entry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="?attr/colorPrimary"
+                    android:minHeight="48dp"
+                    android:text="@string/chipEntry"
+                    android:textColor="?attr/textColorPrimary" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/themeColorChipChoice"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="?attr/colorPrimary"
+                    android:minHeight="48dp"
+                    android:text="@string/chipChoice"
+                    android:textColor="?attr/textColorPrimary" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/themeColorChipAction"
+                    style="@style/Widget.MaterialComponents.Chip.Action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="?attr/colorPrimary"
+                    android:minHeight="48dp"
+                    android:text="@string/chipAction"
+                    android:textColor="?attr/textColorPrimary" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/themeColorChipFilter"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="?attr/colorPrimary"
+                    android:minHeight="48dp"
+                    android:text="@string/chipFilter"
+                    android:textColor="?attr/textColorPrimary" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/themeColorDarkChipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorChipGroup"
+                card_view:singleSelection="false">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/themeColorDarkChipEntry"
+                    style="@style/Widget.MaterialComponents.Chip.Entry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="?attr/colorPrimaryDark"
+                    android:minHeight="48dp"
+                    android:text="@string/chipEntry"
+                    android:textColor="?attr/textColorPrimary" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/themeColorDarkChipChoice"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="?attr/colorPrimaryDark"
+                    android:minHeight="48dp"
+                    android:text="@string/chipChoice"
+                    android:textColor="?attr/textColorPrimary" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/themeColorDarkChipAction"
+                    style="@style/Widget.MaterialComponents.Chip.Action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="?attr/colorPrimaryDark"
+                    android:minHeight="48dp"
+                    android:text="@string/chipAction"
+                    android:textColor="?attr/textColorPrimary" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/themeColorDarkChipFilter"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="?attr/colorPrimaryDark"
+                    android:minHeight="48dp"
+                    android:text="@string/chipFilter"
+                    android:textColor="?attr/textColorPrimary" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/themeColorAccentChipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorDarkChipGroup"
+                card_view:singleSelection="false">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/themeColorAccentChipEntry"
+                    style="@style/Widget.MaterialComponents.Chip.Entry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="?attr/colorAccent"
+                    android:minHeight="48dp"
+                    android:text="@string/chipEntry"
+                    android:textColor="?attr/textColorPrimary" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/themeColorAccentChipChoice"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="?attr/colorAccent"
+                    android:minHeight="48dp"
+                    android:text="@string/chipChoice"
+                    android:textColor="?attr/textColorPrimary" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/themeColorAccentChipAction"
+                    style="@style/Widget.MaterialComponents.Chip.Action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="?attr/colorAccent"
+                    android:minHeight="48dp"
+                    android:text="@string/chipAction"
+                    android:textColor="?attr/textColorPrimary" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/themeColorAccentChipFilter"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="?attr/colorAccent"
+                    android:minHeight="48dp"
+                    android:text="@string/chipFilter"
+                    android:textColor="?attr/textColorPrimary" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

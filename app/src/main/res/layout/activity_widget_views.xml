@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/checkboxCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:animateLayoutChanges="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        card_view:cardBackgroundColor="?attr/primaryBgColor"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="5dp"
+        card_view:cardPreventCornerOverlap="true">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/checkboxConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp">
+
+            <TextView
+                android:id="@+id/checkboxTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/checkboxes"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="?attr/colorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/checkboxTitleDivider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="?attr/colorPrimaryDark"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/checkboxTitleTextView" />
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="?attr/colorPrimary"
+                android:minHeight="48dp"
+                android:text="@string/themeColor"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/checkboxTitleDivider" />
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="?attr/colorPrimaryDark"
+                android:minHeight="48dp"
+                android:text="@string/themeColorDark"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@id/checkBox" />
+
+            <CheckBox
+                android:id="@+id/checkBox3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="?attr/colorAccent"
+                android:minHeight="48dp"
+                android:text="@string/accentColor"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@id/checkBox2" />
+
+            <CheckBox
+                android:id="@+id/checkBox4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:text="@string/defaultt"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@id/checkBox3" />
+
+            <CheckBox
+                android:id="@+id/checkBox5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="?attr/colorPrimary"
+                android:minHeight="48dp"
+                android:checked="true"
+                android:text="@string/themeColor"
+                card_view:layout_constraintStart_toStartOf="@id/checkboxGuideline"
+                card_view:layout_constraintTop_toBottomOf="@+id/checkboxTitleDivider" />
+
+            <CheckBox
+                android:id="@+id/checkBox6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="?attr/colorPrimaryDark"
+                android:minHeight="48dp"
+                android:checked="true"
+                android:text="@string/themeColorDark"
+                card_view:layout_constraintStart_toStartOf="@id/checkboxGuideline"
+                card_view:layout_constraintTop_toBottomOf="@+id/checkBox5" />
+
+            <CheckBox
+                android:id="@+id/checkBox7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="?attr/colorAccent"
+                android:minHeight="48dp"
+                android:checked="true"
+                android:text="@string/accentColor"
+                card_view:layout_constraintStart_toStartOf="@id/checkboxGuideline"
+                card_view:layout_constraintTop_toBottomOf="@+id/checkBox6" />
+
+            <CheckBox
+                android:id="@+id/checkBox8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:checked="true"
+                android:text="@string/defaultt"
+                card_view:layout_constraintStart_toStartOf="@id/checkboxGuideline"
+                card_view:layout_constraintTop_toBottomOf="@+id/checkBox7" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/checkboxGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/radioCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:animateLayoutChanges="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingBottom="16dp"
+        card_view:cardBackgroundColor="?attr/primaryBgColor"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="5dp"
+        card_view:cardPreventCornerOverlap="true"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toBottomOf="@+id/checkboxCardView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/radioConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp">
+
+            <TextView
+                android:id="@+id/radioTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/radioButtons"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="?attr/colorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/radioTitleDivider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="?attr/colorPrimaryDark"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/radioTitleTextView" />
+
+            <RadioButton
+                android:id="@+id/themeColorRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="?attr/colorPrimary"
+                android:minHeight="48dp"
+                android:text="@string/themeColor"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/radioTitleDivider" />
+
+            <RadioButton
+                android:id="@+id/themeColorDarkRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="?attr/colorPrimaryDark"
+                android:minHeight="48dp"
+                android:text="@string/themeColorDark"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorRadioButton" />
+
+            <RadioButton
+                android:id="@+id/accentColorRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="?attr/colorAccent"
+                android:minHeight="48dp"
+                android:text="@string/accentColor"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorDarkRadioButton" />
+
+            <RadioButton
+                android:id="@+id/defaultColorRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:text="@string/defaultt"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/accentColorRadioButton" />
+
+            <RadioButton
+                android:id="@+id/themeColorRadioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="?attr/colorPrimary"
+                android:minHeight="48dp"
+                android:checked="true"
+                android:text="@string/themeColor"
+                app:layout_constraintStart_toStartOf="@+id/radioGuideline"
+                card_view:layout_constraintTop_toBottomOf="@+id/radioTitleDivider" />
+
+            <RadioButton
+                android:id="@+id/themeColorDarkRadioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="?attr/colorPrimaryDark"
+                android:minHeight="48dp"
+                android:checked="true"
+                android:text="@string/themeColorDark"
+                app:layout_constraintStart_toStartOf="@+id/radioGuideline"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorRadioButton2" />
+
+            <RadioButton
+                android:id="@+id/accentColorRadioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="?attr/colorAccent"
+                android:minHeight="48dp"
+                android:checked="true"
+                android:text="@string/accentColor"
+                app:layout_constraintStart_toStartOf="@+id/radioGuideline"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorDarkRadioButton2" />
+
+            <RadioButton
+                android:id="@+id/defaultColorRadioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:checked="true"
+                android:text="@string/defaultt"
+                app:layout_constraintStart_toStartOf="@+id/radioGuideline"
+                card_view:layout_constraintTop_toBottomOf="@+id/accentColorRadioButton2" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/radioGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/pbarCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:animateLayoutChanges="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioCardView"
+        card_view:cardBackgroundColor="?attr/primaryBgColor"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="5dp"
+        card_view:cardPreventCornerOverlap="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pbarConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp">
+
+            <TextView
+                android:id="@+id/pbarTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/progressBars"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="?attr/colorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/pbarTitleDivider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="?attr/colorPrimaryDark"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/pbarTitleTextView" />
+
+            <ProgressBar
+                android:id="@+id/themeColorProgressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="?attr/colorPrimary"
+                android:padding="10dp"
+                android:text="@string/themeColor"
+                app:layout_constraintEnd_toStartOf="@+id/themeColorDarkProgressBar"
+                app:layout_constraintHorizontal_bias="0.5"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/pbarTitleDivider" />
+
+            <ProgressBar
+                android:id="@+id/themeColorDarkProgressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="?attr/colorPrimaryDark"
+                android:padding="10dp"
+                android:text="@string/themeColorDark"
+                app:layout_constraintEnd_toStartOf="@+id/accentColorProgressBar"
+                app:layout_constraintHorizontal_bias="0.5"
+                card_view:layout_constraintStart_toEndOf="@+id/themeColorProgressBar"
+                card_view:layout_constraintTop_toBottomOf="@+id/pbarTitleDivider" />
+
+            <ProgressBar
+                android:id="@+id/accentColorProgressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="?attr/colorAccent"
+                android:padding="10dp"
+                android:text="@string/accentColor"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/themeColorDarkProgressBar"
+                app:layout_constraintTop_toBottomOf="@+id/pbarTitleDivider"
+                card_view:layout_constraintEnd_toStartOf="@+id/defaultColorProgressBar" />
+
+            <ProgressBar
+                android:id="@+id/defaultColorProgressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/defaultt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/accentColorProgressBar"
+                app:layout_constraintTop_toBottomOf="@+id/pbarTitleDivider" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hpbarCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:animateLayoutChanges="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingBottom="16dp"
+        card_view:cardBackgroundColor="?attr/primaryBgColor"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="5dp"
+        card_view:cardPreventCornerOverlap="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pbarCardView" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/hpbarConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp" >
+
+            <TextView
+                android:id="@+id/hpbarTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/horizontalProgressBars"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="?attr/colorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/hpbarTitleDivider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="?attr/colorPrimaryDark"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/hpbarTitleTextView" />
+
+            <TextView
+                android:id="@+id/hpbarThemeColorTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/themeColor"
+                android:textColor="?attr/colorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/hpbarTitleDivider" />
+
+            <ProgressBar
+                android:id="@+id/themeColorHorizontalProgressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:progress="25"
+                android:progressTint="?attr/colorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/hpbarThemeColorTextView" />
+
+            <TextView
+                android:id="@+id/hpbarThemeColorDarkTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/themeColorDark"
+                android:textColor="?attr/colorPrimaryDark"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorHorizontalProgressBar" />
+
+            <ProgressBar
+                android:id="@+id/themeColorDarkHorizontalProgressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:progress="50"
+                android:progressTint="?attr/colorPrimaryDark"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/hpbarThemeColorDarkTextView" />
+
+            <TextView
+                android:id="@+id/hpbarAccentColorTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/accentColor"
+                android:textColor="?attr/colorAccent"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorDarkHorizontalProgressBar" />
+
+            <ProgressBar
+                android:id="@+id/accentColorHorizontalProgressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:progress="75"
+                android:progressTint="?attr/colorAccent"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/hpbarAccentColorTextView" />
+
+            <TextView
+                android:id="@+id/hpbarDefaultColorTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/defaultt"
+                android:textColor="?attr/textColorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/accentColorHorizontalProgressBar" />
+
+            <ProgressBar
+                android:id="@+id/defaultColorHorizontalProgressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:progress="100"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/hpbarDefaultColorTextView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/seekbarCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:animateLayoutChanges="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingBottom="16dp"
+        card_view:cardBackgroundColor="?attr/primaryBgColor"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="5dp"
+        card_view:cardPreventCornerOverlap="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hpbarCardView" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/seekbarConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp" >
+
+            <TextView
+                android:id="@+id/seekbarTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/seekBars"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="?attr/colorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/seekbarTitleDivider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="?attr/colorPrimaryDark"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/seekbarTitleTextView" />
+
+            <TextView
+                android:id="@+id/themeColorTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/themeColor"
+                android:textColor="?attr/colorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/seekbarTitleDivider" />
+
+            <SeekBar
+                android:id="@+id/themeColorSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:progress="25"
+                android:progressTint="?attr/colorPrimary"
+                android:thumbTint="?attr/colorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorTextView" />
+
+            <TextView
+                android:id="@+id/themeColorDarkTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/themeColorDark"
+                android:textColor="?attr/colorPrimaryDark"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorSeekBar" />
+
+            <SeekBar
+                android:id="@+id/themeColorDarkSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:progress="50"
+                android:progressTint="?attr/colorPrimaryDark"
+                android:thumbTint="?attr/colorPrimaryDark"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorDarkTextView" />
+
+            <TextView
+                android:id="@+id/accentColorTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/accentColor"
+                android:textColor="?attr/colorAccent"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/themeColorDarkSeekBar" />
+
+            <SeekBar
+                android:id="@+id/accentColorSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:progress="75"
+                android:progressTint="?attr/colorAccent"
+                android:thumbTint="?attr/colorAccent"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/accentColorTextView" />
+
+            <TextView
+                android:id="@+id/defaultColorTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/defaultt"
+                android:textColor="?attr/textColorPrimary"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/accentColorSeekBar" />
+
+            <SeekBar
+                android:id="@+id/defaultColorSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:progress="100"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/defaultColorTextView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

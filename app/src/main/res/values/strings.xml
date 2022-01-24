@@ -1,3 +1,48 @@
 <resources>
-    <string name="app_name">MTCPrefDemo</string>
+    <!-- General -->
+    <string name="app_name">MTCPref Demo</string>
+    <string name="themeColor">Theme Color</string>
+    <string name="themeColorDark">Theme Color Dark</string>
+    <string name="accentColor">Accent Color</string>
+    <string name="defaultt">Default</string>
+
+    <!-- For Home View -->
+    <string name="homeTitleText">M.T.C. Preference</string>
+    <string name="homeSubTitleText">An Android Library Written In Kotlin</string>
+
+    <!-- For Button Views -->
+    <string name="buttons">Buttons</string>
+    <string name="toggleButtons">Toggle Buttons</string>
+    <string name="toggleThemeOn">Theme Color On</string>
+    <string name="toggleThemeOff">Theme Color Off</string>
+    <string name="toggleThemeDarkOn">Theme Dark On</string>
+    <string name="toggleThemeDarkOff">Theme Dark Off</string>
+    <string name="toggleAccentOn">Accent Color On</string>
+    <string name="toggleAccentOff">Accent Color Off</string>
+    <string name="toggleDefaultOn">Default On</string>
+    <string name="toggleDefaultOff">Default Off</string>
+    <string name="switches">Switches</string>
+    <string name="fabs">Floating Action Buttons</string>
+    <string name="chips">Chips</string>
+    <string name="chipEntry">Entry Chip</string>
+    <string name="chipChoice">Choice Chip</string>
+    <string name="chipAction">Action Chip</string>
+    <string name="chipFilter">Filter Chip</string>
+
+    <!-- For Widget Views -->
+    <string name="checkboxes">Checkboxes</string>
+    <string name="radioButtons">Radio Buttons</string>
+    <string name="progressBars">Progress Bars</string>
+    <string name="horizontalProgressBars">Horizontal Progress Bars</string>
+    <string name="seekBars">Seek Bars</string>
+
+    <!-- For Text Views -->
+    <string name="textViews">Text Views</string>
+    <string name="editTextViews">Edit Text Views</string>
+    <string name="editTextDefault">Default View No Theming Added …</string>
+    <string name="editTextDefaultText">Default View No Theming Added</string>
+    <string name="editTextThemeColor">Theme Colored Text …</string>
+    <string name="editTextThemeDarkColor">Theme Dark Colored Text …</string>
+    <string name="editTextAccentColor">Accent Colored Text …</string>
+
 </resources>
