@@ -21,7 +21,6 @@ import com.jb15613.themechooser.utility.*
 import com.jb15613.themechooser.utility.HUE_SPLITTER
 import com.jb15613.themechooser.utility.LIGHTBLUE
 import com.jb15613.themechooser.utility.PrefUtils.getDensityScale
-import com.jb15613.themechooser.utility.PrefUtils.getThemeHue
 import com.jb15613.themechooser.utility.PrefUtils.getThemeName
 import com.jb15613.themechooser.utility.PrefUtils.setDensityScale
 import com.jb15613.themechooser.utility.THEME_SPLITTER
