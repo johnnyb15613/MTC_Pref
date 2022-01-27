@@ -1,6 +1,12 @@
 package com.jb15613.themechooser.utility
 
+import android.content.res.Resources
 import android.graphics.Color
+import com.jb15613.themechooser.mtcpref.R
+import com.jb15613.themechooser.mtcpref.Themes
+import com.jb15613.themechooser.startup.PrefUtilsInitializer
+import com.jb15613.themechooser.utility.ColorStringIntSwitcher.switchColorToInt
+import com.jb15613.themechooser.utility.color.AccentColor
 
 
 /**
@@ -24,10 +30,21 @@ import android.graphics.Color
  getThemeHue(): Boolean
  getColorAsHtmlString(color: Int): String
  getColorNameAsString(type: String): String
+ getRandomThemeColor(): Int
+ getRandomAccentColor(): Int
  ```
  *
  */
 object ThemeChooserUtils {
+
+    private var mResources: Resources
+
+    var isInitialized = false
+
+    init {
+        isInitialized = true
+        mResources = PrefUtilsInitializer.mResources
+    }
 
     /**
      ## getThemeColor(*vararg* opacities: Float): [Int]
@@ -340,5 +357,33 @@ object ThemeChooserUtils {
 
         return name
     } // getColorNameAsString
+
+    fun getRandomThemeColor(): Int {
+        val rt = Themes.ThemeColor.randomThemeColor
+        return switchColorToInt(rt, mResources)
+    }
+
+    fun getRandomAccentColor(): Int {
+        val rt = Themes.AccentColor.randomAccentColor
+        return switchColorToInt(rt, mResources)
+    }
+
+    fun getRandomColorSet(): IntArray {
+        val tn = Themes.ThemeColor.randomThemeColor
+        val array = ColorUtils.getColorSet("$tn - Dark", false)
+        array[2] = AccentColor.getColor(Themes.ThemeColor.randomThemeColor)
+        return array
+    } // getRandomColorSet
+
+    fun getRandomThemeColorSet(): IntArray {
+        val themeName = Themes.ThemeColor.randomThemeColor
+        return ColorUtils.getColorSet("$themeName - Dark", false)
+    } // getThemeColorSet
+
+    fun getThemeColorSet(theme: String): IntArray {
+        val hue = "Dark"
+        val themeName = "$theme$HUE_SPLITTER$hue"
+        return ColorUtils.getColorSet(themeName, false)
+    } // getThemeColorSet
 
 } // Class

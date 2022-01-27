@@ -18,4 +18,11 @@
 	<attr name="primaryBgColorInverse" format="color|reference"/>
 	<attr name="secondaryBgColorInverse" format="color|reference"/>
 
+	<!-- Chooser Swatch -->
+	<declare-styleable name="ChooserSwatch">
+		<attr name="color_primary" format="color" />
+		<attr name="color_dark" format="color" />
+		<attr name="color_accent" format="color" />
+	</declare-styleable>
+
 </resources>

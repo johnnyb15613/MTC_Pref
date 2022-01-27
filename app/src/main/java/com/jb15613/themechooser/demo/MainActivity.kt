@@ -134,7 +134,8 @@ class MainActivity : AppCompatActivity() {
     private fun isAutomaticInitializationDone(): Boolean {
         return PrefUtils.isInitialized &&
                 ColorUtils.isInitialized &&
-                AccentColor.isInitialized
+                AccentColor.isInitialized &&
+                ThemeChooserUtils.isInitialized
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -218,6 +219,11 @@ class MainActivity : AppCompatActivity() {
             }
             NAV_ITEM_WIDGET_VIEWS -> {
                 val frag = WidgetViewsFragment()
+                ft.replace(R.id.fragment_container, frag)
+                ft.commit()
+            }
+            NAV_ITEM_SPARE_PARTS -> {
+                val frag = SparePartsFragment()
                 ft.replace(R.id.fragment_container, frag)
                 ft.commit()
             }
