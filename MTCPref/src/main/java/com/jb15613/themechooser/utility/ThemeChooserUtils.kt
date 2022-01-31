@@ -386,4 +386,8 @@ object ThemeChooserUtils {
         return ColorUtils.getColorSet(themeName, false)
     } // getThemeColorSet
 
+    fun getColor(color: String): Int {
+        return switchColorToInt(color, mResources)
+    }
+
 } // Class

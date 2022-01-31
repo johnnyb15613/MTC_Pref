@@ -7,30 +7,25 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.jb15613.themechooser.adapter.NavigationAdapter
 import com.jb15613.themechooser.model.NavObject
-import com.jb15613.themechooser.mtcpref.Theme
 import com.jb15613.themechooser.mtcpref.ThemeChooser
-import com.jb15613.themechooser.mtcpref.Themes
 import com.jb15613.themechooser.utility.*
+import com.jb15613.themechooser.utility.FragmentSwapperUtilities.getCurrentNav
+import com.jb15613.themechooser.utility.FragmentSwapperUtilities.setCurrentNav
 import com.jb15613.themechooser.utility.color.AccentColor
-import com.google.android.material.snackbar.Snackbar
-
-
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -128,7 +123,7 @@ class MainActivity : AppCompatActivity() {
         mAdapter = setupAdapter(this)
         mRecyclerView.adapter = mAdapter
 
-        swapActivityFragment(NAV_ITEM_HOME)
+        swapActivityFragment(getNav())
     } // onCreate
 
     private fun isAutomaticInitializationDone(): Boolean {
@@ -197,7 +192,17 @@ class MainActivity : AppCompatActivity() {
         snackbar.show()
     } // showSnackBar
 
+    fun setNav(value: String) {
+        setCurrentNav(this, value)
+    }
+
+    fun getNav(): String {
+        return getCurrentNav(this)
+    }
+
     fun swapActivityFragment(newFrag: String) {
+
+        setNav(newFrag)
 
         val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
 
@@ -263,5 +268,44 @@ class MainActivity : AppCompatActivity() {
             }
         }
     } // onBackPressed
+
+    fun showCardClickDialog(theme: String) {
+
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder.setIcon(R.mipmap.ic_launcher)
+        builder.setCancelable(false)
+        builder.setTitle("M.T.C. Pref")
+        builder.setMessage("$theme\nWould you like to set this as the App Theme?\n(Requires App Restart)")
+        builder.setPositiveButton("Yes"
+        ) { dialog, _ ->
+            // yes
+            val hue = PrefUtils.getThemeHue()
+            val suffix = if (hue) {
+                " - Light"
+            } else {
+                " - Dark"
+            }
+            showSnackBar("Setting theme to $theme$suffix")
+            swapTheme("$theme$suffix")
+            dialog.dismiss()
+        }
+        builder.setNegativeButton("No"
+        ) { dialog, _ ->
+            // no
+            dialog.dismiss()
+        }
+        val mDialog: AlertDialog = builder.create()
+        mDialog.setOnShowListener {
+            mDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ThemeChooserUtils.getThemeAccentColor())
+            mDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ThemeChooserUtils.getThemeAccentColor())
+        }
+        mDialog.show()
+
+    } // showCardClickDialog
+
+    private fun swapTheme(themeName: String) {
+        PrefUtils.setThemeName(themeName)
+        recreate()
+    } // swapTheme
 
 }

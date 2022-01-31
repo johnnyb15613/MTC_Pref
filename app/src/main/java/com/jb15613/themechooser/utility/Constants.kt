@@ -10,6 +10,9 @@ import java.util.*
 
 const val APP_TITLE = "MTC Pref Demo"
 
+internal const val PREFERENCE_NAME_KEY = "mtc_pref_demo_preferences"
+internal const val PREF_NAV_CURRENT = "currentNavigation"
+
 const val NAV_ITEM_NAV = "Navigation"
 const val NAV_ITEM_HOME = "Home"
 const val NAV_ITEM_TEXT_VIEWS = "Text Views"

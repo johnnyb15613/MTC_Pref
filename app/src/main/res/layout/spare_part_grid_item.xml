@@ -2,16 +2,14 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="16dp"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:layout_margin="4dp"
     android:animateLayoutChanges="true"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    android:paddingBottom="16dp"
     card_view:cardBackgroundColor="?attr/primaryBgColor"
     card_view:cardCornerRadius="2dp"
     card_view:cardElevation="5dp"
@@ -23,38 +21,19 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="12dp">
+        android:layout_margin="4dp">
 
         <com.jb15613.themechooser.component.ChooserSwatch
             android:id="@+id/swatch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:color_accent="?attr/colorAccent"
             app:color_dark="?attr/colorPrimaryDark"
             app:color_primary="?attr/colorPrimary"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            card_view:layout_constraintBottom_toTopOf="@+id/guideline"
+            card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            tools:text="Deep Orange"
-            android:textColor="?attr/textColorPrimary"
-            android:textAppearance="?android:textAppearanceLarge"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintHorizontal_bias="0.50"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/swatch" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            card_view:layout_constraintGuide_percent="0.7" />
+            card_view:layout_constraintTop_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

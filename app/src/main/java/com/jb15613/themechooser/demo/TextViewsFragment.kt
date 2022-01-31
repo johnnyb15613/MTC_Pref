@@ -9,7 +9,6 @@ import com.jb15613.themechooser.utility.ThemeChooserUtils
 class TextViewsFragment: Fragment(R.layout.activity_text_views) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        // val someInt = requireArguments().getInt("some_int")
 
         val themeColorTextView: TextView = view.findViewById(R.id.themeColorTV)
         val themeDarkColorTextView: TextView = view.findViewById(R.id.themeDarkColorTV)

@@ -28,7 +28,24 @@ class NavigationAdapter(private val mNavTitles: Array<String?>, private val mIco
     private val typeAppItem = 2
     private val typeNavItem = 3
     private val typeAboutItem = 4
-    private var selectedPosition = 2
+    private var selectedPosition = 0
+
+    var d = if (mContext is MainActivity) {
+        when (mContext.getNav()) {
+            NAV_ITEM_HOME -> selectedPosition = 2
+            NAV_ITEM_TEXT_VIEWS -> selectedPosition = 3
+            NAV_ITEM_BUTTON_VIEWS -> selectedPosition = 4
+            NAV_ITEM_WIDGET_VIEWS -> selectedPosition = 5
+            NAV_ITEM_SPARE_PARTS -> selectedPosition = 6
+            else -> {
+                // panic
+            }
+        }
+    } else {
+        selectedPosition = 2
+    }
+
+
 
     class ViewHolder(view: View?, viewType: Int) : RecyclerView.ViewHolder(view!!) {
 
