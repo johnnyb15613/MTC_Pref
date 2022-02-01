@@ -23,6 +23,7 @@
 		<attr name="color_primary" format="color" />
 		<attr name="color_dark" format="color" />
 		<attr name="color_accent" format="color" />
+		<attr name="check_style" format="integer" />
 	</declare-styleable>
 
 </resources>

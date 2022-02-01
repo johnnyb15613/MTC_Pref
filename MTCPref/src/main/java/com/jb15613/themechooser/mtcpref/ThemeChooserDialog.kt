@@ -357,7 +357,6 @@ class ThemeChooserDialog : DialogFragment() {
         mListener?.onThemeChanged(newTheme, getThemeHue(), false)
     } // accentClickListener
 
-
     /**
      * ## Loads an [ArrayList] with [CardView]s containing Theme Swatches
      *
@@ -562,7 +561,7 @@ class ThemeChooserDialog : DialogFragment() {
             val cv: CardView = accentContainer.getChildAt(i) as CardView
             val ll: LinearLayout = cv.getChildAt(0) as LinearLayout
             val rl: RelativeLayout = ll.getChildAt(0) as RelativeLayout
-            val tv: TextView = ll.getChildAt(1) as TextView
+            // val tv: TextView = ll.getChildAt(1) as TextView
 
             val checked: ImageView = rl.findViewWithTag(VIEW_CHECKED)
 

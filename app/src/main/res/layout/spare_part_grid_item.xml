@@ -30,6 +30,7 @@
             app:color_accent="?attr/colorAccent"
             app:color_dark="?attr/colorPrimaryDark"
             app:color_primary="?attr/colorPrimary"
+            app:check_style="1"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jb15613.themechooser.component.ChooserSwatch
@@ -15,6 +16,7 @@ import com.jb15613.themechooser.utility.NAV_ITEM_LOG
 import com.jb15613.themechooser.utility.NAV_ITEM_SETTINGS
 import com.jb15613.themechooser.utility.NAV_ITEM_UPDATE
 import com.jb15613.themechooser.utility.ThemeChooserUtils
+import java.util.*
 
 class SparePartsAdapter(private val mThemeTitles: Array<String>, private val mContext: Context) :
     RecyclerView.Adapter<SparePartsAdapter.ViewHolder>() {
@@ -61,6 +63,10 @@ class SparePartsAdapter(private val mThemeTitles: Array<String>, private val mCo
 
     private var cardClickListener: View.OnClickListener = View.OnClickListener {
         val tag = it.tag.toString()
+        val card = it as CardView
+        val constraint = card.getChildAt(0) as ConstraintLayout
+        val swatch = constraint.getChildAt(0) as ChooserSwatch
+        swatch.toggleChecked()
         if (mContext is MainActivity) {
             mContext.showSnackBar(tag)
         }
