@@ -1,0 +1,3 @@
+rootProject.name = "MTCPrefDemo"
+include ':app'
+include ':MTCPref'

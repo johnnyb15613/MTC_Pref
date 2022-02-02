@@ -19,10 +19,6 @@ buildscript {
     }
 }
 
-plugins {
-    id 'maven-publish'
-}
-
 configurations.all {
     resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 }
