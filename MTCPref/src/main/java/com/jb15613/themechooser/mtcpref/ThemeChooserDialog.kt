@@ -291,18 +291,17 @@ class ThemeChooserDialog : DialogFragment() {
         val oldTheme = PrefUtils.getThemeName()
 
         // this will hold our old hue value
-        val oldHue: String
 
         // see if theme has a hue set
-        if (oldTheme.contains(HUE_SPLITTER)) {
+        val oldHue: String = if (oldTheme.contains(HUE_SPLITTER)) {
             // SHOULD ALWAYS BE TRUE
             // split it to isolate the hue
             val items: List<String> = oldTheme.split(HUE_SPLITTER)
-            oldHue = items[1]
+            items[1]
         } else {
             // SHOULD NEVER HAPPEN
             // use default value
-            oldHue = "Dark"
+            "Dark"
         }
 
         // Set Theme Name
@@ -323,7 +322,7 @@ class ThemeChooserDialog : DialogFragment() {
         } // swatchClickListener
 
     /**
-     * ## Listener on the Accent Swatchj controlling Theme *Accent*
+     * ## Listener on the Accent Swatch controlling Theme *Accent*
      */
     private var accentClickListener = View.OnClickListener { v ->
 
@@ -340,11 +339,11 @@ class ThemeChooserDialog : DialogFragment() {
             val hueSplit: List<String> = themeName.split(HUE_SPLITTER)
             oldHue = hueSplit[1]
 
-            if (hueSplit[0].contains(THEME_SPLITTER)) {
+            oldTheme = if (hueSplit[0].contains(THEME_SPLITTER)) {
                 val themeSplit: List<String> = hueSplit[0].split(THEME_SPLITTER)
-                oldTheme = themeSplit[0]
+                themeSplit[0]
             } else {
-                oldTheme = hueSplit[0]
+                hueSplit[0]
             }
 
         } else {
@@ -478,11 +477,11 @@ class ThemeChooserDialog : DialogFragment() {
             // split it at the hue
             val items: List<String> = themeName.split(HUE_SPLITTER)
 
-            if (items[0].contains(THEME_SPLITTER)) {
+            themeName = if (items[0].contains(THEME_SPLITTER)) {
                 val tSplit: List<String> = items[0].split(THEME_SPLITTER)
-                themeName = tSplit[0]
+                tSplit[0]
             } else {
-                themeName = items[0]
+                items[0]
             }
 
         }
@@ -561,7 +560,7 @@ class ThemeChooserDialog : DialogFragment() {
             val cv: CardView = accentContainer.getChildAt(i) as CardView
             val ll: LinearLayout = cv.getChildAt(0) as LinearLayout
             val rl: RelativeLayout = ll.getChildAt(0) as RelativeLayout
-            // val tv: TextView = ll.getChildAt(1) as TextView
+            val tv: TextView = ll.getChildAt(1) as TextView
 
             val checked: ImageView = rl.findViewWithTag(VIEW_CHECKED)
 
@@ -572,8 +571,10 @@ class ThemeChooserDialog : DialogFragment() {
             if (accentName == cv.tag) {
                 checked.visibility = View.VISIBLE
                 cv.setCardBackgroundColor(colors[2])
+                tv.setTextColor(ThemeChooserUtils.getPrimaryTextColor())
             } else {
                 cv.setCardBackgroundColor(ThemeChooserUtils.getPrimaryBgColor())
+                tv.setTextColor(ColorUtils.getCustomAccentColor(cv.tag.toString()))
             }
 
         }
@@ -772,7 +773,6 @@ class ThemeChooserDialog : DialogFragment() {
         checkedParams.addRule(RelativeLayout.CENTER_IN_PARENT)
 
         tv.text = themeName
-        tv.setTextColor(color)
 
         rl.addView(circle)
         rl.addView(checked)
@@ -800,9 +800,11 @@ class ThemeChooserDialog : DialogFragment() {
         if (themeName == aName) {
             checked.visibility = View.VISIBLE
             cv.setCardBackgroundColor(colors[0])
+            tv.setTextColor(ThemeChooserUtils.getPrimaryTextColor())
         } else {
             checked.visibility = View.INVISIBLE
             cv.setCardBackgroundColor(ThemeChooserUtils.getPrimaryBgColor())
+            tv.setTextColor(color)
         }
 
         checked.tag = VIEW_CHECKED

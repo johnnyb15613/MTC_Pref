@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tcd_accentContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.jb15613.themechooser.component.ThemeChooserAccentSwatch
+        android:id="@+id/redAccentSwatch"
+        android:padding="10dp"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tcs_accent_check_style="0"
+        app:tcs_accent_color_accent="@color/material_primary_red"
+        app:tcs_accent_color_name="Red"
+        app:tcs_accent_text_color="?attr/textColorPrimary" />
+
+    <com.jb15613.themechooser.component.ThemeChooserAccentSwatch
+        android:id="@+id/redA1AccentSwatch"
+        android:padding="10dp"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/redAccentSwatch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tcs_accent_check_style="0"
+        app:tcs_accent_color_accent="@color/material_accent_red"
+        app:tcs_accent_color_name="Red A1"
+        app:tcs_accent_text_color="?attr/textColorPrimary" />
+
+    <com.jb15613.themechooser.component.ThemeChooserAccentSwatch
+        android:id="@+id/redA2AccentSwatch"
+        android:padding="10dp"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/redA1AccentSwatch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tcs_accent_check_style="0"
+        app:tcs_accent_color_accent="@color/material_accent_red2"
+        app:tcs_accent_color_name="Red A2"
+        app:tcs_accent_text_color="?attr/textColorPrimary" />
+
+    <com.jb15613.themechooser.component.ThemeChooserAccentSwatch
+        android:id="@+id/redA4AccentSwatch"
+        android:padding="10dp"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/redA2AccentSwatch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tcs_accent_check_style="0"
+        app:tcs_accent_color_accent="@color/material_accent_red4"
+        app:tcs_accent_color_name="Red A4"
+        app:tcs_accent_text_color="?attr/textColorPrimary" />
+
+    <com.jb15613.themechooser.component.ThemeChooserAccentSwatch
+        android:id="@+id/redA7AccentSwatch"
+        android:padding="10dp"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/redA4AccentSwatch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tcs_accent_check_style="0"
+        app:tcs_accent_color_accent="@color/material_accent_red7"
+        app:tcs_accent_color_name="Red A7"
+        app:tcs_accent_text_color="?attr/textColorPrimary" />
+
+    <com.jb15613.themechooser.component.ThemeChooserAccentSwatch
+        android:id="@+id/pinkAccentSwatch"
+        android:padding="10dp"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/redA7AccentSwatch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tcs_accent_check_style="0"
+        app:tcs_accent_color_accent="@color/material_primary_pink"
+        app:tcs_accent_color_name="Pink"
+        app:tcs_accent_text_color="?attr/textColorPrimary" />
+
+    <com.jb15613.themechooser.component.ThemeChooserAccentSwatch
+        android:id="@+id/pinkA1AccentSwatch"
+        android:padding="10dp"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/pinkAccentSwatch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tcs_accent_check_style="0"
+        app:tcs_accent_color_accent="@color/material_accent_pink"
+        app:tcs_accent_color_name="Pink A1"
+        app:tcs_accent_text_color="?attr/textColorPrimary" />
+
+    <com.jb15613.themechooser.component.ThemeChooserAccentSwatch
+        android:id="@+id/pinkA2AccentSwatch"
+        android:padding="10dp"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/pinkA1AccentSwatch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tcs_accent_check_style="0"
+        app:tcs_accent_color_accent="@color/material_accent_pink2"
+        app:tcs_accent_color_name="Pink A2"
+        app:tcs_accent_text_color="?attr/textColorPrimary" />
+
+    <com.jb15613.themechooser.component.ThemeChooserAccentSwatch
+        android:id="@+id/pinkA4AccentSwatch"
+        android:padding="10dp"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/pinkA2AccentSwatch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tcs_accent_check_style="0"
+        app:tcs_accent_color_accent="@color/material_accent_pink4"
+        app:tcs_accent_color_name="Pink A4"
+        app:tcs_accent_text_color="?attr/textColorPrimary" />
+
+    <com.jb15613.themechooser.component.ThemeChooserAccentSwatch
+        android:id="@+id/pinkA7AccentSwatch"
+        android:padding="10dp"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/pinkA4AccentSwatch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tcs_accent_check_style="0"
+        app:tcs_accent_color_accent="@color/material_accent_pink7"
+        app:tcs_accent_color_name="Pink A7"
+        app:tcs_accent_text_color="?attr/textColorPrimary" />
+
+    <com.jb15613.themechooser.component.ThemeChooserAccentSwatch
+        android:id="@+id/purpleAccentSwatch"
+        android:padding="10dp"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/pinkA7AccentSwatch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tcs_accent_check_style="0"
+        app:tcs_accent_color_accent="@color/material_primary_purple"
+        app:tcs_accent_color_name="Purple"
+        app:tcs_accent_text_color="?attr/textColorPrimary" />
+
+    <com.jb15613.themechooser.component.ThemeChooserAccentSwatch
+        android:id="@+id/purpleA1AccentSwatch"
+        android:padding="10dp"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/purpleAccentSwatch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tcs_accent_check_style="0"
+        app:tcs_accent_color_accent="@color/material_accent_purple"
+        app:tcs_accent_color_name="Purple A1"
+        app:tcs_accent_text_color="?attr/textColorPrimary" />
+
+    <com.jb15613.themechooser.component.ThemeChooserAccentSwatch
+        android:id="@+id/purpleA2AccentSwatch"
+        android:padding="10dp"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/purpleA1AccentSwatch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tcs_accent_check_style="0"
+        app:tcs_accent_color_accent="@color/material_accent_purple2"
+        app:tcs_accent_color_name="Purple A2"
+        app:tcs_accent_text_color="?attr/textColorPrimary" />
+
+    <com.jb15613.themechooser.component.ThemeChooserAccentSwatch
+        android:id="@+id/purpleA4AccentSwatch"
+        android:padding="10dp"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/purpleA2AccentSwatch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tcs_accent_check_style="0"
+        app:tcs_accent_color_accent="@color/material_accent_purple4"
+        app:tcs_accent_color_name="Purple A4"
+        app:tcs_accent_text_color="?attr/textColorPrimary" />
+
+    <com.jb15613.themechooser.component.ThemeChooserAccentSwatch
+        android:id="@+id/purpleA7AccentSwatch"
+        android:padding="10dp"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/purpleA4AccentSwatch"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tcs_accent_check_style="0"
+        app:tcs_accent_color_accent="@color/material_accent_purple7"
+        app:tcs_accent_color_name="Purple A7"
+        app:tcs_accent_text_color="?attr/textColorPrimary" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

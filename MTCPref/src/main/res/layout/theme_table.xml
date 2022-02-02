@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tcd_portraitSwatchContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="*" >
+
+    <TableRow
+        android:id="@+id/tcd_row1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <com.jb15613.themechooser.component.ThemeChooserSwatch
+            android:id="@+id/redSwatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:tcs_color_accent="@color/material_accent_red"
+            app:tcs_color_dark="@color/material_primaryDark_red"
+            app:tcs_color_primary="@color/material_primary_red"
+            app:tcs_check_style="0"
+            app:tcs_color_name="Red"
+            app:tcs_text_color="@color/material_primary_red"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.jb15613.themechooser.component.ThemeChooserSwatch
+            android:id="@+id/pinkSwatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:tcs_color_accent="@color/material_accent_pink"
+            app:tcs_color_dark="@color/material_primaryDark_pink"
+            app:tcs_color_primary="@color/material_primary_pink"
+            app:tcs_check_style="0"
+            app:tcs_color_name="Pink"
+            app:tcs_text_color="@color/material_primary_pink" />
+
+        <com.jb15613.themechooser.component.ThemeChooserSwatch
+            android:id="@+id/purpleSwatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:tcs_color_accent="@color/material_accent_purple"
+            app:tcs_color_dark="@color/material_primaryDark_purple"
+            app:tcs_color_primary="@color/material_primary_purple"
+            app:tcs_check_style="0"
+            app:tcs_color_name="Purple"
+            app:tcs_text_color="@color/material_primary_purple" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tcd_row2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <com.jb15613.themechooser.component.ThemeChooserSwatch
+            android:id="@+id/deepPurpleSwatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:tcs_color_accent="@color/material_accent_deepPurple"
+            app:tcs_color_dark="@color/material_primaryDark_deepPurple"
+            app:tcs_color_primary="@color/material_primary_deepPurple"
+            app:tcs_check_style="0"
+            app:tcs_color_name="Deep Purple"
+            app:tcs_text_color="@color/material_primary_deepPurple" />
+
+        <com.jb15613.themechooser.component.ThemeChooserSwatch
+            android:id="@+id/indigoSwatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:tcs_color_accent="@color/material_accent_indigo"
+            app:tcs_color_dark="@color/material_primaryDark_indigo"
+            app:tcs_color_primary="@color/material_primary_indigo"
+            app:tcs_check_style="0"
+            app:tcs_color_name="Indigo"
+            app:tcs_text_color="@color/material_primary_indigo" />
+
+        <com.jb15613.themechooser.component.ThemeChooserSwatch
+            android:id="@+id/blueSwatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:tcs_color_accent="@color/material_accent_blue"
+            app:tcs_color_dark="@color/material_primaryDark_blue"
+            app:tcs_color_primary="@color/material_primary_blue"
+            app:tcs_check_style="0"
+            app:tcs_color_name="Blue"
+            app:tcs_text_color="@color/material_primary_blue" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tcd_row3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <com.jb15613.themechooser.component.ThemeChooserSwatch
+            android:id="@+id/lightBlueSwatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:tcs_color_accent="@color/material_accent_lightBlue"
+            app:tcs_color_dark="@color/material_primaryDark_lightBlue"
+            app:tcs_color_primary="@color/material_primary_lightBlue"
+            app:tcs_check_style="0"
+            app:tcs_color_name="Light Blue"
+            app:tcs_text_color="@color/material_primary_lightBlue" />
+
+        <com.jb15613.themechooser.component.ThemeChooserSwatch
+            android:id="@+id/cyanSwatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:tcs_color_accent="@color/material_accent_cyan"
+            app:tcs_color_dark="@color/material_primaryDark_cyan"
+            app:tcs_color_primary="@color/material_primary_cyan"
+            app:tcs_check_style="0"
+            app:tcs_color_name="Cyan"
+            app:tcs_text_color="@color/material_primary_cyan" />
+
+        <com.jb15613.themechooser.component.ThemeChooserSwatch
+            android:id="@+id/tealSwatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:tcs_color_accent="@color/material_accent_teal"
+            app:tcs_color_dark="@color/material_primaryDark_teal"
+            app:tcs_color_primary="@color/material_primary_teal"
+            app:tcs_check_style="0"
+            app:tcs_color_name="Teal"
+            app:tcs_text_color="@color/material_primary_teal" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tcd_row4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <com.jb15613.themechooser.component.ThemeChooserSwatch
+            android:id="@+id/greenSwatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:tcs_color_accent="@color/material_accent_green"
+            app:tcs_color_dark="@color/material_primaryDark_green"
+            app:tcs_color_primary="@color/material_primary_green"
+            app:tcs_check_style="0"
+            app:tcs_color_name="Green"
+            app:tcs_text_color="@color/material_primary_green" />
+
+        <com.jb15613.themechooser.component.ThemeChooserSwatch
+            android:id="@+id/lightGreenSwatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:tcs_color_accent="@color/material_accent_lightGreen"
+            app:tcs_color_dark="@color/material_primaryDark_lightGreen"
+            app:tcs_color_primary="@color/material_primary_lightGreen"
+            app:tcs_check_style="0"
+            app:tcs_color_name="Light Green"
+            app:tcs_text_color="@color/material_primary_lightGreen" />
+
+        <com.jb15613.themechooser.component.ThemeChooserSwatch
+            android:id="@+id/limeSwatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:tcs_color_accent="@color/material_accent_lime"
+            app:tcs_color_dark="@color/material_primaryDark_lime"
+            app:tcs_color_primary="@color/material_primary_lime"
+            app:tcs_check_style="0"
+            app:tcs_color_name="Lime"
+            app:tcs_text_color="@color/material_primary_lime" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tcd_row5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <com.jb15613.themechooser.component.ThemeChooserSwatch
+            android:id="@+id/yellowSwatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:tcs_color_accent="@color/material_accent_yellow"
+            app:tcs_color_dark="@color/material_primaryDark_yellow"
+            app:tcs_color_primary="@color/material_primary_yellow"
+            app:tcs_check_style="0"
+            app:tcs_color_name="Yellow"
+            app:tcs_text_color="@color/material_primary_yellow" />
+
+        <com.jb15613.themechooser.component.ThemeChooserSwatch
+            android:id="@+id/amberSwatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:tcs_color_accent="@color/material_accent_amber"
+            app:tcs_color_dark="@color/material_primaryDark_amber"
+            app:tcs_color_primary="@color/material_primary_amber"
+            app:tcs_check_style="0"
+            app:tcs_color_name="Amber"
+            app:tcs_text_color="@color/material_primary_amber" />
+
+        <com.jb15613.themechooser.component.ThemeChooserSwatch
+            android:id="@+id/orangeSwatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:tcs_color_accent="@color/material_accent_orange"
+            app:tcs_color_dark="@color/material_primaryDark_orange"
+            app:tcs_color_primary="@color/material_primary_orange"
+            app:tcs_check_style="0"
+            app:tcs_color_name="Orange"
+            app:tcs_text_color="@color/material_primary_orange" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tcd_row6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <com.jb15613.themechooser.component.ThemeChooserSwatch
+            android:id="@+id/deepOrangeSwatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:tcs_color_accent="@color/material_accent_deepOrange"
+            app:tcs_color_dark="@color/material_primaryDark_deepOrange"
+            app:tcs_color_primary="@color/material_primary_deepOrange"
+            app:tcs_check_style="0"
+            app:tcs_color_name="Deep Orange"
+            app:tcs_text_color="@color/material_primary_deepOrange" />
+
+        <com.jb15613.themechooser.component.ThemeChooserSwatch
+            android:id="@+id/brownSwatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:tcs_color_accent="@color/material_accent_brown"
+            app:tcs_color_dark="@color/material_primaryDark_brown"
+            app:tcs_color_primary="@color/material_primary_brown"
+            app:tcs_check_style="0"
+            app:tcs_color_name="Brown"
+            app:tcs_text_color="@color/material_primary_brown" />
+
+        <com.jb15613.themechooser.component.ThemeChooserSwatch
+            android:id="@+id/greySwatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:tcs_color_accent="@color/material_accent_grey"
+            app:tcs_color_dark="@color/material_primaryDark_grey"
+            app:tcs_color_primary="@color/material_primary_grey"
+            app:tcs_check_style="0"
+            app:tcs_color_name="Grey"
+            app:tcs_text_color="@color/material_primary_grey" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tcd_row7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <com.jb15613.themechooser.component.ThemeChooserSwatch
+            android:id="@+id/blueGreySwatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:tcs_color_accent="@color/material_accent_blueGrey"
+            app:tcs_color_dark="@color/material_primaryDark_blueGrey"
+            app:tcs_color_primary="@color/material_primary_blueGrey"
+            app:tcs_check_style="0"
+            app:tcs_color_name="Blue Grey"
+            app:tcs_text_color="@color/material_primary_blueGrey" />
+
+        <View
+            android:id="@+id/dummyView1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <View
+            android:id="@+id/dummyView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </TableRow>
+
+</TableLayout>

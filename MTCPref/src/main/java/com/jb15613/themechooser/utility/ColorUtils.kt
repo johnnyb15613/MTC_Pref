@@ -393,7 +393,7 @@ object ColorUtils {
 
      * @return [Int] that contains the Accent theme color
      */
-    private fun getCustomAccentColor(themeName: String): Int {
+    fun getCustomAccentColor(themeName: String): Int {
         var color = 0
 
         when (themeName) {

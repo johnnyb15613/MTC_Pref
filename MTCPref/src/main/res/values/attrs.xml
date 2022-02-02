@@ -26,4 +26,22 @@
 		<attr name="check_style" format="integer" />
 	</declare-styleable>
 
+	<!-- Theme Chooser Swatch -->
+	<declare-styleable name="ThemeChooserSwatch">
+		<attr name="tcs_color_primary" format="color" />
+		<attr name="tcs_color_dark" format="color" />
+		<attr name="tcs_color_accent" format="color" />
+		<attr name="tcs_check_style" format="integer" />
+		<attr name="tcs_color_name" format="string" />
+		<attr name="tcs_text_color" format="color" />
+	</declare-styleable>
+
+	<!-- Theme Chooser Accent Swatch -->
+	<declare-styleable name="ThemeChooserAccentSwatch">
+		<attr name="tcs_accent_color_accent" format="color" />
+		<attr name="tcs_accent_check_style" format="integer" />
+		<attr name="tcs_accent_color_name" format="string" />
+		<attr name="tcs_accent_text_color" format="color" />
+	</declare-styleable>
+
 </resources>
