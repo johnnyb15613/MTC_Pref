@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'maven'
+    id 'maven-publish'
 }
 
 android {
