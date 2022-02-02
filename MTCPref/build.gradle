@@ -1,10 +1,7 @@
-plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
-    id 'maven'
-    id 'maven-publish'
-    id 'org.jetbrains.dokka' version '1.6.10'
-}
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
 group='com.github.johnnyb15613'
 
