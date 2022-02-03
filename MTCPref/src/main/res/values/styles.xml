@@ -3,7 +3,6 @@
 	
 	<!-- Dark Theme -->
     <style name="AppThemeDark" parent="Theme.AppCompat">
-		<item name="android:windowTranslucentStatus">true</item>
 
 		<item name="colorPrimary">@color/material_primary</item>
         <item name="colorPrimaryDark">@color/material_primaryDark</item>
@@ -29,7 +28,6 @@
 
 	<!-- Light Theme -->
 	<style name="AppThemeLight" parent="Theme.AppCompat.Light">
-		<item name="android:windowTranslucentStatus">true</item>
 
 		<item name="colorPrimary">@color/material_primary</item>
         <item name="colorPrimaryDark">@color/material_primaryDark</item>
