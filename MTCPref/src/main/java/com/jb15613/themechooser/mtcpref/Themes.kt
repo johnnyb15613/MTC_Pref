@@ -4,12 +4,12 @@ import com.jb15613.themechooser.utility.*
 import java.util.*
 
 /**
-## Utilities for the [Theme.ThemeBuilder] Class
+ * ## Utilities for the [Theme.ThemeBuilder] Class
  */
 object Themes {
 
     /**
-     ## Gets a random ThemeHue
+     * ## Gets a random ThemeHue
      *
      * @return [Boolean] (false = Dark : true = Light)
      */
@@ -17,7 +17,7 @@ object Themes {
         get() = Math.random() < 0.5
 
     /**
-    ## Used to set the *ThemeColor* with the [Theme.ThemeBuilder]
+     * ## Used to set the *ThemeColor* with the [Theme.ThemeBuilder]
      */
     object ThemeColor {
         // Red
@@ -78,7 +78,7 @@ object Themes {
         const val BlueGrey: String = BLUEGREY
 
         /**
-         ## Gets a random ThemeColor
+         * ## Gets a random ThemeColor
          *
          * @return [String] defining random Theme Color
          */
@@ -95,7 +95,7 @@ object Themes {
     } // ThemeColor
 
     /**
-    ## Used to set the *AccentColor* with the [Theme.ThemeBuilder]
+     * ## Used to set the *AccentColor* with the [Theme.ThemeBuilder]
      */
     object AccentColor {
         // Red
@@ -204,7 +204,7 @@ object Themes {
         private const val BlueGrey_A3: String = BLUEGREY_3
 
         /**
-         ## Gets a random Accent Color
+         * ## Gets a random Accent Color
          *
          * @return [String] defining random Accent Color
          */

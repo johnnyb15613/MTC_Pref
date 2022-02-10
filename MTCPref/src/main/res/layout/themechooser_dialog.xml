@@ -14,7 +14,7 @@
 		android:layout_centerHorizontal="true"
 		android:padding="4dp"
 		android:textAppearance="?android:textAppearanceLarge"
-		android:text="Theme Color"
+		android:text="@string/tcd_theme_color"
 		android:textColor="?attr/textColorPrimary"/>
 
 	<View
@@ -80,7 +80,7 @@
 	<TextView
 		android:id="@+id/tcd_textView"
 		android:gravity="center"
-		android:text="@string/ph_accent_color"
+		android:text="@string/tcd_accent_color"
 		android:layout_above="@+id/tcd_accentParent"
 		android:layout_gravity="center"
 		android:layout_width="wrap_content"
@@ -96,7 +96,7 @@
 		android:paddingTop="4dp"
 		android:paddingRight="10dp"
 		android:paddingBottom="10dp"
-		android:layout_above="@+id/toggleButton"
+		android:layout_above="@+id/tcd_toggleButton"
 		android:layout_gravity="center"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content">
@@ -110,22 +110,12 @@
 	</HorizontalScrollView>
 
 	<ToggleButton
-		android:id="@+id/toggleButton"
+		android:id="@+id/tcd_toggleButton"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_above="@+id/tcd_switch"
-		android:textOn="Light Theme"
-		android:textOff="Dark Theme"/>
-
-	<androidx.appcompat.widget.SwitchCompat
-		android:layout_height="wrap_content"
-		android:layout_width="wrap_content"
-		android:text="Light Theme"
-		android:textColor="?attr/textColorPrimary"
-		android:id="@+id/tcd_switch"
-		android:paddingLeft="15dp"
+		android:textOn="@string/tcd_day_mode"
+		android:textOff="@string/tcd_night_mode"
 		android:layout_alignParentBottom="true"
-		android:layout_centerHorizontal="true"
-		android:paddingStart="15dp" />
+		android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

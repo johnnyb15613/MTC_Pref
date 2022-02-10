@@ -84,7 +84,7 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
     private var pcListener: OnPreferenceChangeListener = OnPreferenceChangeListener { preference, newValue ->
         Log.e("onPreferenceChange", "$preference : newValue : $newValue")
 
-        val themeName = PrefUtils.getThemeName()
+        val themeName = getThemeName()
 
         if (newValue is Boolean) {
             // SHOULD ALWAYS BE TRUE

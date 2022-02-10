@@ -22,14 +22,14 @@
             style="@android:style/TextAppearance.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/ph_theme_color"/>
+            android:text="@string/tcd_theme_color"/>
 
         <TextView
             android:id="@+id/summary"
             style="@android:style/TextAppearance.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/ph_summary"/>
+            android:text="@string/tcd_summary"/>
 
     </LinearLayout>
 

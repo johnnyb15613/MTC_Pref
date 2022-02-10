@@ -1,11 +1,8 @@
 package com.jb15613.themechooser.startup
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.content.res.Resources
 import androidx.startup.Initializer
-import com.jb15613.themechooser.utility.PREF_NAME_KEY
-import com.jb15613.themechooser.utility.PrefUtils
 import com.jb15613.themechooser.utility.ThemeChooserUtils
 
 /**

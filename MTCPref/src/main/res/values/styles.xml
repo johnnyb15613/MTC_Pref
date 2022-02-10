@@ -52,7 +52,7 @@
 	</style>
 
 	<!-- ActionBar Theme -->
-	<style name="ActionBarTheme" parent="Widget.AppCompat.Toolbar">
+	<style name="ActionBar" parent="Widget.AppCompat.Toolbar">
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
 		<item name="android:textColorSecondary">@color/textColorSecondary</item>
         <item name="selectableItemBackground">?android:selectableItemBackground</item>

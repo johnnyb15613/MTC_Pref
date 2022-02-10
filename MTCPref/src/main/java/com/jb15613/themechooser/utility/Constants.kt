@@ -238,6 +238,12 @@ internal const val THEME_SPLITTER = " \u0026 "
 /** value: " - " **/
 internal const val HUE_SPLITTER = " - "
 
+// Hue
+/** value: "Night" **/
+internal const val HUE_DARK = "Night"
+/** value: "Day" **/
+internal const val HUE_LIGHT = "Day"
+
 // Tags
 /** value: "checked" **/
 internal const val VIEW_CHECKED = "checked"

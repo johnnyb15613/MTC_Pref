@@ -82,7 +82,7 @@
     <TextView
         android:id="@+id/tcd_textView"
         android:gravity="center"
-        android:text="@string/ph_accent_color"
+        android:text="@string/tcd_accent_color"
         android:textColor="?attr/colorPrimary"
         android:layout_gravity="center"
         android:textAppearance="?android:textAppearanceLarge"

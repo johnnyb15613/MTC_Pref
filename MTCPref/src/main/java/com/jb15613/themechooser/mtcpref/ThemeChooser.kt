@@ -5,7 +5,7 @@ import android.util.Log
 import com.jb15613.themechooser.utility.*
 
 /**
-## Used to set the *ThemeColor* without the [Theme.ThemeBuilder]
+ * ## Used to set the *ThemeColor* without the [Theme.ThemeBuilder]
  */
 object ThemeChooser {
 
@@ -15,7 +15,7 @@ object ThemeChooser {
     private var mTag = "ThemeChooser.getTheme()"
 
     /**
-     ## This method will return a Theme ID
+     * ## This method will return a Theme ID
      *
      * If no argument is passed, it will get value from [SharedPreferences] using [LIGHTBLUE] as default
      *
@@ -53,8 +53,8 @@ object ThemeChooser {
             val name = items[0].trim()
             val hue = items[1].trim()
 
-            if (hue == "Light") mThemeHue = true
-            if (hue == "Dark") mThemeHue = false
+            if (hue == HUE_LIGHT) mThemeHue = true
+            if (hue == HUE_DARK) mThemeHue = false
 
             mAccentName = if (name.contains(THEME_SPLITTER)) {
 
@@ -84,23 +84,23 @@ object ThemeChooser {
             // Light Theme
             if (mAccentName == "") {
                 // Light Normal Accent Color
-                val customName: String = if (passedThemeName.contains("Light")) {
+                val customName: String = if (passedThemeName.contains(HUE_LIGHT)) {
                     if (!isUnitTest) PrefUtils.setThemeName(passedThemeName)
                     val hSplit: List<String> = passedThemeName.split(HUE_SPLITTER)
                     hSplit[0]
                 } else {
-                    if (!isUnitTest) PrefUtils.setThemeName("$passedThemeName - Light")
+                    if (!isUnitTest) PrefUtils.setThemeName("$passedThemeName$HUE_SPLITTER$HUE_LIGHT")
                     passedThemeName
                 }
                 themeId = ThemeUtils.getColoredThemeLight(customName)
             } else {
                 // Light Custom Accent Color
-                val customName: String = if (passedThemeName.contains("Light")) {
+                val customName: String = if (passedThemeName.contains(HUE_LIGHT)) {
                     if (!isUnitTest) PrefUtils.setThemeName(passedThemeName)
                     val hSplit: List<String> = passedThemeName.split(HUE_SPLITTER)
                     hSplit[0]
                 } else {
-                    if (!isUnitTest) PrefUtils.setThemeName("$passedThemeName - Light")
+                    if (!isUnitTest) PrefUtils.setThemeName("$passedThemeName$HUE_SPLITTER$HUE_LIGHT")
                     passedThemeName
                 }
                 themeId = LightThemeUtils.getCustomColoredLightTheme(customName)
@@ -109,23 +109,23 @@ object ThemeChooser {
             // Dark Theme
             if (mAccentName == "") {
                 // Dark Normal Accent Color
-                val customName: String = if (passedThemeName.contains("Dark")) {
+                val customName: String = if (passedThemeName.contains(HUE_DARK)) {
                     if (!isUnitTest) PrefUtils.setThemeName(passedThemeName)
                     val hSplit: List<String> = passedThemeName.split(HUE_SPLITTER)
                     hSplit[0]
                 } else {
-                    if (!isUnitTest) PrefUtils.setThemeName("$passedThemeName - Dark")
+                    if (!isUnitTest) PrefUtils.setThemeName("$passedThemeName$HUE_SPLITTER$HUE_DARK")
                     passedThemeName
                 }
                 themeId = ThemeUtils.getColoredThemeDark(customName)
             } else {
                 // Dark Custom Accent Color
-                val customName: String = if (passedThemeName.contains("Dark")) {
+                val customName: String = if (passedThemeName.contains(HUE_DARK)) {
                     if (!isUnitTest) PrefUtils.setThemeName(passedThemeName)
                     val hSplit: List<String> = passedThemeName.split(HUE_SPLITTER)
                     hSplit[0]
                 } else {
-                    if (!isUnitTest) PrefUtils.setThemeName("$passedThemeName - Dark")
+                    if (!isUnitTest) PrefUtils.setThemeName("$passedThemeName$HUE_SPLITTER$HUE_DARK")
                     passedThemeName
                 }
                 themeId = DarkThemeUtils.getCustomColoredDarkTheme(customName)

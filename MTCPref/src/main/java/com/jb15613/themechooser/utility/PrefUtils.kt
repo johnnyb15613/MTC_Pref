@@ -106,7 +106,7 @@ object PrefUtils {
 
         if (themeName.contains(HUE_SPLITTER)) {
             val items: List<String> = themeName.split(HUE_SPLITTER)
-            if (items[1].contains("Light")) {
+            if (items[1].contains(HUE_LIGHT)) {
                 // Light Theme
                 setLightThemeTextAndBgColors()
             } else {
@@ -193,7 +193,7 @@ object PrefUtils {
      * @return [String] that represents the Theme Name
      */
     fun getThemeName(): String {
-        return mPrefs.getString(PREF_THEME_NAME_KEY, LIGHTBLUE + HUE_SPLITTER + "Dark").toString()
+        return mPrefs.getString(PREF_THEME_NAME_KEY, LIGHTBLUE + HUE_SPLITTER + HUE_DARK).toString()
     } // getThemeName
 
     /**

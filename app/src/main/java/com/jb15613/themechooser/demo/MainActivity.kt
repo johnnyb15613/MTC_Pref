@@ -281,9 +281,9 @@ class MainActivity : AppCompatActivity() {
             // yes
             val hue = PrefUtils.getThemeHue()
             val suffix = if (hue) {
-                " - Light"
+                " - Day"
             } else {
-                " - Dark"
+                " - Night"
             }
             showSnackBar("Setting theme to $theme$suffix")
             swapTheme("$theme$suffix")

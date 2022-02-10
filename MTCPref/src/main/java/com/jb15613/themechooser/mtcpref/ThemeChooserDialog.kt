@@ -14,7 +14,6 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.widget.*
 import android.widget.CompoundButton
-import androidx.appcompat.widget.SwitchCompat
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.DialogFragment
 import com.jb15613.themechooser.utility.*
@@ -40,8 +39,8 @@ class ThemeChooserDialog : DialogFragment() {
     var mLandscapeParent: HorizontalScrollView? = null
     // Layout to add Landscape Swatch Items to
     var mLandscapeContainer: LinearLayout? = null
-    // Switch for Light/Dark
-    private var mSwitch: SwitchCompat? = null
+    // Toggle for Light/Dark
+    private var mToggle: ToggleButton? = null
     // isLandscape
     private var isPortrait = false
     // Theme Change Listener
@@ -102,7 +101,7 @@ class ThemeChooserDialog : DialogFragment() {
         mLandscapeParent = view.findViewById(R.id.tcd_landSwatchParent) as HorizontalScrollView
         mPortraitContainer = view.findViewById(R.id.tcd_portraitSwatchContainer) as TableLayout
         mLandscapeContainer = view.findViewById(R.id.tcd_landSwatchContainer) as LinearLayout
-        mSwitch = view.findViewById(R.id.tcd_switch) as SwitchCompat
+        mToggle = view.findViewById(R.id.tcd_toggleButton) as ToggleButton
 
         if (isPortrait) {
             mPortraitParent!!.visibility = View.VISIBLE
@@ -115,14 +114,15 @@ class ThemeChooserDialog : DialogFragment() {
         // start building the table
         initTable()
 
-        // set switch position
-        mSwitch!!.isChecked = getThemeHue()
+        // set toggle position
+        mToggle!!.isChecked = getThemeHue()
 
         // set switch listener
-        mSwitch!!.setOnCheckedChangeListener(mSwitchListener)
+        // mToggle!!.setOnCheckedChangeListener(mSwitchListener)
+        mToggle!!.setOnCheckedChangeListener(mToggleListener)
 
         // set switch text color
-        mSwitch!!.setTextColor(PrefUtils.getThemePrimaryTextColorInt())
+        mToggle!!.setTextColor(PrefUtils.getThemePrimaryTextColorInt())
 
     } // onViewCreated
 
@@ -250,9 +250,9 @@ class ThemeChooserDialog : DialogFragment() {
     } // initTable
 
     /**
-     * ## Listener on the [SwitchCompat] controlling Theme *Hue*
+     * ## Listener on the [ToggleButton] controlling Theme *Hue*
      */
-    private var mSwitchListener = CompoundButton.OnCheckedChangeListener { _, isChecked ->
+    private var mToggleListener = CompoundButton.OnCheckedChangeListener { _, isChecked ->
         // if theme is light or dark
         val oldTheme = PrefUtils.getThemeName()
 
@@ -266,10 +266,10 @@ class ThemeChooserDialog : DialogFragment() {
 
         val newTheme: String = if (isChecked) {
             // Light Theme
-            "$old - Light"
+            "$old$HUE_SPLITTER$HUE_LIGHT"
         } else {
             // Dark Theme
-            "$old - Dark"
+            "$old$HUE_SPLITTER$HUE_DARK"
         }
 
         PrefUtils.setThemeHue(isChecked)
@@ -285,7 +285,6 @@ class ThemeChooserDialog : DialogFragment() {
 
         // this tag holds the new Theme Color
         val themeName = v.tag.toString()
-        Log.e("swatchClick", themeName) // Orange || Red || Light Blue
 
         // get old Theme from prefs so we can see what hue it's using
         val oldTheme = PrefUtils.getThemeName()
@@ -301,7 +300,7 @@ class ThemeChooserDialog : DialogFragment() {
         } else {
             // SHOULD NEVER HAPPEN
             // use default value
-            "Dark"
+            HUE_DARK
         }
 
         // Set Theme Name
@@ -327,7 +326,6 @@ class ThemeChooserDialog : DialogFragment() {
     private var accentClickListener = View.OnClickListener { v ->
 
         val accentName = v.tag.toString()
-        Log.e("accentClick", accentName)
 
         val oldHue: String
         var oldTheme = ""
@@ -347,7 +345,7 @@ class ThemeChooserDialog : DialogFragment() {
             }
 
         } else {
-            oldHue = "Dark"
+            oldHue = HUE_DARK
         }
 
         val newTheme = "$oldTheme$THEME_SPLITTER$accentName$HUE_SPLITTER$oldHue"
@@ -468,7 +466,6 @@ class ThemeChooserDialog : DialogFragment() {
     private fun recheckThemeColor(isPortrait: Boolean, portraitContainer: TableLayout, landscapeContainer: LinearLayout) {
 
         var themeName = PrefUtils.getThemeName()
-        Log.e("recheckThemeColor", themeName)
 
         val colors: IntArray = ColorUtils.getColorSet(themeName, true)
 
@@ -550,8 +547,6 @@ class ThemeChooserDialog : DialogFragment() {
 
         val themeName = PrefUtils.getThemeName()
         val accentName = PrefUtils.getAccentName()
-
-        Log.e("recheckAccentColor", themeName) // Light Green - Dark
 
         val colors = ColorUtils.getColorSet(themeName, true)
 

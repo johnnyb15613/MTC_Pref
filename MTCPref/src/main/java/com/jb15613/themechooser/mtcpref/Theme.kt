@@ -1,12 +1,16 @@
 package com.jb15613.themechooser.mtcpref
 
+import com.jb15613.themechooser.utility.*
+import com.jb15613.themechooser.utility.HUE_DARK
+import com.jb15613.themechooser.utility.HUE_LIGHT
+import com.jb15613.themechooser.utility.HUE_SPLITTER
 import com.jb15613.themechooser.utility.MtcPrefException
 
 /**
- ## This Class will let you use a Builder to construct a theme
-
- ### Using the Builder ensures that your Theme String is valid
-
+ * ## This Class will let you use a Builder to construct a theme
+ *
+ * ### Using the Builder ensures that your Theme String is valid
+ *
  * ```
  * setTheme(new Theme.ThemeBuilder()
  *                  .themeColor(Themes.ThemeColor.getRandomThemeColor())
@@ -24,16 +28,16 @@ class Theme(builder: ThemeBuilder) {
 
     @get:Throws(MtcPrefException::class)
     val themeName: String
-        get() = if (!themeColor.contains(" A")) {
+        get() = if (!themeColor.contains(" A") || !themeColor.contains("3")) {
             if (themeColor != "") {
                 var theme = themeColor
                 if (accentColor != "") {
-                    theme += " & $accentColor"
+                    theme += "$THEME_SPLITTER$accentColor"
                 }
                 theme += if (isLightTheme) {
-                    " - Light"
+                    "$HUE_SPLITTER$HUE_LIGHT"
                 } else {
-                    " - Dark"
+                    "$HUE_SPLITTER$HUE_DARK"
                 }
                 theme
             } else {
@@ -68,13 +72,6 @@ class Theme(builder: ThemeBuilder) {
         }
 
         fun build(): Theme {
-
-            val lightDark = if (isLightTheme) {
-                "Light"
-            } else {
-                "Dark"
-            }
-
             return Theme(this)
         }
     }
