@@ -12,9 +12,12 @@ import androidx.preference.PreferenceViewHolder
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.util.Log
+import android.view.View
+import android.view.ViewParent
 import android.widget.ImageView
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.preference.Preference
 import com.jb15613.themechooser.mtcpref.ThemeChooserDialog.OnThemeChangedListener
 import com.jb15613.themechooser.utility.*
@@ -93,7 +96,6 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
                 swapThemeSwatch(themeName)
             }
         }
-
         preference.summary = themeName
         true
     } // OnPreferenceChangeListener

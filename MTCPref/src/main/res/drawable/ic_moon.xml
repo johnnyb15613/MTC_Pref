@@ -1,0 +1,12 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="50dp"
+    android:height="50dp"
+    android:viewportWidth="30"
+    android:viewportHeight="30">
+    <path
+        android:name="moon"
+        android:pathData="M14.3053,3.0145A12.3078,12.3078 0,0 0,2.8316 15.2938,12.3078 12.3078,0 0,0 15.1393,27.6016a12.3078,12.3078 0,0 0,6.5975 -1.9182,12.3078 12.3078,0 0,1 -0.8335,0.0284A12.3078,12.3078 0,0 1,8.5956 13.404,12.3078 12.3078,0 0,1 14.3053,3.0145Z"
+        android:strokeWidth="0.273508"
+        android:fillColor="#ffefed81"
+        android:fillType="evenOdd"/>
+</vector>

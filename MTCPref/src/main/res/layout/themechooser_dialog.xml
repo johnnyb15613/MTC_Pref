@@ -113,9 +113,12 @@
 		android:id="@+id/tcd_toggleButton"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:textOn="@string/tcd_day_mode"
-		android:textOff="@string/tcd_night_mode"
 		android:layout_alignParentBottom="true"
-		android:layout_centerHorizontal="true"/>
+		android:layout_centerHorizontal="true"
+		android:backgroundTint="@drawable/hue_toggle_bg_selector"
+		android:backgroundTintMode="multiply"
+		android:drawableTop="@drawable/hue_toggle_selector"
+		android:textOff="@string/tcd_night_mode"
+		android:textOn="@string/tcd_day_mode" />
 
 </RelativeLayout>

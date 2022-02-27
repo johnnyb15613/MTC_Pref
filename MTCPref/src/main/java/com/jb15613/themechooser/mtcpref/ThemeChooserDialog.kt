@@ -5,19 +5,31 @@ import android.app.Dialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
+import android.graphics.PorterDuff
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.ImageSpan
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.*
 import android.widget.CompoundButton
 import androidx.cardview.widget.CardView
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.text.set
 import androidx.fragment.app.DialogFragment
 import com.jb15613.themechooser.utility.*
 import com.jb15613.themechooser.utility.PrefUtils.getThemeHue
+import com.jb15613.themechooser.utility.ThemeChooserUtils.getPrimaryBgColor
+import com.jb15613.themechooser.utility.ThemeChooserUtils.getPrimaryTextColor
+import com.jb15613.themechooser.utility.ThemeChooserUtils.getSecondaryBgColor
 import com.jb15613.themechooser.utility.color.AccentColor
 
 /**
@@ -27,6 +39,14 @@ class ThemeChooserDialog : DialogFragment() {
 
     // Context
     private var mContext: Context? = null
+    // Parent Container
+    var mParent: RelativeLayout? = null
+    // Title Text View
+    var mTitleText: TextView? = null
+    // Divider
+    var mDivider: View? = null
+    // Accent Text View
+    var mAccentText: TextView? = null
     // Accent Scroll View
     var mAccentParent: HorizontalScrollView? = null
     // Layout to add Accent Items to
@@ -77,7 +97,6 @@ class ThemeChooserDialog : DialogFragment() {
         }
 
         return d
-        // init
     } // onCreateDialog
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -95,12 +114,16 @@ class ThemeChooserDialog : DialogFragment() {
         }
 
         // get views
+        mParent = view.findViewById(R.id.tcd_relativeLayout) as RelativeLayout
+        mTitleText = view.findViewById(R.id.themeChooserTextView) as TextView
+        mDivider = view.findViewById(R.id.divider) as View
+        mAccentText = view.findViewById(R.id.tcd_textView) as TextView
+        mPortraitParent = view.findViewById(R.id.tcd_portraitSwatchParent) as ScrollView
+        mPortraitContainer = view.findViewById(R.id.tcd_portraitSwatchContainer) as TableLayout
+        mLandscapeParent = view.findViewById(R.id.tcd_landSwatchParent) as HorizontalScrollView
+        mLandscapeContainer = view.findViewById(R.id.tcd_landSwatchContainer) as LinearLayout
         mAccentParent = view.findViewById(R.id.tcd_accentParent) as HorizontalScrollView
         mAccentContainer = view.findViewById(R.id.tcd_accentContainer) as LinearLayout
-        mPortraitParent = view.findViewById(R.id.tcd_portraitSwatchParent) as ScrollView
-        mLandscapeParent = view.findViewById(R.id.tcd_landSwatchParent) as HorizontalScrollView
-        mPortraitContainer = view.findViewById(R.id.tcd_portraitSwatchContainer) as TableLayout
-        mLandscapeContainer = view.findViewById(R.id.tcd_landSwatchContainer) as LinearLayout
         mToggle = view.findViewById(R.id.tcd_toggleButton) as ToggleButton
 
         if (isPortrait) {
@@ -111,6 +134,9 @@ class ThemeChooserDialog : DialogFragment() {
             mLandscapeParent!!.visibility = View.VISIBLE
         }
 
+        // set colors
+        setDialogColors()
+
         // start building the table
         initTable()
 
@@ -118,13 +144,23 @@ class ThemeChooserDialog : DialogFragment() {
         mToggle!!.isChecked = getThemeHue()
 
         // set switch listener
-        // mToggle!!.setOnCheckedChangeListener(mSwitchListener)
         mToggle!!.setOnCheckedChangeListener(mToggleListener)
 
         // set switch text color
         mToggle!!.setTextColor(PrefUtils.getThemePrimaryTextColorInt())
 
     } // onViewCreated
+
+    /**
+     * Sets Appropriate Colors
+     */
+    private fun setDialogColors() {
+        mParent?.setBackgroundColor(getSecondaryBgColor())
+        mTitleText?.setTextColor(getPrimaryTextColor())
+        mDivider?.setBackgroundColor(getPrimaryTextColor())
+        mAccentText?.setTextColor(getPrimaryTextColor())
+        mToggle?.setTextColor(getPrimaryTextColor())
+    } // setDialogColors
 
     /**
      * ## Loads the Table with Theme Swatches
@@ -274,8 +310,12 @@ class ThemeChooserDialog : DialogFragment() {
 
         PrefUtils.setThemeHue(isChecked)
         PrefUtils.setThemeName(newTheme)
-
         mListener?.onThemeChanged(newTheme, isChecked, true)
+        setDialogColors()
+        // also want to recheck swatch item
+        recheckThemeColor(getIsPortrait(), mPortraitContainer!!, mLandscapeContainer!!)
+        recheckAccentColor(mAccentContainer!!)
+        // swap and animate bg
     } // onCheckChanged
 
     /**
@@ -495,6 +535,7 @@ class ThemeChooserDialog : DialogFragment() {
                     val rl: RelativeLayout = ll.getChildAt(0) as RelativeLayout
 
                     val checked: ImageView = rl.findViewWithTag(VIEW_CHECKED)
+                    checked.setColorFilter(getPrimaryTextColor(), PorterDuff.Mode.SRC_IN)
 
                     if (checked.visibility == View.VISIBLE) {
                         checked.visibility = View.INVISIBLE
@@ -520,6 +561,7 @@ class ThemeChooserDialog : DialogFragment() {
                 val rl: RelativeLayout = ll.getChildAt(0) as RelativeLayout
 
                 val checked: ImageView = rl.findViewWithTag(VIEW_CHECKED)
+                checked.setColorFilter(getPrimaryTextColor(), PorterDuff.Mode.SRC_IN)
 
                 if (checked.visibility == View.VISIBLE) {
                     checked.visibility = View.INVISIBLE
@@ -558,6 +600,7 @@ class ThemeChooserDialog : DialogFragment() {
             val tv: TextView = ll.getChildAt(1) as TextView
 
             val checked: ImageView = rl.findViewWithTag(VIEW_CHECKED)
+            checked.setColorFilter(getPrimaryTextColor(), PorterDuff.Mode.SRC_IN)
 
             if (checked.visibility == View.VISIBLE) {
                 checked.visibility = View.INVISIBLE
