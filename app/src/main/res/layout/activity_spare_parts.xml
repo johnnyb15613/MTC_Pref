@@ -17,7 +17,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/redRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/redText" />
@@ -44,7 +44,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pinkRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pinkText" />
@@ -71,7 +71,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/purpleRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/purpleText" />
@@ -98,7 +98,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/deepPurpleRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deepPurpleText" />
@@ -125,7 +125,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/indigoRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/indigoText" />
@@ -152,7 +152,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/blueRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/blueText" />
@@ -179,7 +179,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lightBlueRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lightBlueText" />
@@ -206,7 +206,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cyanRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cyanText" />
@@ -233,7 +233,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tealRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tealText" />
@@ -260,7 +260,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/greenRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/greenText" />
@@ -287,7 +287,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lightGreenRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lightGreenText" />
@@ -314,7 +314,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/limeRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/limeText" />
@@ -341,7 +341,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/yellowRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/yellowText" />
@@ -368,7 +368,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/amberRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/amberText" />
@@ -395,7 +395,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/orangeRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/orangeText" />
@@ -422,7 +422,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/deepOrangeRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deepOrangeText" />
@@ -449,7 +449,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/brownRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/brownText" />
@@ -476,7 +476,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/greyRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/greyText" />
@@ -503,7 +503,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/blueGreyRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/blueGreyText" />
