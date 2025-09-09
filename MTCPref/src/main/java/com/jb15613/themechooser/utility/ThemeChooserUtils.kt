@@ -42,7 +42,7 @@ object ThemeChooserUtils {
 
     init {
         isInitialized = true
-        mResources = PrefUtilsInitializer.mResources
+        mResources = PrefUtilsInitializer.getMResources()
     }
 
     /**
