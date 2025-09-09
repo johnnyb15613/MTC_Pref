@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -92,6 +93,25 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
+        val dispatcher = onBackPressedDispatcher
+
+        val onBackPressedCallback = object : OnBackPressedCallback(true /* enabled by default */) {
+            override fun handleOnBackPressed() {
+                val settingsFragment = supportFragmentManager.findFragmentByTag("prefsFrag")
+                if (settingsFragment != null && settingsFragment.isAdded && settingsFragment.isVisible) {
+                    supportFragmentManager.beginTransaction().remove(settingsFragment).commit()
+                    recreate()
+                } else if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    mDrawerLayout.closeDrawer(GravityCompat.START)
+                } else {
+                    isEnabled = false // Disable this callback
+                    onBackPressedDispatcher.onBackPressed() // Trigger default behavior or next callback
+                    isEnabled = true // Re-enable if you want it to be active for future presses
+                }
+            }
+        }
+        dispatcher.addCallback(this, onBackPressedCallback)
+
         val actionBar: ActionBar? = supportActionBar
 
         actionBar?.setHomeAsUpIndicator(R.mipmap.ic_menu_white)
@@ -138,9 +158,9 @@ class MainActivity : AppCompatActivity() {
         return true
     } // onCreateOptionsMenu
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        when (item?.itemId) {
+        when (item.itemId) {
             android.R.id.home -> mDrawerLayout.openDrawer(GravityCompat.START)
         }
         return true
@@ -253,21 +273,6 @@ class MainActivity : AppCompatActivity() {
         }
         return result
     }// getStatusBarHeight
-
-    override fun onBackPressed() {
-        // super.onBackPressed();
-        val fm2 = supportFragmentManager
-        val ft2 = fm2.beginTransaction()
-        val frag: SettingsFragment? = supportFragmentManager.findFragmentByTag("prefsFrag") as SettingsFragment?
-
-        if (frag != null) {
-            if (frag.isAdded && frag.isVisible) {
-                ft2.remove(frag)
-                ft2.commit()
-                recreate()
-            }
-        }
-    } // onBackPressed
 
     fun showCardClickDialog(theme: String) {
 

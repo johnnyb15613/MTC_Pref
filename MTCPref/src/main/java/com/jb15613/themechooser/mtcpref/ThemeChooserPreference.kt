@@ -12,12 +12,9 @@ import androidx.preference.PreferenceViewHolder
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.util.Log
-import android.view.View
-import android.view.ViewParent
 import android.widget.ImageView
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.preference.Preference
 import com.jb15613.themechooser.mtcpref.ThemeChooserDialog.OnThemeChangedListener
 import com.jb15613.themechooser.utility.*
@@ -30,6 +27,7 @@ import com.jb15613.themechooser.utility.THEME_SPLITTER
 import com.jb15613.themechooser.utility.color.AccentColor
 import java.lang.ClassCastException
 import java.lang.NullPointerException
+import androidx.core.view.isNotEmpty
 
 /**
  * ## Custom [Preference] Implementation
@@ -78,7 +76,7 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
 
     override fun onThemeChanged(theme: String?, hue: Boolean, isSwitch: Boolean) {
         try {
-            onPreferenceChangeListener.onPreferenceChange(this, isSwitch)
+            onPreferenceChangeListener?.onPreferenceChange(this, isSwitch)
         } catch (e: NullPointerException) {
             e.printStackTrace()
         }
@@ -100,7 +98,7 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
         true
     } // OnPreferenceChangeListener
 
-    override fun onSaveInstanceState(): Parcelable {
+    override fun onSaveInstanceState(): Parcelable? {
         Log.e("MTCPref", "onSaveInstanceState() called")
         return super.onSaveInstanceState()
     } // onSaveInstanceState
@@ -117,7 +115,7 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
         onPreferenceChangeListener = pcListener
     } // onRestoreInstanceState
 
-    override fun onPreferenceClick(preference: Preference?): Boolean {
+    override fun onPreferenceClick(preference: Preference): Boolean {
         showDialog()
         return false
     } // onPreferenceClick
@@ -155,7 +153,7 @@ class ThemeChooserPreference : Preference, Preference.OnPreferenceClickListener,
      * @param theme a [String] that is the new Theme Name
      */
     private fun swapThemeSwatch(theme: String?) {
-        if (mSwatchContainer!!.childCount > 0) {
+        if (mSwatchContainer!!.isNotEmpty()) {
             mSwatchContainer!!.removeAllViews()
         }
         mSwatchContainer!!.addView(getCellItem(theme))

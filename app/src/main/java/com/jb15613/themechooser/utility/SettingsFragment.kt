@@ -14,15 +14,15 @@ class SettingsFragment : PreferenceFragmentCompat() {
         setPreferencesFromResource(R.xml.preferences, rootKey)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
-        view?.setBackgroundColor(ThemeChooserUtils.getPrimaryBgColor())
+        view.setBackgroundColor(ThemeChooserUtils.getPrimaryBgColor())
         var sBar = 0
         if (activity is MainActivity) {
             sBar = (activity as MainActivity).getStatusBarHeight()
         }
-        view?.setPadding(0, sBar + 10, 0, 0)
+        view.setPadding(0, sBar + 10, 0, 0)
         return view
     } // onCreateView
 }

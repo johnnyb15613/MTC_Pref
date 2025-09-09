@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.jb15613.themechooser.mtcpref">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application>
         <provider
@@ -9,8 +8,6 @@
             android:authorities="${applicationId}.androidx-startup"
             android:exported="false"
             tools:node="merge">
-
-            <!-- Automatically Initialize Initializer1A.Dependency at app startup -->
 
             <meta-data
                 android:name="com.jb15613.themechooser.startup.PrefUtilsInitializer"

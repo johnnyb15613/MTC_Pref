@@ -16,7 +16,7 @@ class ThemeChooserUtilsInitializer : Initializer<ThemeChooserUtils> {
     }
 
     override fun dependencies(): List<Class<out Initializer<*>>> {
-        return emptyList()
+        return listOf(PrefUtilsInitializer::class.java)
     }
 
     companion object {

@@ -2,11 +2,11 @@ package com.jb15613.themechooser.utility
 
 import android.content.res.Resources
 import android.graphics.Color
-import com.jb15613.themechooser.mtcpref.R
 import com.jb15613.themechooser.mtcpref.Themes
 import com.jb15613.themechooser.startup.PrefUtilsInitializer
 import com.jb15613.themechooser.utility.ColorStringIntSwitcher.switchColorToInt
 import com.jb15613.themechooser.utility.color.AccentColor
+import kotlin.text.substring
 
 
 /**
@@ -261,7 +261,8 @@ object ThemeChooserUtils {
      */
     fun getColorAsHtmlString(color: Int): String {
         val s = Integer.toHexString(color)
-        return "#$s"
+        val t: String = s.substring(2)
+        return "#$t"
     } // getColorAsHtmlString
 
     /**
