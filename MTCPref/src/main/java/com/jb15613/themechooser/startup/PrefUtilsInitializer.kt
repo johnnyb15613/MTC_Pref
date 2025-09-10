@@ -11,18 +11,18 @@ import com.jb15613.themechooser.utility.PrefUtils
 /**
 ## Startup Initializer for the [PrefUtils] Class
  */
-internal lateinit var mPrefs: SharedPreferences
+internal lateinit var puiPrefs: SharedPreferences
     private set // Make the setter private to this file
 
-internal lateinit var mResources: Resources
+internal lateinit var puiResources: Resources
     private set // Make the setter private to this file
 
 class PrefUtilsInitializer : Initializer<PrefUtils> { // Return SharedPreferences or a marker type
 
     override fun create(context: Context): PrefUtils {
-        Log.d("PrefUtilsInitializer", "Creating and initializing mPrefs.")
-        mPrefs = context.getSharedPreferences(PREF_NAME_KEY, Context.MODE_PRIVATE) // Use a proper name
-        mResources = context.resources
+        Log.d("PrefUtilsInitializer", "Creating and initializing puiPrefs and puiResources.")
+        puiPrefs = context.getSharedPreferences(PREF_NAME_KEY, Context.MODE_PRIVATE) // Use a proper name
+        puiResources = context.resources
         return PrefUtils
     }
 
@@ -31,26 +31,26 @@ class PrefUtilsInitializer : Initializer<PrefUtils> { // Return SharedPreference
     }
 
     companion object {
-        fun getMPrefs(): SharedPreferences {
-            if (!::mPrefs.isInitialized) {
+        fun getPuiPrefs(): SharedPreferences {
+            if (!::puiPrefs.isInitialized) {
                 // This state should ideally not be reached if AppStartup is working correctly
                 // and PrefUtils methods are called after app initialization.
-                throw IllegalStateException("mPrefs has not been initialized. PrefUtilsInitializer.create() was not called or completed.")
+                throw IllegalStateException("puiPrefs has not been initialized. PrefUtilsInitializer.create() was not called or completed.")
             }
-            return mPrefs
+            return puiPrefs
         }
 
-        fun getMResources(): Resources {
-            if (!::mResources.isInitialized) {
+        fun getPuiResources(): Resources {
+            if (!::puiResources.isInitialized) {
                 // This state should ideally not be reached if AppStartup is working correctly
                 // and PrefUtils methods are called after app initialization.
-                throw IllegalStateException("mResources has not been initialized. PrefUtilsInitializer.create() was not called or completed.")
+                throw IllegalStateException("puiResources has not been initialized. PrefUtilsInitializer.create() was not called or completed.")
             }
-            return mResources
+            return puiResources
         }
 
         // Optional: A more direct way to check initialization from outside, if needed
         val isPrefsInitialized: Boolean
-            get() = ::mPrefs.isInitialized
+            get() = ::puiPrefs.isInitialized
     } // Companion Object
 } // Class

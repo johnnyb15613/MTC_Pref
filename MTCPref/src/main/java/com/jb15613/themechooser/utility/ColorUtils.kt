@@ -4,6 +4,7 @@ import android.content.res.Resources
 import androidx.core.content.res.ResourcesCompat
 import com.jb15613.themechooser.mtcpref.R
 import com.jb15613.themechooser.startup.ColorUtilsInitializer
+import com.jb15613.themechooser.startup.PrefUtilsInitializer
 
 /**
 ## Utilities for Retrieving Color Sets
@@ -16,7 +17,7 @@ object ColorUtils {
 
     init {
         isInitialized = true
-        mResources = ColorUtilsInitializer.mResources
+        mResources = ColorUtilsInitializer.getCuiResources()
     }
 
     /**

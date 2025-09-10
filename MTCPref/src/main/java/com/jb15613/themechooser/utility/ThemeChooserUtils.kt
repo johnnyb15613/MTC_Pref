@@ -4,6 +4,7 @@ import android.content.res.Resources
 import android.graphics.Color
 import com.jb15613.themechooser.mtcpref.Themes
 import com.jb15613.themechooser.startup.PrefUtilsInitializer
+import com.jb15613.themechooser.startup.ThemeChooserUtilsInitializer
 import com.jb15613.themechooser.utility.ColorStringIntSwitcher.switchColorToInt
 import com.jb15613.themechooser.utility.color.AccentColor
 import kotlin.text.substring
@@ -42,7 +43,7 @@ object ThemeChooserUtils {
 
     init {
         isInitialized = true
-        mResources = PrefUtilsInitializer.getMResources()
+        mResources = ThemeChooserUtilsInitializer.getTcuiResources()
     }
 
     /**

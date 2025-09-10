@@ -18,8 +18,8 @@ object PrefUtils {
 
     init {
         isInitialized = true
-        mPrefs = PrefUtilsInitializer.getMPrefs()
-        mResources = PrefUtilsInitializer.getMResources()
+        mPrefs = PrefUtilsInitializer.getPuiPrefs()
+        mResources = PrefUtilsInitializer.getPuiResources()
     }
 
     /**

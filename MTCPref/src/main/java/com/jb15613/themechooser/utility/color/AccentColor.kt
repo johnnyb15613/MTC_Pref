@@ -17,7 +17,7 @@ object AccentColor {
 
     init {
         isInitialized = true
-        mResources = AccentColorInitializer.mResources
+        mResources = AccentColorInitializer.getAcResources()
     }
 
     /**
