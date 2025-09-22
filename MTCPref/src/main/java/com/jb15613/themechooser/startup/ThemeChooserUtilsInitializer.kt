@@ -32,7 +32,7 @@ class ThemeChooserUtilsInitializer : Initializer<ThemeChooserUtils> {
                 // and PrefUtils methods are called after app initialization.
                 throw IllegalStateException("tcuiResources has not been initialized. ThemeChooserUtilsInitializer.create() was not called or completed.")
             }
-            return cuiResources
+            return tcuiResources
         }
     }
 

@@ -32,7 +32,7 @@ class AccentColorInitializer : Initializer<AccentColor> {
                 // and PrefUtils methods are called after app initialization.
                 throw IllegalStateException("acResources has not been initialized. AccentColorInitializer.create() was not called or completed.")
             }
-            return cuiResources
+            return acResources
         }
     }
 
