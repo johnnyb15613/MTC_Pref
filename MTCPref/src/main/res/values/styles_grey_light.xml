@@ -8,6 +8,7 @@
 		<item name="colorControlNormal">@color/material_accent_grey</item>
 		<item name="colorControlActivated">@color/material_primary_grey</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_grey</item>
+		<item name="android:statusBarColor" >@color/material_status_bar_grey</item>
 		<item name="android:navigationBarColor" >@color/material_primaryDark_grey</item>
 	</style>
 

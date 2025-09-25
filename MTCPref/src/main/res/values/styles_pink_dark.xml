@@ -8,6 +8,7 @@
 		<item name="colorControlNormal">@color/material_accent_pink</item>
 		<item name="colorControlActivated">@color/material_primary_pink</item>
 		<item name="colorControlHighlight">@color/material_primary_pink</item>
+		<item name="android:statusBarColor" >@color/material_status_bar_pink</item>
 		<item name="android:navigationBarColor" >@color/material_primaryDark_pink</item>
 	</style>
 

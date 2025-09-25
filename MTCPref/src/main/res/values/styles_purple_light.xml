@@ -8,6 +8,7 @@
 		<item name="colorControlNormal">@color/material_accent_purple</item>
 		<item name="colorControlActivated">@color/material_primary_purple</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_purple</item>
+		<item name="android:statusBarColor" >@color/material_status_bar_purple</item>
 		<item name="android:navigationBarColor" >@color/material_primaryDark_purple</item>
 	</style>
 
