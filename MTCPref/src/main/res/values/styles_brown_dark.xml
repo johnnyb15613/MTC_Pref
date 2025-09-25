@@ -8,7 +8,7 @@
 		<item name="colorControlNormal">@color/material_accent_brown</item>
 		<item name="colorControlActivated">@color/material_primary_brown</item>
 		<item name="colorControlHighlight">@color/material_primary_brown</item>
-		<item name="android:statusBarColor" tools:targetApi="l">@color/material_status_bar_brown</item>
+		<item name="android:statusBarColor" >@color/material_status_bar_brown</item>
 	</style>
 
 	<style name="AppThemeDark.Brown.Red">
