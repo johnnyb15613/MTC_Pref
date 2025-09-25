@@ -4,7 +4,7 @@
     android:id="@+id/widget_frame"
     android:paddingTop="8dp"
     android:paddingBottom="8dp"
-    android:paddingStart="100dp"
+    android:paddingStart="72dp"
     android:paddingEnd="24dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

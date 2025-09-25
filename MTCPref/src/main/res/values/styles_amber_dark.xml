@@ -9,6 +9,7 @@
 		<item name="colorControlActivated">@color/material_primary_amber</item>
 		<item name="colorControlHighlight">@color/material_primary_amber</item>
 		<item name="android:statusBarColor" >@color/material_status_bar_amber</item>
+		<item name="android:navigationBarColor" >@color/material_primaryDark_amber</item>
 	</style>
 
 	<style name="AppThemeDark.Amber.Red">

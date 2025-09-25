@@ -8,7 +8,7 @@
 		<item name="colorControlNormal">@color/material_accent_teal</item>
 		<item name="colorControlActivated">@color/material_primary_teal</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_teal</item>
-		<item name="android:statusBarColor" >@color/material_status_bar_teal</item>
+		<item name="android:navigationBarColor" >@color/material_primaryDark_teal</item>
 	</style>
 
 	<style name="AppThemeLight.Teal.Red">
