@@ -9,7 +9,7 @@
 		<item name="colorControlActivated">@color/material_primary_indigo</item>
 		<item name="colorControlHighlight">@color/material_primary_indigo</item>
 		<item name="android:statusBarColor" >@color/material_status_bar_indigo</item>
-		<item name="android:navigationBarColor" >@color/material_primaryDark_indigo</item>
+		<item name="android:navigationBarColor" >@color/material_status_bar_indigo</item>
 	</style>
 
 	<style name="AppThemeDark.Indigo.Red">

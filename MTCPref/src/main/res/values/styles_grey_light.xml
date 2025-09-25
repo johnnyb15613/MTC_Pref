@@ -9,7 +9,7 @@
 		<item name="colorControlActivated">@color/material_primary_grey</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_grey</item>
 		<item name="android:statusBarColor" >@color/material_status_bar_grey</item>
-		<item name="android:navigationBarColor" >@color/material_primaryDark_grey</item>
+		<item name="android:navigationBarColor" >@color/material_status_bar_grey</item>
 	</style>
 
 	<style name="AppThemeLight.Grey.Red">

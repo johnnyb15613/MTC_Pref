@@ -9,7 +9,7 @@
 		<item name="colorControlActivated">@color/material_primary_brown</item>
 		<item name="colorControlHighlight">@color/material_primary_brown</item>
 		<item name="android:statusBarColor" >@color/material_status_bar_brown</item>
-		<item name="android:navigationBarColor" >@color/material_primaryDark_brown</item>
+		<item name="android:navigationBarColor" >@color/material_status_bar_brown</item>
 	</style>
 
 	<style name="AppThemeDark.Brown.Red">

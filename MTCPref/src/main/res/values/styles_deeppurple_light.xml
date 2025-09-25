@@ -9,7 +9,7 @@
 		<item name="colorControlActivated">@color/material_primary_deepPurple</item>
 		<item name="colorControlHighlight">@color/material_primaryDark_deepPurple</item>
 		<item name="android:statusBarColor" >@color/material_status_bar_deepPurple</item>
-		<item name="android:navigationBarColor" >@color/material_primaryDark_deepPurple</item>
+		<item name="android:navigationBarColor" >@color/material_status_bar_deepPurple</item>
 	</style>
 
 	<style name="AppThemeLight.DeepPurple.Red">
