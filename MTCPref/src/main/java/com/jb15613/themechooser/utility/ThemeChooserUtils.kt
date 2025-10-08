@@ -20,14 +20,14 @@ import kotlin.text.substring
  * getThemeColor(vararg opacity: Float): Int
  * getThemeDarkColor(vararg opacity: Float): Int
  * getThemeAccentColor(vararg opacity: Float): Int
- * getPrimaryBgColor(): Int
- * getPrimaryBgInverseColor(): Int
- * getSecondaryBgColor(): Int
- * getSecondaryBgInverseColor(): Int
- * getPrimaryTextColor(): Int
- * getPrimaryInverseTextColor(): Int
- * getSecondaryTextColor(): Int
- * getSecondaryInverseTextColor(): Int
+ * getPrimaryBgColor(vararg opacity: Float): Int
+ * getPrimaryBgInverseColor(vararg opacity: Float): Int
+ * getSecondaryBgColor(vararg opacity: Float): Int
+ * getSecondaryBgInverseColor(vararg opacity: Float): Int
+ * getPrimaryTextColor(vararg opacity: Float): Int
+ * getPrimaryInverseTextColor(vararg opacity: Float): Int
+ * getSecondaryTextColor(vararg opacity: Float): Int
+ * getSecondaryInverseTextColor(vararg opacity: Float): Int
  * getThemeHue(): Boolean
  * getColorAsHtmlString(color: Int): String
  * getColorNameAsString(type: String): String
@@ -153,91 +153,284 @@ object ThemeChooserUtils {
     } // getThemeAccentColor
 
     /**
-     * ## getPrimaryBgColor(): [Int]
+     * ## getPrimaryBgColor(*vararg* opacities: [Float]): [Int]
      *
      * #### Retrieves color value of Primary BG Color
      *
+     * @param opacities an *optional* [Float] used to derive opaqueness for semi-transparent coloring
+     *
      * @return [Int] that is the color value for Primary BG Color
      */
-    fun getPrimaryBgColor(): Int {
-        return PrefUtils.getThemePrimaryBgColorInt()
+    fun getPrimaryBgColor(vararg opacities: Float): Int {
+        val mColor = PrefUtils.getThemePrimaryBgColorInt()
+
+        val arraySize = opacities.size
+
+        if (arraySize == 0) {
+            return mColor
+        } else {
+            val opacity = opacities[0]
+            val color: Int = when (opacity.toDouble()) {
+                1.0 -> mColor
+                0.9 -> mColor and 0x00FFFFFF or -0x20000000
+                0.8 -> mColor and 0x00FFFFFF or -0x30000000
+                0.7 -> mColor and 0x00FFFFFF or -0x40000000
+                0.6 -> mColor and 0x00FFFFFF or -0x50000000
+                0.5 -> mColor and 0x00FFFFFF or -0x60000000
+                0.4 -> mColor and 0x00FFFFFF or -0x70000000
+                0.3 -> mColor and 0x00FFFFFF or -0x80000000
+                0.2 -> mColor and 0x00FFFFFF or 0x70000000
+                0.1 -> mColor and 0x00FFFFFF or 0x60000000
+                else -> Color.TRANSPARENT
+            }
+            return color
+        }
     } // getPrimaryBgColor
 
     /**
-     * ## getSecondaryBgColor(): [Int]
+     * ## getSecondaryBgColor(*vararg* opacities: [Float]): [Int]
      *
      * #### Retrieves color value of Secondary BG Color
      *
+     * @param opacities an *optional* [Float] used to derive opaqueness for semi-transparent coloring
+     *
      * @return [Int] that is the color value for Secondary BG Color
      */
-    fun getSecondaryBgColor(): Int {
-        return PrefUtils.getThemeSecondaryBgColorInt()
+    fun getSecondaryBgColor(vararg opacities: Float): Int {
+        val mColor = PrefUtils.getThemeSecondaryBgColorInt()
+
+        val arraySize = opacities.size
+
+        if (arraySize == 0) {
+            return mColor
+        } else {
+            val opacity = opacities[0]
+            val color: Int = when (opacity.toDouble()) {
+                1.0 -> mColor
+                0.9 -> mColor and 0x00FFFFFF or -0x20000000
+                0.8 -> mColor and 0x00FFFFFF or -0x30000000
+                0.7 -> mColor and 0x00FFFFFF or -0x40000000
+                0.6 -> mColor and 0x00FFFFFF or -0x50000000
+                0.5 -> mColor and 0x00FFFFFF or -0x60000000
+                0.4 -> mColor and 0x00FFFFFF or -0x70000000
+                0.3 -> mColor and 0x00FFFFFF or -0x80000000
+                0.2 -> mColor and 0x00FFFFFF or 0x70000000
+                0.1 -> mColor and 0x00FFFFFF or 0x60000000
+                else -> Color.TRANSPARENT
+            }
+            return color
+        }
     } // getSecondaryBgColor
 
     /**
-     * ## getPrimaryBgInverseColor(): [Int]
+     * ## getPrimaryBgInverseColor(*vararg* opacities: [Float]): [Int]
      *
      * #### Retrieves color value of Primary BG Inverse Color
      *
+     * @param opacities an *optional* [Float] used to derive opaqueness for semi-transparent coloring
+     *
      * @return [Int] that is the color value for Primary BG Inverse Color
      */
-    fun getPrimaryBgInverseColor(): Int {
-        return PrefUtils.getThemePrimaryBgInverseColorInt()
+    fun getPrimaryBgInverseColor(vararg opacities: Float): Int {
+        val mColor = PrefUtils.getThemePrimaryBgInverseColorInt()
+
+        val arraySize = opacities.size
+
+        if (arraySize == 0) {
+            return mColor
+        } else {
+            val opacity = opacities[0]
+            val color: Int = when (opacity.toDouble()) {
+                1.0 -> mColor
+                0.9 -> mColor and 0x00FFFFFF or -0x20000000
+                0.8 -> mColor and 0x00FFFFFF or -0x30000000
+                0.7 -> mColor and 0x00FFFFFF or -0x40000000
+                0.6 -> mColor and 0x00FFFFFF or -0x50000000
+                0.5 -> mColor and 0x00FFFFFF or -0x60000000
+                0.4 -> mColor and 0x00FFFFFF or -0x70000000
+                0.3 -> mColor and 0x00FFFFFF or -0x80000000
+                0.2 -> mColor and 0x00FFFFFF or 0x70000000
+                0.1 -> mColor and 0x00FFFFFF or 0x60000000
+                else -> Color.TRANSPARENT
+            }
+            return color
+        }
     } // getPrimaryBgInverseColor
 
     /**
-     * ## getSecondaryBgInverseColor(): [Int]
+     * ## getSecondaryBgInverseColor(*vararg* opacities: [Float]): [Int]
      *
      * #### Retrieves color value of Secondary BG Inverse Color
      *
+     * @param opacities an *optional* [Float] used to derive opaqueness for semi-transparent coloring
+     *
      * @return [Int] that is the color value for Secondary BG Inverse Color
      */
-    fun getSecondaryBgInverseColor(): Int {
-        return PrefUtils.getThemeSecondaryBgInverseColorInt()
+    fun getSecondaryBgInverseColor(vararg opacities: Float): Int {
+        val mColor =  PrefUtils.getThemeSecondaryBgInverseColorInt()
+
+        val arraySize = opacities.size
+
+        if (arraySize == 0) {
+            return mColor
+        } else {
+            val opacity = opacities[0]
+            val color: Int = when (opacity.toDouble()) {
+                1.0 -> mColor
+                0.9 -> mColor and 0x00FFFFFF or -0x20000000
+                0.8 -> mColor and 0x00FFFFFF or -0x30000000
+                0.7 -> mColor and 0x00FFFFFF or -0x40000000
+                0.6 -> mColor and 0x00FFFFFF or -0x50000000
+                0.5 -> mColor and 0x00FFFFFF or -0x60000000
+                0.4 -> mColor and 0x00FFFFFF or -0x70000000
+                0.3 -> mColor and 0x00FFFFFF or -0x80000000
+                0.2 -> mColor and 0x00FFFFFF or 0x70000000
+                0.1 -> mColor and 0x00FFFFFF or 0x60000000
+                else -> Color.TRANSPARENT
+            }
+            return color
+        }
     } // getSecondaryBgInverseColor
 
     /**
-     * ## getPrimaryTextColor(): [Int]
+     * ## getPrimaryTextColor(*vararg* opacities: [Float]): [Int]
      *
      * #### Retrieves color value of Primary Text Color
      *
+     * @param opacities an *optional* [Float] used to derive opaqueness for semi-transparent coloring
+     *
      * @return [Int] that is the color value for Primary Text Color
      */
-    fun getPrimaryTextColor(): Int {
-        return PrefUtils.getThemePrimaryTextColorInt()
+    fun getPrimaryTextColor(vararg opacities: Float): Int {
+        val primaryTextColor = PrefUtils.getThemePrimaryTextColorInt()
+
+        val arraySize = opacities.size
+
+        if (arraySize == 0) {
+            return primaryTextColor
+        } else {
+            val opacity = opacities[0]
+            val color: Int = when (opacity.toDouble()) {
+                1.0 -> primaryTextColor
+                0.9 -> primaryTextColor and 0x00FFFFFF or -0x20000000
+                0.8 -> primaryTextColor and 0x00FFFFFF or -0x30000000
+                0.7 -> primaryTextColor and 0x00FFFFFF or -0x40000000
+                0.6 -> primaryTextColor and 0x00FFFFFF or -0x50000000
+                0.5 -> primaryTextColor and 0x00FFFFFF or -0x60000000
+                0.4 -> primaryTextColor and 0x00FFFFFF or -0x70000000
+                0.3 -> primaryTextColor and 0x00FFFFFF or -0x80000000
+                0.2 -> primaryTextColor and 0x00FFFFFF or 0x70000000
+                0.1 -> primaryTextColor and 0x00FFFFFF or 0x60000000
+                else -> Color.TRANSPARENT
+            }
+            return color
+        }
     } // getPrimaryTextColor
 
     /**
-     * ## getSecondaryTextColor(): [Int]
+     * ## getSecondaryTextColor(*vararg* opacities: [Float]): [Int]
      *
      * #### Retrieves color value of Secondary Text Color
      *
+     * @param opacities an *optional* [Float] used to derive opaqueness for semi-transparent coloring
+     *
      * @return [Int] that is the color value for Secondary Text Color
      */
-    fun getSecondaryTextColor(): Int {
-        return PrefUtils.getThemeSecondaryTextColorInt()
+    fun getSecondaryTextColor(vararg opacities: Float): Int {
+        val secondaryTextColor = PrefUtils.getThemeSecondaryTextColorInt()
+
+        val arraySize = opacities.size
+
+        if (arraySize == 0) {
+            return secondaryTextColor
+        } else {
+            val opacity = opacities[0]
+            val color: Int = when (opacity.toDouble()) {
+                1.0 -> secondaryTextColor
+                0.9 -> secondaryTextColor and 0x00FFFFFF or -0x20000000
+                0.8 -> secondaryTextColor and 0x00FFFFFF or -0x30000000
+                0.7 -> secondaryTextColor and 0x00FFFFFF or -0x40000000
+                0.6 -> secondaryTextColor and 0x00FFFFFF or -0x50000000
+                0.5 -> secondaryTextColor and 0x00FFFFFF or -0x60000000
+                0.4 -> secondaryTextColor and 0x00FFFFFF or -0x70000000
+                0.3 -> secondaryTextColor and 0x00FFFFFF or -0x80000000
+                0.2 -> secondaryTextColor and 0x00FFFFFF or 0x70000000
+                0.1 -> secondaryTextColor and 0x00FFFFFF or 0x60000000
+                else -> Color.TRANSPARENT
+            }
+            return color
+        }
+
     } // getSecondaryTextColor
 
     /**
-     * ## getPrimaryInverseTextColor(): [Int]
+     * ## getPrimaryInverseTextColor(*vararg* opacities: [Float]): [Int]
      *
      * #### Retrieves color value of Primary Inverse Text Color
      *
+     * @param opacities an *optional* [Float] used to derive opaqueness for semi-transparent coloring
+     *
      * @return [Int] that is the color value for Primary Inverse Text Color
      */
-    fun getPrimaryInverseTextColor(): Int {
-        return PrefUtils.getThemePrimaryTextInverseColorInt()
+    fun getPrimaryInverseTextColor(vararg opacities: Float): Int {
+        val mColor = PrefUtils.getThemePrimaryTextInverseColorInt()
+
+        val arraySize = opacities.size
+
+        if (arraySize == 0) {
+            return mColor
+        } else {
+            val opacity = opacities[0]
+            val color: Int = when (opacity.toDouble()) {
+                1.0 -> mColor
+                0.9 -> mColor and 0x00FFFFFF or -0x20000000
+                0.8 -> mColor and 0x00FFFFFF or -0x30000000
+                0.7 -> mColor and 0x00FFFFFF or -0x40000000
+                0.6 -> mColor and 0x00FFFFFF or -0x50000000
+                0.5 -> mColor and 0x00FFFFFF or -0x60000000
+                0.4 -> mColor and 0x00FFFFFF or -0x70000000
+                0.3 -> mColor and 0x00FFFFFF or -0x80000000
+                0.2 -> mColor and 0x00FFFFFF or 0x70000000
+                0.1 -> mColor and 0x00FFFFFF or 0x60000000
+                else -> Color.TRANSPARENT
+            }
+            return color
+        }
     } // getPrimaryInverseTextColor
 
     /**
-     * ## getSecondaryInverseTextColor(): [Int]
+     * ## getSecondaryInverseTextColor(*vararg* opacities: [Float]): [Int]
      *
      * #### Retrieves color value of Secondary Inverse Text Color
      *
+     * @param opacities an *optional* [Float] used to derive opaqueness for semi-transparent coloring
+     *
      * @return [Int] that is the color value for Secondary Inverse Text Color
      */
-    fun getSecondaryInverseTextColor(): Int {
-        return PrefUtils.getThemeSecondaryTextInverseColorInt()
+    fun getSecondaryInverseTextColor(vararg opacities: Float): Int {
+        val mColor = PrefUtils.getThemeSecondaryTextInverseColorInt()
+
+        val arraySize = opacities.size
+
+        if (arraySize == 0) {
+            return mColor
+        } else {
+            val opacity = opacities[0]
+            val color: Int = when (opacity.toDouble()) {
+                1.0 -> mColor
+                0.9 -> mColor and 0x00FFFFFF or -0x20000000
+                0.8 -> mColor and 0x00FFFFFF or -0x30000000
+                0.7 -> mColor and 0x00FFFFFF or -0x40000000
+                0.6 -> mColor and 0x00FFFFFF or -0x50000000
+                0.5 -> mColor and 0x00FFFFFF or -0x60000000
+                0.4 -> mColor and 0x00FFFFFF or -0x70000000
+                0.3 -> mColor and 0x00FFFFFF or -0x80000000
+                0.2 -> mColor and 0x00FFFFFF or 0x70000000
+                0.1 -> mColor and 0x00FFFFFF or 0x60000000
+                else -> Color.TRANSPARENT
+            }
+            return color
+        }
     } // getSecondaryTextColor
 
     /**
